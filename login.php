@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="login-container">
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="login-form-container">
             <form class="login-form" method="post" action="login.php">
-                <!-- Input fields for username and password -->
+                 Input fields for username and password 
                 <div class="form-group">
                     <input type="text" id="txt_user" name="txt_user" required placeholder="Username">
                 </div>
@@ -76,6 +76,5 @@ if (isset($_POST['submit'])) {
             </form>
         </div>
     </div>
-    //ilham
-</body>
+</body> 
 </html>
