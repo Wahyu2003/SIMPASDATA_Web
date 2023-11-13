@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="login-container">
         <div class="logo">
-            <img src="public/images/logo-pasdata-3.png" alt="Logo">
+            <img src="assets/image/logo-pasdata-3.png" alt="Logo">
         </div>
         <div class="content">
             <h1 class="simpasdata">SIM<span>PASDATA</span></h1>
