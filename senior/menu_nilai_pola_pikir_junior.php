@@ -6,7 +6,10 @@
     <title>SIM PASDATA | Input Nilai Pola Pikir</title>
 </head>
 <body>
-    <?php include "../main/menu.php" ?>
+    <?php 
+    session_start();
+    include "../main/menu.php" 
+    ?>
     <h1>Halaman Input NIlai Pola Pikir Junior Milik Senior</h1>
 </body>
 </html>

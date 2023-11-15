@@ -6,7 +6,10 @@
     <title>SIM PASDATA | Manajemen Akun Pembina</title>
 </head>
 <body>
-    <?php include "../main/menu.php" ?>
+    <?php 
+    session_start();
+    include "../main/menu.php" 
+    ?>
     <h1>Halaman Manajemen Akun Pembina Milik Admin</h1>
 </body>
 </html>

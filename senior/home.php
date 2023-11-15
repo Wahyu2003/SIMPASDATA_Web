@@ -7,17 +7,17 @@
 </head>
 <body>
     <?php
+        session_start();
         include "../main/menu.php";
     ?>
-    <h1>Halaman Home Senior, Selamat Datang <?php 
-        if(isset($_SESSION['roleAdmin']) == 'pembina'){
-            $namaAdmin;
-        }elseif (isset($_SESSION['roleAdmin']) == 'admin') {
-            $namaAdmin;
-        }elseif (isset($_SESSION['roleSiswa']) == 'senior') {
-            $namaSiswa;
-        }
+
+    <h1>Halaman Home Senior, Selamat Datang 
+    <?php 
+        $namaSiswa = $_SESSION['namaSiswa'];
+        echo $namaSiswa;
     ?>
     </h1>
+    
+    
 </body>
 </html>

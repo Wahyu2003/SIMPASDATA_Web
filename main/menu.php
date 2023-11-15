@@ -1,16 +1,24 @@
-<?php
-    include "../main/auth.php";
-?>
+<?php include "../main/auth.php"; ?>
+
+<!-- FOOTER -->
+<section id="section-footer">
+        <nav class="nav-footer">
+            <a href="#" class="notification-footer">
+                <p>Notif</p>
+            </a>
+			<a href="#" class="profil-footer">
+                <p>Profil</p>
+            </a>
+        </nav>
+</section>
 
 <!-- SIDEBAR -->
 <section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">SIM PASDATA</span>
-		</a>
-		
+			<span class="text">
+                <p>SIM PASDATA</p>
+            </span>
             <?php
-            if ($roleAdmin == 'admin') { ?>
+            if ($role == 'admin') { ?>
                 <ul class="side-menu top">
                     <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
                     <li><a href="./menu_manajemen_akun_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Senior</a></li>
@@ -21,10 +29,7 @@
                     <li><a href="./menu_nilai_sikap_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Sikap Senior</a></li>
                     
                 </ul>
-            <?php } ?>
-
-            <?php
-            if ($roleAdmin == 'pembina') { ?>
+            <?php }elseif ($role == 'pembina') { ?>
                 <ul class="side-menu top">
                     <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
                     <li><a href="./menu_manajemen_akun_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Senior</a></li>
@@ -32,10 +37,7 @@
                     <li><a href="./menu_nilai_pola_pikir_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Pola Pikir Senior</a></li>
                     <li><a href="./menu_nilai_sikap_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Sikap Senior</a></li>  
                 </ul>
-            <?php } ?>
-
-            <?php
-            if ($roleSiswa == 'senior') { ?>
+            <?php }elseif ($role == 'senior') { ?>
                 <ul class="side-menu top">
                     <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
                     <li><a href="./menu_manajemen_akun_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Junior</a></li>
@@ -48,13 +50,7 @@
 
 		<ul class="side-menu">
 			<li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
-			</li>
-			<li>
-				<a href="signout.php" class="logout">
+				<a href="../main/signout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
