@@ -79,7 +79,7 @@ if(isset($_POST['signin'])){
 <body>
     <div class="login-container">
                 <div class="logo">
-                    <img src="assets/image/logo-pasdata-3.png" alt="Logo">
+                    <img src="assets/logo-pasdata-3.png" alt="Logo">
                 </div>
         
             <div class="content">
