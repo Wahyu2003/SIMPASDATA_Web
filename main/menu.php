@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive navbar</title>
+    <title>SideBar</title>
     <link rel="stylesheet" href="../main/menu.css" />
     <link
       rel="stylesheet"
@@ -14,18 +14,16 @@
   <body>
     <nav class="sidebar">
       <header>
-        <div class="image-text">
-          <span class="image">
-            <img src="logo.png" alt="logo" />
-          </span>
-          
-        </div>
+        
         <i class="bx bx-chevron-right toggle"></i>
       </header>
       <?php
      if ($role == 'admin') { ?>
      <div class="text header-text">
-            <span class="main">Admin</span>
+            <span class="main"> <?php 
+        $namaAdmin = $_SESSION['namaAdmin'];
+        echo $namaAdmin;
+    ?> || Admin</span>
           </div>
       <div class="menu-bar">
         <div class="menu">
@@ -80,7 +78,10 @@
         </div>
       <?php } elseif ($role == 'pembina') { ?>
         <div class="text header-text">
-            <span class="main">Pembina</span>
+            <span class="main"> <?php 
+        $namaAdmin = $_SESSION['namaAdmin'];
+        echo $namaAdmin;
+    ?> || Pembina</span>
           </div>
           <div class="menu-bar">
         <div class="menu">
@@ -112,7 +113,10 @@
         </div>
         <?php }elseif ($role == 'senior') { ?>
           <div class="text header-text">
-            <span class="main">Senior</span>
+            <span class="main"> <?php 
+        $namaSiswa = $_SESSION['namaSiswa'];
+        echo $namaSiswa;
+    ?> || Senior</span>
           </div>
           <div class="menu-bar">
         <div class="menu">
