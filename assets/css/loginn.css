@@ -1,0 +1,111 @@
+body {
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    max-width: 1200px;
+    border-radius: 10px;
+}
+
+.logo{
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 60px;
+    padding-left: 60px;
+}
+
+.content {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 20px;
+}
+
+.simpasdata{
+    font-size: 50px;
+    font-weight: 800;
+    flex-shrink: 0;
+    color: #F00;
+}
+
+.simpasdata span {
+    color: #FFF;
+}
+
+.subsimpasdata {
+    flex-shrink: 0;
+    color: #fff;
+    font-family: Bungee;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.login-form-container {
+    grid-column: 3;
+    grid-row: 1;
+    background: #fff;
+    width: 400px;
+    height: 350px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.login-form {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.form-group {
+    margin: 30px 0;
+}
+
+input[type="text"], input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #898989;
+    border-radius: 5px;
+}
+
+.button-sign-in {
+    margin-top: 20px;
+}
+
+button {
+    width: 95%;
+    padding: 10px;
+    background: #F00;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    font-family: Inria Sans;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.lupasandi{
+    text-decoration: none;
+    text-align: center;
+    width: 184px;
+    height: 29px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #C91515;
+    font-family: Inria Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}

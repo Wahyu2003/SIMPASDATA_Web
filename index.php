@@ -68,41 +68,47 @@ if(isset($_POST['signin'])){
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Sign In</title>
+    <link rel ="stylesheet" href="assets/css/loginn.css">
 </head>
 <body>
-    <main class="form-signin w-100 m-auto">
-        <form method="POST">
+    <div class="login-container">
+                <div class="logo">
+                    <img src="assets/image/logo-pasdata-3.png" alt="Logo">
+                </div>
+        
             <div class="content">
+                
                 <h1 class="simpasdata">SIM<span>PASDATA</span></h1>
                 <h4 class="subsimpasdata">SISTEM INFORMASI MANAJEMEN PASKIBRA SMA NEGERI 2 TANGGUL</h4>
                 <h2>Sign In</h2>
             </div>
-            <table >
-                <tr>
-                    <td><label for="nisnnip">NISN/NIP</label></td>
-                    <td><input type="text" name="nisnnip" id="nisnnip" placeholder="Masukkan NISN/NIP.."></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Password</label></td>
-                    <td><input type="password" name="password" id="password" placeholder="Masukkan Password.."></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><button type="submit" name="signin">Sign In</button></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><a href="main/forgot-password.php">Lupa kata sandi?</a></td>
-                </tr>
-            </table>
+            <div class="login-form-container">
+                <form class ="login-form" method="post" action="index.php">
+                    <label for="nisnnip">NISN/NIP</label>
+                    <input type="text" name="nisnnip" id="nisnnip" placeholder="Masukkan NISN/NIP..">
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Masukkan Password..">
+                </div>
+                <div class = "button-sign-in">
+                    
+                    <button type="submit" name="signin">Sign In</button>
+                    
+                    <a class="lupasandi" href="main/forgot-password.php">Lupa kata sandi?</a>
+                
+                </div>
+                
+                
+            
+            </div>
         </form>
-    </main>
+</div>
 </body>
 </html>
