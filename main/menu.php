@@ -1,58 +1,96 @@
-<?php include "../main/auth.php"; ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive navbar</title>
+    <link rel="stylesheet" href="../main/menu.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="logo.png" alt="logo" />
+          </span>
+          <div class="text header-text">
+            <span class="main">Sidebar</span>
+            <span class="sub">Component</span>
+          </div>
+        </div>
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
 
-<!-- FOOTER -->
-<section id="section-footer">
-        <nav class="nav-footer">
-            <a href="#" class="notification-footer">
-                <p>Notif</p>
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="search-bar">
+              <i class="bx bx-search icons"></i>
+              <input type="search" placeholder="Search..." />
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-home-alt icons"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <span class="text nav-text">Revenue</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bell icons"></i>
+                <span class="text nav-text">Notifications</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-pie-chart-alt icons"></i>
+                <span class="text nav-text">Analytics</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-heart icons"></i>
+                <span class="text nav-text">Likes</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-wallet-alt icons"></i>
+                <span class="text nav-text">Wallets</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="bottom-content"> <!-- Perbaikan: Gunakan elemen ul untuk memasukkan elemen li -->
+          <li class="nav-link">
+            <a href="../main/signout.php">
+              <i class="bx bx-log-out icons"></i>
+              <span class="text nav-text"> Log Out</span>
             </a>
-			<a href="#" class="profil-footer">
-                <p>Profil</p>
-            </a>
-        </nav>
-</section>
-
-<!-- SIDEBAR -->
-<section id="sidebar">
-			<span class="text">
-                <p>SIM PASDATA</p>
-            </span>
-            <?php
-            if ($role == 'admin') { ?>
-                <ul class="side-menu top">
-                    <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
-                    <li><a href="./menu_manajemen_akun_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Senior</a></li>
-                    <li><a href="./menu_manajemen_akun_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Junior</a></li>
-                    <li><a href="./menu_manajemen_akun_pembina.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Pembina</a></li>
-                    <li><a href="./menu_nilai_keaktifan_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Keaktifan Senior</a></li>
-                    <li><a href="./menu_nilai_pola_pikir_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Pola Pikir Senior</a></li>
-                    <li><a href="./menu_nilai_sikap_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Sikap Senior</a></li>
-                    
-                </ul>
-            <?php }elseif ($role == 'pembina') { ?>
-                <ul class="side-menu top">
-                    <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
-                    <li><a href="./menu_manajemen_akun_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Senior</a></li>
-                    <li><a href="./nilai_senior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Nilai Senior</a></li>
-                </ul>
-            <?php }elseif ($role == 'senior') { ?>
-                <ul class="side-menu top">
-                    <li><a href="./home.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Home</a></li>
-                    <li><a href="./menu_manajemen_akun_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Manajemen Akun Junior</a></li>
-                    <li><a href="./menu_nilai_keaktifan_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Keaktifan Junior</a></li>
-                    <li><a href="./menu_nilai_pola_pikir_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Pola Pikir Junior</a></li>
-                    <li><a href="./menu_nilai_sikap_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai Sikap Junior</a></li>  
-                    <li><a href="./menu_nilai_pbb_junior.php" class="nav-link px-2 mx-1 text-dark btn btn-light">Input Nilai PBB Junior</a></li>  
-                </ul>
-            <?php } ?>
-
-		<ul class="side-menu">
-			<li>
-				<a href="../main/signout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
-<!-- SIDEBAR -->
+          </li>
+          <li class="mode">
+            <div class="moon-sun">
+              <i class="bx bx-moon icons moon"></i>
+              <i class="bx bx-sun icons sun"></i>
+            </div>
+            <span class="mode-text text">Dark Mode</span>
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <script src="../main/script.js"></script>
+  </body>
+</html>
