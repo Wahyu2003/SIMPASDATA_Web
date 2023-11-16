@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Manajemen Akun Senior</title>
+    <title>SIM PASDATA | Tambah Akun Senior</title>
 </head>
 <body>
     <?php 
     session_start();
     include "../main/menu.php" 
     ?>
-    <h1>Halaman Manajemen Akun Senior Milik Pembina</h1>
+    <h1>Halaman Tambah Akun Senior Milik Pembina</h1>
 
     <div>
-        <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_tambah_senior.php">Tambah Akun</a></button>
+        <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_akun_senior.php">Kembali</a></button>
     </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
@@ -25,12 +25,12 @@
                     <th>Kelas</th>
                     <th>Alamat</th>
                     <th>Jenis Kelamin</th>
-                    <th>Opsi</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
+                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'junior' AND status = 'aktif'");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
@@ -52,8 +52,7 @@
                         <td><?= $alamatSiswa ?></td>    
                         <td><?= $genderSiswa ?></td>
                         <td>
-                            <a href = "./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa?>" class='detail'>Detail</a>
-                            <a href = "?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
+                            <a href = "?up&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -64,11 +63,11 @@
 </html>
 
 <?php
-if (isset($_GET['delete'])) {
+if (isset($_GET['up'])) {
     $nisn = $_GET['nisn'];
     
-    $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
-    if ($delete) {
+    $update = mysqli_query($db, "UPDATE siswa SET role = 'senior' WHERE siswa.nisn = '$nisn'");
+    if ($update) {
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
         exit;
     } else {

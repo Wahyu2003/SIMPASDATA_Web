@@ -16,8 +16,6 @@
         echo $namaAdmin;
     ?>
     </h1>
-
-    
     
 </body>
 </html>

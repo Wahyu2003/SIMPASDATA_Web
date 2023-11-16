@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Manajemen Akun Senior</title>
+    <title>SIM PASDATA | Input Nilai Keaktifan </title>
 </head>
 <body>
     <?php 
     session_start();
     include "../main/menu.php" 
     ?>
-    <h1>Halaman Manajemen Akun Senior Milik Pembina</h1>
+    <h1>Halaman Input Nilai Senior Milik Pembina</h1>
 
-    <div>
-        <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_tambah_senior.php">Tambah Akun</a></button>
-    </div>
-    <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
         <table class="table-data-akun-senior" border=1 cellpadding=5 cellspacing=0>
             <thead>
@@ -23,14 +19,18 @@
                     <th>NISN</th>
                     <th>Nama Lengkap</th>
                     <th>Kelas</th>
-                    <th>Alamat</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Opsi</th>
+                    <th>Rata-Rata Nilai Sikap</th>
+                    <th>Rata-Rata Nilai Pola Pikir</th>
+                    <th>Rata-Rata Nilai Keaktifan</th>
+                    <th>Rata-Rata</th>
+                    <th>Nilai Alfabet</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
+                //EDIT DARI SINI
+
+                $query = mysqli_query($db, "SELECT s.nisn, s.nama, ROUND(AVG(dn.total_nilai)) AS rata_rata_keseluruhan, CASE WHEN ROUND(AVG(dn.total_nilai)) <= 8 THEN 'B' ELSE 'A' END AS nilai_alfabet FROM siswa s JOIN entered e ON s.nis = e.nis JOIN detail_nilai dn ON e.detail_id = dn.id_detail WHERE dn.nama IN ('sikap', 'pola pikir', 'keaktifan') GROUP BY s.nis, s.nama;");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
@@ -60,19 +60,6 @@
             </tbody>
         </table>
     </div>
+
 </body>
 </html>
-
-<?php
-if (isset($_GET['delete'])) {
-    $nisn = $_GET['nisn'];
-    
-    $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
-    if ($delete) {
-        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
-        exit;
-    } else {
-        echo "<script>alert('Data Gagal Dihapus !!');</script>";
-    }
-}
-?>
