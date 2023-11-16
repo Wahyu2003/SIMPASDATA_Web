@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Input Nilai Keaktifan </title>
+    <title>SIM PASDATA | Nilai Senior </title>
 </head>
 <body>
     <?php 
     session_start();
     include "../main/menu.php" 
     ?>
-    <h1>Halaman Input Nilai Senior Milik Pembina</h1>
+    <h1>Halaman Nilai Senior Milik Pembina</h1>
+
+    <div>
+        <button><a href="./input_nilai_senior.php">Input Nilai</a></button>
+    </div>
 
     <div class="card-body-table-menu-manajemen-akun-senior">
         <table class="table-data-akun-senior" border=1 cellpadding=5 cellspacing=0>
@@ -28,31 +32,64 @@
             </thead>
             <tbody>
                 <?php
-                //EDIT DARI SINI
+                
+                //query untuk menampilkan data nilai senior
+                $query = mysqli_query($db, 
+                
+                "SELECT 
+                s.nisn, 
+                s.nama, 
+                k.nama AS kelas,
+                ROUND(AVG(CASE WHEN n.nama = 'sikap' THEN dn.total_nilai END)) AS rata_rata_sikap,
+                ROUND(AVG(CASE WHEN n.nama = 'pola pikir' THEN dn.total_nilai END)) AS rata_rata_pola_pikir,
+                ROUND(AVG(CASE WHEN n.nama = 'keaktifan' THEN dn.total_nilai END)) AS rata_rata_keaktifan,
+                ROUND((ROUND(AVG(CASE WHEN n.nama = 'sikap' THEN dn.total_nilai END)) + ROUND(AVG(CASE WHEN n.nama = 'pola pikir' THEN dn.total_nilai END)) + ROUND(AVG(CASE WHEN n.nama = 'keaktifan' THEN dn.total_nilai END))) / 3) AS rata_rata_keseluruhan,
+                CASE
+                    WHEN ROUND((ROUND(AVG(CASE WHEN n.nama = 'sikap' THEN dn.total_nilai END)) + ROUND(AVG(CASE WHEN n.nama = 'pola pikir' THEN dn.total_nilai END)) + ROUND(AVG(CASE WHEN n.nama = 'keaktifan' THEN dn.total_nilai END))) / 3) <= 8 THEN 'B'
+                    ELSE 'A'
+                END AS nilai_alfabet
+                FROM
+                    siswa s
+                JOIN
+                    kelas k ON s.kelas_id = k.id_kelas
+                JOIN
+                    entered_senior es ON s.nisn = es.nisn
+                JOIN
+                    detail_nilai dn ON es.detail_id = dn.id_detail
+                JOIN
+                    nilai n ON dn.nilai_id = n.id_nilai
+                GROUP BY
+                    s.nisn, s.nama, k.nama;");
 
-                $query = mysqli_query($db, "SELECT s.nisn, s.nama, ROUND(AVG(dn.total_nilai)) AS rata_rata_keseluruhan, CASE WHEN ROUND(AVG(dn.total_nilai)) <= 8 THEN 'B' ELSE 'A' END AS nilai_alfabet FROM siswa s JOIN entered e ON s.nis = e.nis JOIN detail_nilai dn ON e.detail_id = dn.id_detail WHERE dn.nama IN ('sikap', 'pola pikir', 'keaktifan') GROUP BY s.nis, s.nama;");
-
+                
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
                     $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
                     $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
-                    $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
-                    $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
+                    $rataRataSikap = $_SESSION['rataRataSikap'] = $a['rata_rata_sikap'];
+                    $rataRataPolaPikir = $_SESSION['rataRataPolaPikir'] = $a['rata_rata_pola_pikir'];
+                    $rataRataKeaktifan = $_SESSION['rataRataKeaktifan'] = $a['rata_rata_keaktifan'];
+                    $rataRataKeseluruhan = $_SESSION['rataRataKeseluruhan'] = $a['rata_rata_keseluruhan'];
+                    $nilaiAlfabet = $_SESSION['nilaiAlfabet'] = $a['nilai_alfabet'];
 
-                    if($genderSiswa == 'L'){
-                        $genderSiswa = "Laki - Laki";
-                    }else{
-                        $genderSiswa = "Perempuan";
+
+                    if(!isset($rataRataKeaktifan) && !isset($rataRataPolaPikir) && !isset($rataRataSikap) == null){
+                        $rataRataKeaktifan = 0;
+                        $rataRataPolaPikir = 0;
+                        $rataRataSikap = 0;
                     }
                     ?>
                     <tr>
                         <td><?= $nisnSiswa ?></td>
                         <td><?= $namaSiswa ?></td>
                         <td><?= $kelasSiswa ?></td>
-                        <td><?= $alamatSiswa ?></td>    
-                        <td><?= $genderSiswa ?></td>
+                        <td><?= $rataRataSikap ?></td>    
+                        <td><?= $rataRataPolaPikir ?></td>
+                        <td><?= $rataRataKeaktifan ?></td>
+                        <td><?= $rataRataKeseluruhan ?></td>
+                        <td><?= $nilaiAlfabet ?></td>
                         <td>
-                            <a href = "./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa?>" class='detail'>Detail</a>
+                            
                             <a href = "?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
                         </td>
                     </tr>
@@ -60,6 +97,19 @@
             </tbody>
         </table>
     </div>
-
 </body>
 </html>
+
+<?php
+if (isset($_GET['delete'])) {
+    $nisn = $_GET['nisn'];
+    
+    $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
+    if ($delete) {
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./nilai_senior.php">';
+        exit;
+    } else {
+        echo "<script>alert('Data Gagal Dihapus !!');</script>";
+    }
+}
+?>
