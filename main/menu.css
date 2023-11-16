@@ -111,10 +111,10 @@ body.dark {
 
 .sidebar li {
   height: 50px;
-  margin-top: 10px;
+  margin-top: 15px;
   list-style-type: none;
   display: flex;
-  align-items: center;
+  align-items: left;
 }
 
 .sidebar li .icons {

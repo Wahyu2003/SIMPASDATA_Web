@@ -10,12 +10,14 @@
     session_start();
     include "../main/menu.php";
     ?>
-
+    <center>
     <h1>Halaman Home Pembina, Selamat Datang <?php 
         $namaAdmin = $_SESSION['namaAdmin'];
         echo $namaAdmin;
     ?>
     </h1>
+    </center>
+    
     
 </body>
 </html>

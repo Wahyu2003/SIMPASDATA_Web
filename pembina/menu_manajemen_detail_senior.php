@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Detail Senior</title>
     <style>
-        .table{
-            text-align:left;
+        body {
+            text-align: center; /* Untuk mengatur text-align menjadi center */
         }
-        .p{
-            pointer-events:none;
+
+        .table {
+            text-align: left;
+            margin: 0 auto; /* Untuk membuat margin tabel otomatis dan membuatnya berada di tengah */
+        }
+
+        .p {
+            pointer-events: none;
         }
     </style>
 </head>
+
 <body>
     <?php 
     session_start();
@@ -25,7 +33,7 @@
     </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
-        <table class="table-data-akun-senior" border=0 cellpadding=1 cellspacing=0>
+        <table class="table" border="1"> <!-- Menambahkan class "table" pada elemen tabel -->
             <?php
                 $nisn = $_GET['nisn'];
 
@@ -43,33 +51,34 @@
                     }else{
                         $genderSiswa = "Perempuan";
                     }
-                    ?>
-                <?php } ?>
+            ?>
             <tr>
-                <th><label>NISN  :</label></th>
+                <th><label>NISN :</label></th>
                 <td><p class="p"><?=$nisnSiswa?></p></td>
             </tr>
             <tr>
-                <th><label>Nama Lengkap  :</label></th>
+                <th><label>Nama Lengkap :</label></th>
                 <td><p class="p"><?=$namaSiswa?></p></td>
             </tr>
             <tr>
-                <th><label>Kelas  :</label></th>
+                <th><label>Kelas :</label></th>
                 <td><p class="p"><?=$kelasSiswa?></p></td>
             </tr>
             <tr>
-                <th><label>Alamat  :</label></th>
+                <th><label>Alamat :</label></th>
                 <td><p class="p"><?=$alamatSiswa?></p></td>
             </tr>
             <tr>
-                <th><label>Jenis Kelamin  :</label></th>
+                <th><label>Jenis Kelamin :</label></th>
                 <td><p class="p"><?=$genderSiswa?></p></td>
             </tr>      
             <tr>
                 <th></th>
                 <td><button><a href="./menu_manajemen_akun_senior.php">Kembali</a></button></td>
-            </tr>      
+            </tr>
+            <?php } ?>
         </table>
     </div>
 </body>
+
 </html>

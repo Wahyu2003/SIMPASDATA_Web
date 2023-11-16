@@ -1,3 +1,4 @@
+<?php include "../main/auth.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,14 +18,15 @@
           <span class="image">
             <img src="logo.png" alt="logo" />
           </span>
-          <div class="text header-text">
-            <span class="main">Sidebar</span>
-            <span class="sub">Component</span>
-          </div>
+          
         </div>
         <i class="bx bx-chevron-right toggle"></i>
       </header>
-
+      <?php
+     if ($role == 'admin') { ?>
+     <div class="text header-text">
+            <span class="main">Admin</span>
+          </div>
       <div class="menu-bar">
         <div class="menu">
           <ul class="menu-links">
@@ -33,44 +35,131 @@
               <input type="search" placeholder="Search..." />
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="./home.php">
                 <i class="bx bx-home-alt icons"></i>
-                <span class="text nav-text">Dashboard</span>
+                <span class="text nav-text">Home</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="./menu_manajemen_akun_senior.php">
                 <i class="bx bx-bar-chart-alt-2 icons"></i>
-                <span class="text nav-text">Revenue</span>
+                <span class="text nav-text">Manajemen Akun Senior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="./menu_manajemen_akun_junior.php">
                 <i class="bx bx-bell icons"></i>
-                <span class="text nav-text">Notifications</span>
+                <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="menu_manajemen_akun_pembina.php">
                 <i class="bx bx-pie-chart-alt icons"></i>
-                <span class="text nav-text">Analytics</span>
+                <span class="text nav-text">Manajemen Akun Pembina</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="./menu_nilai_keaktifan_senior.php">
                 <i class="bx bx-heart icons"></i>
-                <span class="text nav-text">Likes</span>
+                <span class="text nav-text">Nilai Keaktifan Senior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#">
+              <a href="./menu_nilai_pola_pikir_senior.php">
                 <i class="bx bx-wallet-alt icons"></i>
-                <span class="text nav-text">Wallets</span>
+                <span class="text nav-text">Nilai Pola Pikir Senior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_nilai_sikap_senior.php">
+                <i class="bx bx-wallet-alt icons"></i>
+                <span class="text nav-text">Nilai Sikap Senior</span>
               </a>
             </li>
           </ul>
         </div>
-
+      <?php } elseif ($role == 'pembina') { ?>
+        <div class="text header-text">
+            <span class="main">Pembina</span>
+          </div>
+          <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="search-bar">
+              <i class="bx bx-search icons"></i>
+              <input type="search" placeholder="Search..." />
+            </li>
+            <li class="nav-link">
+              <a href="./home.php">
+                <i class="bx bx-home-alt icons"></i>
+                <span class="text nav-text">Home</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_manajemen_akun_senior.php">
+                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <span class="text nav-text">Manajemen Akun Senior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./nilai_senior.php">
+                <i class="bx bx-bell icons"></i>
+                <span class="text nav-text">Nilai Senior</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+        <?php }elseif ($role == 'senior') { ?>
+          <div class="text header-text">
+            <span class="main">Senior</span>
+          </div>
+          <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="search-bar">
+              <i class="bx bx-search icons"></i>
+              <input type="search" placeholder="Search..." />
+            </li>
+            <li class="nav-link">
+              <a href="./home.php">
+                <i class="bx bx-home-alt icons"></i>
+                <span class="text nav-text">Home</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_manajemen_akun_junior.php">
+                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <span class="text nav-text">Manajemen Akun Junior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_nilai_keaktifan_junior.php">
+                <i class="bx bx-bell icons"></i>
+                <span class="text nav-text">Nilai Keaktifan Junior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_nilai_pola_pikir_junior.php">
+                <i class="bx bx-pie-chart-alt icons"></i>
+                <span class="text nav-text">Nilai Pola Pikir Junior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_nilai_sikap_junior.php">
+                <i class="bx bx-heart icons"></i>
+                <span class="text nav-text">Nilai Sikap Junior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_nilai_pbb_junior.php">
+                <i class="bx bx-wallet-alt icons"></i>
+                <span class="text nav-text">Nilai PBB Junior</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <?php } ?>
         <ul class="bottom-content"> <!-- Perbaikan: Gunakan elemen ul untuk memasukkan elemen li -->
           <li class="nav-link">
             <a href="../main/signout.php">
