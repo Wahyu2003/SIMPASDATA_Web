@@ -95,7 +95,7 @@
                 JOIN
                     nilai n ON dn.nilai_id = n.id_nilai
                 GROUP BY
-                    s.nisn, s.nama, k.nama;");
+                    s.nisn, s.nama;");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
