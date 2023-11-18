@@ -24,7 +24,6 @@ if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
     $alamatSiswa = $_SESSION['alamatSiswa'];
     $emailSiswa = $_SESSION['emailSiswa'];
     $passwordSiswa = $_SESSION['passwordSiswa'];
-    $angkatanSiswa = $_SESSION['angkatanSiswa'];
     $statusSiswa = $_SESSION['statusSiswa'];
     $role = $_SESSION['roleSiswa'];
     $levelSiswa = $_SESSION['levelSiswa'];  

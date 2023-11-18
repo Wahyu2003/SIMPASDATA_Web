@@ -104,9 +104,6 @@ if(isset($_POST['signin'])){
                     <a class="lupasandi" href="main/forgot-password.php">Lupa kata sandi?</a>
                 
                 </div>
-                
-                
-            
             </div>
         </form>
 </div>
