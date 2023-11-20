@@ -27,8 +27,12 @@ if(isset($_POST['signin'])){
 
     if(mysqli_num_rows($q) == 1){
         $_SESSION['nipAdmin'] = $adminQ['nip'];
+        $_SESSION['fotoAdmin'] = $adminQ['foto'];
         $_SESSION['namaAdmin'] = $adminQ['nama'];
-        $_SESSION['usernameAdmin'] = $adminQ['username'];
+        $_SESSION['alamatAdmin'] = $adminQ['alamat'];
+        $_SESSION['genderAdmin'] = $adminQ['gender'];
+        $_SESSION['emailAdmin'] = $adminQ['email'];
+        $_SESSION['noHpAdmin'] = $adminQ['no_hp'];
         $_SESSION['passwordAdmin'] = $adminQ['password'];
         $_SESSION['roleAdmin'] = $adminQ['role'];
         $role = $_SESSION['roleAdmin'];
@@ -43,12 +47,13 @@ if(isset($_POST['signin'])){
     } elseif(mysqli_num_rows($r) == 1) {
         $_SESSION['nisnSiswa'] = $siswaQ['nisn'];
         $_SESSION['kelas_idSiswa'] = $siswaQ['kelas_id'];
+        $_SESSION['fotoSiswa'] = $siswaQ['foto'];
         $_SESSION['namaSiswa'] = $siswaQ['nama'];
         $_SESSION['genderSiswa'] = $siswaQ['gender'];
         $_SESSION['alamatSiswa'] = $siswaQ['alamat'];
         $_SESSION['emailSiswa'] = $siswaQ['email'];
         $_SESSION['passwordSiswa'] = $siswaQ['password'];
-        $_SESSION['angkatanSiswa'] = $siswaQ['angkatan'];
+        $_SESSION['noHpSiswa'] = $siswaQ['no_hp'];
         $_SESSION['statusSiswa'] = $siswaQ['status'];
         $_SESSION['roleSiswa'] = $siswaQ['role'];
         $_SESSION['levelSiswa'] = $siswaQ['level'];

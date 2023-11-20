@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Detail Senior</title>
+    <title>SIM PASDATA | Detail Junior</title>
     <style>
         body {
             text-align: center; /* Untuk mengatur text-align menjadi center */
@@ -26,7 +26,7 @@
     session_start();
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Senior Milik Pembina</h1>
+    <h1>Halaman Detail Junior Milik Pembina</h1>
 
     <div>
         <img src="" alt="">
@@ -37,14 +37,17 @@
             <?php
                 $nisn = $_GET['nisn'];
 
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
+                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
                     $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
+                    $fotoSiswa = $_SESSION['fotoSiswa'] = $a['foto'];
                     $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
                     $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
                     $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
+                    $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
+                    $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
 
                     if($genderSiswa == 'L'){
                         $genderSiswa = "Laki - Laki";
@@ -52,6 +55,10 @@
                         $genderSiswa = "Perempuan";
                     }
             ?>
+            <!-- Tambahkan foto -->
+            <center>
+                
+            </center>
             <tr>
                 <th><label>NISN :</label></th>
                 <td><p class="p"><?=$nisnSiswa?></p></td>
@@ -73,12 +80,19 @@
                 <td><p class="p"><?=$genderSiswa?></p></td>
             </tr>      
             <tr>
+                <th><label>Email :</label></th>
+                <td><p class="p"><?=$emailSiswa?></p></td>
+            </tr>      
+            <tr>
+                <th><label>Nomor Hp :</label></th>
+                <td><p class="p"><?=$noHpSiswa?></p></td>
+            </tr>      
+            <tr>
                 <th></th>
-                <td><button><a href="./menu_manajemen_akun_senior.php">Kembali</a></button></td>
+                <td><button><a href="./junior_manajemen_akun.php">Kembali</a></button></td>
             </tr>
             <?php } ?>
         </table>
     </div>
 </body>
-
 </html>

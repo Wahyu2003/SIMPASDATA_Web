@@ -58,7 +58,7 @@
             </thead>
             <tbody>
                 <?php
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'junior' AND status = 'aktif'");
+                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.email, siswa.no_hp FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'junior' AND status = 'aktif'");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
                     $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
@@ -66,6 +66,8 @@
                     $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
                     $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
                     $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
+                    $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
+                    $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
 
                     if($genderSiswa == 'L'){
                         $genderSiswa = "Laki - Laki";
@@ -79,8 +81,10 @@
                         <td><?= $kelasSiswa ?></td>
                         <td><?= $alamatSiswa ?></td>    
                         <td><?= $genderSiswa ?></td>
+                        <td><?= $emailSiswa ?></td>
+                        <td><?= $noHpSiswa ?></td>
                         <td>
-                            <a href = "?up&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
+                            <a href = "?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -88,5 +92,18 @@
         </table>
     </div>
 </body>
-
 </html>
+
+<?php
+if (isset($_GET['update'])) {
+    $nisn = $_GET['nisn'];
+
+    $update = mysqli_query($db, "UPDATE siswa SET role = 'senior' status='aktif' level='denied' WHERE siswa.nisn = '$nisn'");
+    if ($update) {
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
+        exit;
+    } else {
+        echo "<script>alert('Data Gagal Diupdate!!');</script>";
+    }
+}
+?>

@@ -40,38 +40,26 @@
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_senior.php">
-                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <i class='bx bxs-user-account'></i>
                 <span class="text nav-text">Manajemen Akun Senior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_junior.php">
-                <i class="bx bx-bell icons"></i>
+                <i class='bx bxs-user-account'></i>
                 <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="menu_manajemen_akun_pembina.php">
-                <i class="bx bx-pie-chart-alt icons"></i>
+                <i class='bx bxs-user-account'></i>
                 <span class="text nav-text">Manajemen Akun Pembina</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_nilai_keaktifan_senior.php">
-                <i class="bx bx-heart icons"></i>
-                <span class="text nav-text">Nilai Keaktifan Senior</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="./menu_nilai_pola_pikir_senior.php">
-                <i class="bx bx-wallet-alt icons"></i>
-                <span class="text nav-text">Nilai Pola Pikir Senior</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="./menu_nilai_sikap_senior.php">
-                <i class="bx bx-wallet-alt icons"></i>
-                <span class="text nav-text">Nilai Sikap Senior</span>
+              <a href="./data_terhapus.php">
+                <i class='bx bx-trash'></i>
+                <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
           </ul>
@@ -98,14 +86,26 @@
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_senior.php">
-                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <i class='bx bxs-user-account'></i>
                 <span class="text nav-text">Manajemen Akun Senior</span>
               </a>
             </li>
             <li class="nav-link">
+              <a href="./junior_manajemen_akun.php">
+                <i class='bx bxs-user-account'></i>
+                <span class="text nav-text">Manajemen Akun Junior</span>
+              </a>
+            </li>
+            <li class="nav-link">
               <a href="./nilai_senior.php">
-                <i class="bx bx-bell icons"></i>
+                <i class='bx bx-edit'></i>
                 <span class="text nav-text">Nilai Senior</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./data_terhapus.php">
+                <i class='bx bx-trash'></i>
+                <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
             
@@ -133,32 +133,20 @@
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_junior.php">
-                <i class="bx bx-bar-chart-alt-2 icons"></i>
+                <i class='bx bxs-user-account'></i>
                 <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_nilai_keaktifan_junior.php">
-                <i class="bx bx-bell icons"></i>
-                <span class="text nav-text">Nilai Keaktifan Junior</span>
+              <a href="./nilai_junior.php">
+                <i class='bx bx-edit'></i>
+                <span class="text nav-text">Nilai Junior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_nilai_pola_pikir_junior.php">
-                <i class="bx bx-pie-chart-alt icons"></i>
-                <span class="text nav-text">Nilai Pola Pikir Junior</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="./menu_nilai_sikap_junior.php">
-                <i class="bx bx-heart icons"></i>
-                <span class="text nav-text">Nilai Sikap Junior</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="./menu_nilai_pbb_junior.php">
-                <i class="bx bx-wallet-alt icons"></i>
-                <span class="text nav-text">Nilai PBB Junior</span>
+              <a href="./data_terhapus.php">
+                <i class='bx bx-trash'></i>
+                <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
           </ul>
@@ -166,9 +154,9 @@
         <?php } ?>
         <ul class="bottom-content"> <!-- Perbaikan: Gunakan elemen ul untuk memasukkan elemen li -->
           <li class="nav-link">
-            <a href="../main/signout.php">
-              <i class="bx bx-log-out icons"></i>
-              <span class="text nav-text"> Log Out</span>
+            <a href="../main/profil.php">
+              <i class='bx bx-user'></i>
+              <span class="text nav-text"> Profil</span>
             </a>
           </li>
           <li class="mode">
@@ -180,6 +168,12 @@
             <div class="toggle-switch">
               <span class="switch"></span>
             </div>
+          </li>
+          <li class="nav-link">
+            <a href="../main/signout.php">
+              <i class="bx bx-log-out icons"></i>
+              <span class="text nav-text"> Log Out</span>
+            </a>
           </li>
         </ul>
       </div>

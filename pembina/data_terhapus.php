@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Input Nilai Sikap </title>
+    <title>SIM PASDATA | Data Terhapus</title>
 </head>
+
 <body>
-    <?php 
+    <?php
     session_start();
-    include "../main/menu.php" 
+    include "../main/menu.php";
     ?>
-    <h1>Halaman Input Nilai Sikap Senior Milik Admin</h1>
+    <center>
+    <h1>Halaman Data Terhapus Milik Pembina</h1>
+    </center>
+    <br>
+    
 </body>
 </html>
