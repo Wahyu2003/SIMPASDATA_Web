@@ -34,6 +34,7 @@ if(isset($_POST['signin'])){
         $_SESSION['emailAdmin'] = $adminQ['email'];
         $_SESSION['noHpAdmin'] = $adminQ['no_hp'];
         $_SESSION['passwordAdmin'] = $adminQ['password'];
+        $_SESSION['statusAdmin'] = $adminQ['status'];
         $_SESSION['roleAdmin'] = $adminQ['role'];
         $role = $_SESSION['roleAdmin'];
 
@@ -61,7 +62,7 @@ if(isset($_POST['signin'])){
         $status = $_SESSION['statusSiswa'];
         $level = $_SESSION['levelSiswa'];
 
-        if ($role == 'senior' && $status == 'aktif' && $level == 'allow') {
+        if ($role == 'senior' AND $status == 'aktif' AND $level == 'allow') {
             header("Location: senior/home.php");
             exit;
         }

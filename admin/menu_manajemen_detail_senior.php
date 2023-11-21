@@ -26,7 +26,7 @@
     session_start();
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Senior Milik Pembina</h1>
+    <h1>Halaman Detail Senior Milik Admin</h1>
 
     <div>
         <img src="" alt="">

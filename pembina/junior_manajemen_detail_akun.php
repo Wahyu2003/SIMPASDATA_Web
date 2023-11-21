@@ -18,6 +18,9 @@
         .p {
             pointer-events: none;
         }
+        img{
+            width:100%;
+        }
     </style>
 </head>
 
@@ -57,7 +60,7 @@
             ?>
             <!-- Tambahkan foto -->
             <center>
-                
+                <img src="../assets/foto/<?=$fotoSiswa?>;">
             </center>
             <tr>
                 <th><label>NISN :</label></th>

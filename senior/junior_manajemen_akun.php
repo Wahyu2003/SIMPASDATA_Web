@@ -13,7 +13,7 @@
     include "../main/menu.php";
     ?>
     <center>
-    <h1>Halaman Manajemen Akun Junior Milik Pembina</h1>
+    <h1>Halaman Manajemen Akun Junior Milik Senior</h1>
     </center>
     <br>
     <center>

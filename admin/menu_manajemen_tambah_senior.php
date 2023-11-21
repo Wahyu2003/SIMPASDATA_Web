@@ -38,7 +38,7 @@
     session_start();
     include "../main/menu.php" 
     ?>
-    <h1>Halaman Tambah Akun Senior Milik Pembina</h1>
+    <h1>Halaman Tambah Akun Senior Milik Admin</h1>
 
     <div>
         <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_akun_senior.php">Kembali</a></button>

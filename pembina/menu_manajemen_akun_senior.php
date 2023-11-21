@@ -16,10 +16,14 @@
     <h1>Halaman Manajemen Akun Senior Milik Pembina</h1>
     </center>
     <br>
+    <center>
+        <button type="submit" name="btnTambahSenior" class="custom"><a href="./menu_manajemen_tambah_senior.php">Tambah Akun</a></button>
+    </center>
+    <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
 
         <?php
-        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
+        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email, siswa.level FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
 
         if (mysqli_num_rows($query) > 0) { // Periksa apakah ada data
             ?>
@@ -32,6 +36,7 @@
                     <th>Jenis Kelamin</th>
                     <th>Email</th>
                     <th>No. Hp</th>
+                    <th>Admin Web</th>
                     <th>Opsi</th>
                 </tr>
 
@@ -44,6 +49,7 @@
                     $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
                     $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
                     $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
+                    $levelSiswa = $_SESSION['levelSiswa'] = $a['level'];
 
                     if ($genderSiswa == 'L') {
                         $genderSiswa = "Laki - Laki";
@@ -60,8 +66,9 @@
                         <td><?= $genderSiswa ?></td>
                         <td><?= $emailSiswa ?></td>
                         <td><?= $noHpSiswa ?></td>
+                        <td><?= $levelSiswa ?></td>
                         <td>
-                            <a href="?update1&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin</a>
+                            <a href="?update1&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
                             <a href="?update2&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
                             <a href="./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa ?>" class='detail'>Detail</a>
                             <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
@@ -73,9 +80,6 @@
         <?php } else {
             echo "<p>Tidak ada data yang ditemukan</p>";
         } ?>
-        <center>
-        <button type="submit" name="btnTambahSenior" class="custom"><a href="./menu_manajemen_tambah_senior.php">Tambah Akun</a></button>
-        </center>
     </div>
 </body>
 
@@ -117,7 +121,7 @@ if (isset($_GET['update1'])) {
 if (isset($_GET['update2'])) {
     $nisn = $_GET['nisn'];
 
-    $delete = mysqli_query($db, "UPDATE siswa SET role = 'purna' level = 'denied' WHERE siswa.nisn = '$nisn'");
+    $delete = mysqli_query($db, "UPDATE siswa SET role = 'purna', level = 'denied' WHERE siswa.nisn = '$nisn'");
     if ($delete) {
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
         exit;

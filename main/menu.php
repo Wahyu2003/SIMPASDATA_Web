@@ -40,25 +40,25 @@
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_senior.php">
-                <i class='bx bxs-user-account'></i>
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Senior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_manajemen_akun_junior.php">
-                <i class='bx bxs-user-account'></i>
+              <a href="./junior_manajemen_akun.php">
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="menu_manajemen_akun_pembina.php">
-                <i class='bx bxs-user-account'></i>
+              <a href="./menu_manajemen_akun_pembina.php">
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Pembina</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./data_terhapus.php">
-                <i class='bx bx-trash'></i>
+                <i class='bx bx-trash icons'></i>
                 <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
@@ -86,25 +86,25 @@
             </li>
             <li class="nav-link">
               <a href="./menu_manajemen_akun_senior.php">
-                <i class='bx bxs-user-account'></i>
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Senior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./junior_manajemen_akun.php">
-                <i class='bx bxs-user-account'></i>
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./nilai_senior.php">
-                <i class='bx bx-edit'></i>
+                <i class='bx bx-edit icons'></i>
                 <span class="text nav-text">Nilai Senior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./data_terhapus.php">
-                <i class='bx bx-trash'></i>
+                <i class='bx bx-trash icons'></i>
                 <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
@@ -132,20 +132,20 @@
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_manajemen_akun_junior.php">
-                <i class='bx bxs-user-account'></i>
+              <a href="./junior_manajemen_akun.php">
+                <i class='bx bxs-user-account icons'></i>
                 <span class="text nav-text">Manajemen Akun Junior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./nilai_junior.php">
-                <i class='bx bx-edit'></i>
+                <i class='bx bx-edit icons'></i>
                 <span class="text nav-text">Nilai Junior</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="./data_terhapus.php">
-                <i class='bx bx-trash'></i>
+                <i class='bx bx-trash icons'></i>
                 <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
@@ -155,7 +155,7 @@
         <ul class="bottom-content"> <!-- Perbaikan: Gunakan elemen ul untuk memasukkan elemen li -->
           <li class="nav-link">
             <a href="../main/profil.php">
-              <i class='bx bx-user'></i>
+              <i class='bx bx-user icons'></i>
               <span class="text nav-text"> Profil</span>
             </a>
           </li>
