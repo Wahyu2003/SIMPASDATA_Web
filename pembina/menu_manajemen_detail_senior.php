@@ -22,8 +22,7 @@
 </head>
 
 <body>
-    <?php 
-    session_start();
+    <?php
     include "../main/menu.php"
     ?>
     <h1>Halaman Detail Senior Milik Pembina</h1>

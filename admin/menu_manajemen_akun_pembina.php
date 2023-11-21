@@ -9,7 +9,6 @@
 
 <body>
     <?php
-    session_start();
     include "../main/menu.php";
     ?>
     <center>
@@ -17,23 +16,22 @@
     </center>
     <br>
     <center>
-        <button type="submit" name="btnTambahSenior" class="custom"><a href="./menu_manajemen_tambah_senior.php">Tambah Akun</a></button>
+        <button type="submit" name="btnTambahPembina" class="custom"><a href="./menu_manajemen_tambah_pembina.php">Tambah Akun</a></button>
     </center>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
 
         <?php
-        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email, siswa.level FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
+        $query = mysqli_query($db, "SELECT * FROM admin WHERE role = 'pembina'");
 
         if (mysqli_num_rows($query) > 0) { // Periksa apakah ada data
             ?>
             <table style="margin-left:auto;margin-right:auto" border="1">
                 <tr>
-                    <th>NISN</th>
+                    <th>NIP</th>
                     <th>Nama Lengkap</th>
-                    <th>Kelas</th>
-                    <th>Alamat</th>
                     <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
                     <th>Email</th>
                     <th>No. Hp</th>
                     <th>Admin Web</th>
@@ -42,36 +40,33 @@
 
                 <?php
                 while ($a = mysqli_fetch_assoc($query)) {
-                    $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
-                    $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
-                    $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
-                    $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
-                    $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
-                    $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
-                    $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
-                    $levelSiswa = $_SESSION['levelSiswa'] = $a['level'];
+                    $nipPembina = $_SESSION['nipPembina'] = $a['nip'];
+                    $namaPembina = $_SESSION['namaPembina'] = $a['nama'];
+                    $alamatPembina = $_SESSION['alamatPembina'] = $a['alamat'];
+                    $genderPembina = $_SESSION['genderPembina'] = $a['gender'];
+                    $noHpPembina = $_SESSION['noHpPembina'] = $a['no_hp'];
+                    $emailPembina = $_SESSION['emailPembina'] = $a['email'];
+                    $levelPembina = $_SESSION['levelPembina'] = $a['level'];
 
-                    if ($genderSiswa == 'L') {
-                        $genderSiswa = "Laki - Laki";
+                    if ($genderPembina == 'L') {
+                        $genderPembina = "Laki - Laki";
                     } else {
-                        $genderSiswa = "Perempuan";
+                        $genderPembina = "Perempuan";
                     }
                     ?>
 
                     <tr>
-                        <td><?= $nisnSiswa ?></td>
-                        <td><?= $namaSiswa ?></td>
-                        <td><?= $kelasSiswa ?></td>
-                        <td><?= $alamatSiswa ?></td>
-                        <td><?= $genderSiswa ?></td>
-                        <td><?= $emailSiswa ?></td>
-                        <td><?= $noHpSiswa ?></td>
-                        <td><?= $levelSiswa ?></td>
+                        <td><?= $nipPembina ?></td>
+                        <td><?= $namaPembina ?></td>
+                        <td><?= $genderPembina ?></td>
+                        <td><?= $alamatPembina ?></td>
+                        <td><?= $emailPembina ?></td>
+                        <td><?= $noHpPembina ?></td>
+                        <td><?= $levelPembina ?></td>
                         <td>
-                            <a href="?update1&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
-                            <a href="?update2&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
-                            <a href="./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa ?>" class='detail'>Detail</a>
-                            <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
+                            <a href="?update1&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                            <a href="./menu_manajemen_detail_senior.php?nip=<?= $nipPembina ?>" class='detail'>Detail</a>
+                            <a href="?delete&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
                         </td>
                     </tr>
 
@@ -82,20 +77,17 @@
         } ?>
     </div>
 </body>
-
 </html>
 
 <?php
 if (isset($_GET['delete'])) {
-    $nisn = $_GET['nisn'];
-    $nip_p = $_SESSION['nipAdmin'];
-    $tanggal = date("d-m-Y");
 
-    $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
-    $insert = mysqli_query($db, "INSERT INTO deleted_data ('id_deleted','nip_a','nip_p','nisn_s','nisn_j','waktu_penghapusan') VALUES ('$nip_p',null,'$nip_p','$nisn',null,'$tanggal')");
+    $nip = $_GET['nip'];
 
-    if ($delete AND $insert) {
-        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
+    $delete = mysqli_query($db, "UPDATE admin SET status = 'tidak' WHERE nip = '$nip'");
+
+    if ($delete) {
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_pembina.php">';
         exit;
     } else {
         echo "<script>alert('Data Gagal Dihapus !!');</script>";

@@ -11,8 +11,7 @@
     </style>
  </head>
  <body>
-    <?php 
-    session_start();
+    <?php
     include "../main/menu.php"
     ?>
     <center>

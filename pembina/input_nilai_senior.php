@@ -12,7 +12,6 @@
 </head>
 <body>
     <?php 
-    session_start();
     include "../main/menu.php" 
     ?>
     <h1>Halaman Input Nilai Senior Milik Pembina</h1>

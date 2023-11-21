@@ -43,8 +43,7 @@
 </head>
 
 <body>
-    <?php 
-    session_start();
+    <?php
     include "../main/menu.php" 
     ?>
     <h1>Halaman Nilai Senior Milik Pembina</h1>

@@ -1,3 +1,4 @@
+
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -12,8 +13,7 @@
  </head>
  <body>
     <?php 
-    session_start();
-    include "../main/menu.php"
+        include "../main/menu.php"
     ?>
     <center>
         <button type="submit" name="btnKembali" class="custom"><a href="./junior_manajemen_akun.php">Kembali</a></button>
@@ -34,7 +34,6 @@
                     <th>Kelas</th>
                     <td>
                         <select name="kelas" id="kelas">
-                            <option value="">Pilih Kelas</option>
                             <?php
 
                             $query_kelas = "SELECT * FROM kelas WHERE nama LIKE '%10%'";

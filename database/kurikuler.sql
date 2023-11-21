@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 02:25 PM
+-- Generation Time: Nov 21, 2023 at 01:31 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,7 @@ CREATE TABLE `admin` (
   `no_hp` varchar(15) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `gender` enum('L','P') NOT NULL,
+  `foto` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` enum('admin','pembina') DEFAULT NULL,
   `status` enum('aktif','tidak') NOT NULL
@@ -43,9 +44,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`nip`, `nama`, `email`, `no_hp`, `alamat`, `gender`, `password`, `role`, `status`) VALUES
-(1, 'Admin', 'admin@gmail.com', '010101010101', 'Jember', 'L', 'admin', 'admin', 'aktif'),
-(2, 'Pembina', 'pembina@gmail.com', '010101010101', 'Jember', 'L', 'pembina', 'pembina', 'aktif');
+INSERT INTO `admin` (`nip`, `nama`, `email`, `no_hp`, `alamat`, `gender`, `foto`, `password`, `role`, `status`) VALUES
+(1, 'Admin', 'admin@gmail.com', '010101010101', 'Jember', 'L', '', 'admin', 'admin', 'aktif'),
+(2, 'Pembina', 'pembina@gmail.com', '010101010101', 'Jember', 'L', '', 'pembina', 'pembina', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -135,6 +136,7 @@ CREATE TABLE `siswa` (
   `alamat` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `no_hp` varchar(15) NOT NULL,
+  `foto` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `status` enum('aktif','tidak') DEFAULT NULL,
   `role` enum('junior','senior','purna') DEFAULT NULL,
@@ -145,15 +147,16 @@ CREATE TABLE `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nisn`, `kelas_id`, `nama`, `gender`, `alamat`, `email`, `no_hp`, `password`, `status`, `role`, `level`) VALUES
-(1111, 1, 'Ilham Nugroho', 'L', 'Jember', 'ilhamisdarmawan@gmail.com', '010101010101', 'ilham', 'aktif', 'junior', 'denied'),
-(2222, 4, 'Wahyu Isdarmawan', 'L', 'Jember', 'wahyuisdarmawan@gmail.com', '010101010101', 'wahyu', 'aktif', 'senior', 'allow'),
-(3333, 6, 'Dessy Saputri', 'P', 'Jember', 'dessysaputri@gmail.com', '010101010101', 'dessy', 'aktif', 'senior', 'allow'),
-(4444, 3, 'Ipang', 'L', 'Jember', 'ipang@gmail.com', '010101010101', 'ipang', 'aktif', 'junior', 'allow'),
-(5555, 5, 'Hafid', 'L', 'Bondowoso', 'hafid@gmail.com', '010101010101', 'hafid', 'aktif', 'senior', 'denied'),
-(6666, 5, 'Sally', 'P', 'Lumajang', 'sally@gmail.com', '010101010101', 'sally', 'aktif', 'senior', 'denied'),
-(7777, 2, 'Nadiva', 'P', 'Jember', 'nadiva@gmail.com', '010101010101', 'nadiva', 'aktif', 'junior', 'denied'),
-(8888, 2, 'Elok', 'P', 'Bondowoso', 'elok@gmail.com', '010101010101', 'elok', 'aktif', 'junior', 'denied');
+INSERT INTO `siswa` (`nisn`, `kelas_id`, `nama`, `gender`, `alamat`, `email`, `no_hp`, `foto`, `password`, `status`, `role`, `level`) VALUES
+(1111, 1, 'Ilham', 'L', 'Jember', 'ilhamisdarmawan@gmail.com', '010101010101', '', '1111Ilham', 'aktif', 'senior', 'allow'),
+(2222, 2, 'Wahyu Isdarmawan', 'L', 'Jember', 'wahyuisdarmawan@gmail.com', '010101010101', '', '2222Wahyu Isdarmawan', 'aktif', 'junior', 'denied'),
+(3333, 1, 'Rival', 'L', 'Jember', 'rival@gmail.com', '010101010101', '', '3333Rival', 'aktif', 'purna', 'denied'),
+(4444, 3, 'Rahmat', 'L', 'Jember', 'rahmat@gmail.com', '010101010101', '', '4444Rahmat', 'aktif', 'senior', 'denied'),
+(5555, 1, 'Silvi', 'P', 'Jember', 'silvi@gmail.com', '010101010101', '', '5555Silvi', 'aktif', 'junior', 'denied'),
+(6666, 1, 'Nadiva', 'P', 'Jember', 'nadiva@gmail.com', '010101010101', '', '6666Nadiva', 'aktif', 'junior', 'denied'),
+(7777, 1, 'Firda', 'P', 'Jember', 'firda@gmail.com', '010101010101', '', '7777Firda', 'aktif', 'junior', 'denied'),
+(8888, 1, 'Sinta', 'P', 'Jember', 'sinta@gmail.com', '010101010101', '', '8888Sinta', 'aktif', 'junior', 'denied'),
+(41221091, 1, 'RIzal', 'L', 'Bondowoso', 'rizal@gmail.com', '085737134160', 'download (1).jpeg', '41221091RIzal', 'aktif', 'junior', 'denied');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +217,7 @@ ALTER TABLE `entered`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `nilai`

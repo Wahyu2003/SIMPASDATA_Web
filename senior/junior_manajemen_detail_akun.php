@@ -25,8 +25,7 @@
 </head>
 
 <body>
-    <?php 
-    session_start();
+    <?php
     include "../main/menu.php"
     ?>
     <h1>Halaman Detail Junior Milik Admin</h1>

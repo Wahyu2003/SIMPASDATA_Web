@@ -7,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         include "../main/menu.php";
     ?>
     <h1>Halaman Home Admin, Selamat Datang <?php 

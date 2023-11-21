@@ -35,7 +35,6 @@
 
 <body>
     <?php 
-    session_start();
     include "../main/menu.php" 
     ?>
     <h1>Halaman Tambah Akun Senior Milik Admin</h1>
