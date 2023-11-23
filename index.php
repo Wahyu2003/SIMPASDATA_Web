@@ -21,11 +21,11 @@ if(isset($_POST['signin'])){
     $password = $_POST['password'];
 
     //mengambil query ke tabel admin
-    $q = mysqli_query($db, "SELECT * FROM admin WHERE nip = '$nisnnip' AND password = '$password'");
+    $q = mysqli_query($db, "SELECT * FROM admin WHERE nip = '$nisnnip' AND password = '$password' AND status = 'aktif'");
     $adminQ = mysqli_fetch_array($q);
     
     //mengambil query ke tabel siswa
-    $r = mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisnnip' AND password = '$password'");
+    $r = mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisnnip' AND password = '$password' AND status = 'aktif' AND level = 'allow' AND role = 'senior'");
     $siswaQ = mysqli_fetch_array($r);
 
     if(mysqli_num_rows($q) == 1){

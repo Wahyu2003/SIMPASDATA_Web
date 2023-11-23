@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Profil</title>
     <style>
-        body {
-            text-align: center; /* Untuk mengatur text-align menjadi center */
-        }
+        
 
         .table {
             text-align: left;
@@ -28,6 +26,7 @@
     <?php
     include "../main/menu.php"
     ?>
+    <center>
     <h1>Profil Anda</h1>
 
     <div>
@@ -52,9 +51,17 @@
                     $emailA = $admin['email'];
                     $noHpA = $admin['no_hp'];
                     $passwordA = $admin['password'];
-                    $roleA = $admin['role'];?>
-
-                    <img src="../assets/foto/<?=$fotoA?>;" class="fotoProfil">
+                    $roleA = $admin['role'];
+                    
+                    if(isset($fotoA)){
+                        $fotoA = resizeImage($fotoA, 100, 100);
+                        echo "<td><img src='data:image/*;base64," . base64_encode($fotoA) . "' alt='Gambar'></td>";
+                    }else{
+                        ?>
+                        <img src="../assets/foto/user-solid-240.png" alt="">
+                        <?php
+                    }
+                    ?>
                     <br>
                     <table class="table" border=1>
                         <tr>
@@ -110,9 +117,17 @@
                     $emailS = $siswa['email'];
                     $noHpS = $siswa['no_hp'];
                     $passwordS = $siswa['password'];
-                    $roleS = $siswa['role'];?>
-
-                    <img src="../assets/foto/<?=$fotoS?>;" class="fotoProfil">
+                    $roleS = $siswa['role'];
+                    
+                    if(isset($fotoS)){
+                        $fotoS = resizeImage($fotoS, 100, 100);
+                        echo "<td><img src='data:image/*;base64," . base64_encode($fotoS) . "' alt='Gambar'></td>";
+                    }else{
+                        ?>
+                        <img src="../assets/foto/user-solid-240.png" alt="">
+                        <?php
+                    }
+                    ?>
                     <br>
                     <table class="table" border=1>
                         <tr>
@@ -154,13 +169,26 @@
                     </table>
                 <?php
             }?>
-
             <?php
             }else{
                 echo "<script>alert('Gagal Menampilkan Profil !!');</script>";
             }
+
+            function resizeImage($imageData, $newWidth, $newHeight) {
+                $img = imagecreatefromstring($imageData);
+                $resized = imagecreatetruecolor($newWidth, $newHeight);
+                imagecopyresampled($resized, $img, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($img), imagesy($img));
+                imagedestroy($img);
+                ob_start();
+                imagejpeg($resized);
+                $resizedImageData = ob_get_clean();
+                imagedestroy($resized);
+                return $resizedImageData;
+            }
             ?>
         </table>
     </div>
+    </center>
+    
 </body>
 </html>
