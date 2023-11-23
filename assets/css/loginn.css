@@ -79,6 +79,7 @@ input[type="text"], input[type="password"] {
 
 .button-sign-in {
     margin-top: 20px;
+    color: #F00;
 }
 
 button {
@@ -97,11 +98,11 @@ button {
     text-decoration: none;
     text-align: center;
     width: 184px;
-    height: 29px;
+    height: 20px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    color: #C91515;
+    color:rgb(165, 119, 119) ;
     font-family: Inria Sans;
     font-size: 20px;
     font-style: normal;

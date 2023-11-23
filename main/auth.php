@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 require_once("../database/koneksi.php");
 
 if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
@@ -12,19 +13,24 @@ if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
     exit;
 } elseif(isset($_SESSION['nipAdmin']) AND isset($_SESSION['roleAdmin']) == 'admin' || 'pembina'){
     $nipAdmin = $_SESSION['nipAdmin'];
+    $fotoAdmin = $_SESSION['fotoAdmin'];
     $namaAdmin = $_SESSION['namaAdmin'];
-    $usernameAdmin = $_SESSION['usernameAdmin'];
+    $alamatAdmin = $_SESSION['alamatAdmin'];
+    $genderAdmin = $_SESSION['genderAdmin'];
+    $emailAdmin = $_SESSION['emailAdmin'];
+    $noHpAdmin = $_SESSION['noHpAdmin'];
     $passwordAdmin = $_SESSION['passwordAdmin'];
     $role = $_SESSION['roleAdmin'];
-} elseif(isset($_SESSION['nisnSiswa']) AND isset($_SESSION['roleSiswa']) == 'senior'){
+} elseif(isset($_SESSION['nisnSiswa']) AND isset($_SESSION['roleSiswa']) == 'senior'  AND isset($_SESSION['levelSiswa']) == 'allow' AND isset($_SESSION['statusSiswa']) == 'aktif'){
     $nisnSiswa = $_SESSION['nisnSiswa'];
     $kelas_idSiswa = $_SESSION['kelas_idSiswa'];
+    $fotoSiswa = $_SESSION['fotoSiswa'];
     $namaSiswa = $_SESSION['namaSiswa'];
     $genderSiswa = $_SESSION['genderSiswa'];
     $alamatSiswa = $_SESSION['alamatSiswa'];
     $emailSiswa = $_SESSION['emailSiswa'];
+    $noHpSiswa = $_SESSION['noHpSiswa'];
     $passwordSiswa = $_SESSION['passwordSiswa'];
-    $angkatanSiswa = $_SESSION['angkatanSiswa'];
     $statusSiswa = $_SESSION['statusSiswa'];
     $role = $_SESSION['roleSiswa'];
     $levelSiswa = $_SESSION['levelSiswa'];  

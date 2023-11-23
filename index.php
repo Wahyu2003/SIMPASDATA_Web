@@ -2,13 +2,15 @@
 session_start();
 require_once("database/koneksi.php");
 
-if(isset($_SESSION['nipAdmin']) && $_SESSION['roleAdmin'] == 'admin'){
+if(isset($_SESSION['nipAdmin']) && isset($_SESSION['roleAdmin']) == 'admin'){
     header("Location: admin/home.php");
     exit;
-}elseif(isset($_SESSION['nipAdmin']) && $_SESSION['roleAdmin'] == 'pembina'){
+}
+if(isset($_SESSION['nipAdmin']) && isset($_SESSION['roleAdmin']) == 'pembina'){
     header("Location: pembina/home.php");
     exit;
-}elseif(isset($_SESSION['nisnSiswa']) && $_SESSION['roleSiswa'] == 'senior'){
+}
+if(isset($_SESSION['nisnSiswa']) && isset($_SESSION['roleSiswa']) == 'senior'){
     header("Location: senior/home.php");
     exit;
 }
@@ -21,15 +23,21 @@ if(isset($_POST['signin'])){
     //mengambil query ke tabel admin
     $q = mysqli_query($db, "SELECT * FROM admin WHERE nip = '$nisnnip' AND password = '$password'");
     $adminQ = mysqli_fetch_array($q);
+    
     //mengambil query ke tabel siswa
     $r = mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisnnip' AND password = '$password'");
     $siswaQ = mysqli_fetch_array($r);
 
     if(mysqli_num_rows($q) == 1){
         $_SESSION['nipAdmin'] = $adminQ['nip'];
+        $_SESSION['fotoAdmin'] = $adminQ['foto'];
         $_SESSION['namaAdmin'] = $adminQ['nama'];
-        $_SESSION['usernameAdmin'] = $adminQ['username'];
+        $_SESSION['alamatAdmin'] = $adminQ['alamat'];
+        $_SESSION['genderAdmin'] = $adminQ['gender'];
+        $_SESSION['emailAdmin'] = $adminQ['email'];
+        $_SESSION['noHpAdmin'] = $adminQ['no_hp'];
         $_SESSION['passwordAdmin'] = $adminQ['password'];
+        $_SESSION['statusAdmin'] = $adminQ['status'];
         $_SESSION['roleAdmin'] = $adminQ['role'];
         $role = $_SESSION['roleAdmin'];
 
@@ -43,12 +51,13 @@ if(isset($_POST['signin'])){
     } elseif(mysqli_num_rows($r) == 1) {
         $_SESSION['nisnSiswa'] = $siswaQ['nisn'];
         $_SESSION['kelas_idSiswa'] = $siswaQ['kelas_id'];
+        $_SESSION['fotoSiswa'] = $siswaQ['foto'];
         $_SESSION['namaSiswa'] = $siswaQ['nama'];
         $_SESSION['genderSiswa'] = $siswaQ['gender'];
         $_SESSION['alamatSiswa'] = $siswaQ['alamat'];
         $_SESSION['emailSiswa'] = $siswaQ['email'];
         $_SESSION['passwordSiswa'] = $siswaQ['password'];
-        $_SESSION['angkatanSiswa'] = $siswaQ['angkatan'];
+        $_SESSION['noHpSiswa'] = $siswaQ['no_hp'];
         $_SESSION['statusSiswa'] = $siswaQ['status'];
         $_SESSION['roleSiswa'] = $siswaQ['role'];
         $_SESSION['levelSiswa'] = $siswaQ['level'];
@@ -62,9 +71,10 @@ if(isset($_POST['signin'])){
         }
     } else {
         echo "gagal autentifikasi";
+        header("Location: index.php");
+        exit;
     }
 }
-
 ?>
 
 
@@ -89,24 +99,21 @@ if(isset($_POST['signin'])){
                 <h2>Sign In</h2>
             </div>
             <div class="login-form-container">
-                <form class ="login-form" method="post" action="index.php">
+                <form class ="login-form" method="post">
                     <label for="nisnnip">NISN/NIP</label>
-                    <input type="text" name="nisnnip" id="nisnnip" placeholder="Masukkan NISN/NIP..">
+                    <input type="text" name="nisnnip" id="nisnnip">
                 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Masukkan Password..">
+                    <input type="password" name="password" id="password">
                 </div>
                 <div class = "button-sign-in">
                     
                     <button type="submit" name="signin">Sign In</button>
                     
-                    <a class="lupasandi" href="main/forgot-password.php">Lupa kata sandi?</a>
+                    <a class="lupasandi" href="forgot_password.php">Lupa kata sandi?</a>
                 
                 </div>
-                
-                
-            
             </div>
         </form>
 </div>
