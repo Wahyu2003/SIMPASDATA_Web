@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include "../main/menu.php";
+    include "../main/menu.php"
     ?>
     <center>
     <h1>Halaman Manajemen Akun Junior Milik Pembina</h1>
@@ -40,13 +40,13 @@
 
                 <?php
                 while ($a = mysqli_fetch_assoc($query)) {
-                    $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
-                    $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
-                    $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
-                    $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
-                    $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
-                    $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
-                    $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
+                    $nisnSiswa = $a['nisn'];
+                    $namaSiswa  = $a['nama'];
+                    $kelasSiswa  = $a['kelas'];
+                    $alamatSiswa  = $a['alamat'];
+                    $genderSiswa  = $a['gender'];
+                    $noHpSiswa = $a['no_hp'];
+                    $emailSiswa = $a['email'];
 
                     if ($genderSiswa == 'L') {
                         $genderSiswa = "Laki - Laki";
@@ -83,8 +83,7 @@
 <?php
 if (isset($_GET['delete'])) {
     $nisn = $_GET['nisn'];
-    $nip_p = $_SESSION['nipAdmin'];
-    $tanggal = date("d-m-Y");
+    
 
     $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
 

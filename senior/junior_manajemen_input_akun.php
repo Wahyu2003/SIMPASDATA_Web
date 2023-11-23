@@ -1,4 +1,3 @@
-
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -12,8 +11,8 @@
     </style>
  </head>
  <body>
-    <?php 
-        include "../main/menu.php"
+    <?php
+    include "../main/menu.php"
     ?>
     <center>
         <button type="submit" name="btnKembali" class="custom"><a href="./junior_manajemen_akun.php">Kembali</a></button>
@@ -34,6 +33,7 @@
                     <th>Kelas</th>
                     <td>
                         <select name="kelas" id="kelas">
+                            <option value="">Pilih Kelas</option>
                             <?php
 
                             $query_kelas = "SELECT * FROM kelas WHERE nama LIKE '%10%'";
@@ -93,4 +93,4 @@
         // Menetapkan nilai yang telah diformat kembali ke input
         inputElement.value = formattedValue;
     }
-</script>
+</script>z

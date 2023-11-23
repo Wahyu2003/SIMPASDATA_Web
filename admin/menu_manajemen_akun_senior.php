@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include "../main/menu.php";
+    include "../main/menu.php"
     ?>
     <center>
     <h1>Halaman Manajemen Akun Senior Milik Admin</h1>
@@ -41,14 +41,14 @@
 
                 <?php
                 while ($a = mysqli_fetch_assoc($query)) {
-                    $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
-                    $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
-                    $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
-                    $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
-                    $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
-                    $noHpSiswa = $_SESSION['noHpSiswa'] = $a['no_hp'];
-                    $emailSiswa = $_SESSION['emailSiswa'] = $a['email'];
-                    $levelSiswa = $_SESSION['levelSiswa'] = $a['level'];
+                    $nisnSiswa  = $a['nisn'];
+                    $namaSiswa  = $a['nama'];
+                    $kelasSiswa  = $a['kelas'];
+                    $alamatSiswa  = $a['alamat'];
+                    $genderSiswa = $a['gender'];
+                    $noHpSiswa  = $a['no_hp'];
+                    $emailSiswa  = $a['email'];
+                    $levelSiswa  = $a['level'];
 
                     if ($genderSiswa == 'L') {
                         $genderSiswa = "Laki - Laki";

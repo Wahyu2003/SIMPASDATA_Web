@@ -17,11 +17,29 @@ if (isset($_POST['btn_input_junior'])) {
     $foto_destination = "C:/xampp/htdocs/SIMPASDATA_Web/assets/foto/" . $foto_name;
     
     if(move_uploaded_file($foto_tmp, $foto_destination)){
-        $query = "INSERT INTO siswa (NISN, kelas_id, nama, gender, alamat, email, no_hp, foto, password, status, role, level) 
-        VALUES ('$nisn', '$kelas_id', '$nama', '$jenis_kelamin', '$alamat', '$email', '$no_hp', '$foto_name', '$password', 'aktif', 'junior', 'denied')";
+        $cek = mysqli_num_rows(mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisn'"));
+
+        if($cek > 0){
+            echo "Data Sudah Ada";
+            header("Location: junior_manajemen_input_akun.php");
+            exit;
+        }else{
+            $query = "INSERT INTO siswa (NISN, kelas_id, nama, gender, alamat, email, no_hp, foto, password, status, role, level) 
+            VALUES ('$nisn', '$kelas_id', '$nama', '$jenis_kelamin', '$alamat', '$email', '$no_hp', '$foto_name', '$password', 'aktif', 'junior', 'denied')";
+        }
+
     } else {
-        $query = "INSERT INTO siswa (NISN, kelas_id, nama, gender, alamat, email, no_hp, password, status, role, level) 
-        VALUES ('$nisn', '$kelas_id', '$nama', '$jenis_kelamin', '$alamat', '$email', '$no_hp', '$password', 'aktif', 'junior', 'denied')";
+        $cek = mysqli_num_rows(mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisn'"));
+        
+        if($cek > 0){
+            echo "Data Sudah Ada";
+            header("Location: junior_manajemen_input_akun.php");
+            exit;
+        }else{
+            $query = "INSERT INTO siswa (NISN, kelas_id, nama, gender, alamat, email, no_hp, password, status, role, level) 
+            VALUES ('$nisn', '$kelas_id', '$nama', '$jenis_kelamin', '$alamat', '$email', '$no_hp', '$password', 'aktif', 'junior', 'denied')";
+        }
+        
     }
 
     if (mysqli_query($db, $query)) {

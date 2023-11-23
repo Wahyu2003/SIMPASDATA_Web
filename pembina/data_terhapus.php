@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include "../main/menu.php";
+    include "../main/menu.php"
     ?>
     <center>
     <h1>Halaman Data Terhapus Milik Pembina</h1>

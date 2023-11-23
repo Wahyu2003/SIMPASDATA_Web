@@ -1,4 +1,4 @@
-<?php include "../main/auth.php"; ?>
+<?php  include "../main/auth.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,28 +14,33 @@
   <body>
     <nav class="sidebar">
       <header>
-        
         <i class="bx bx-chevron-right toggle"></i>
       </header>
+
       <?php
      if ($role == 'admin') { ?>
      <div class="text header-text">
             <span class="main"> <?php 
         $namaAdmin = $_SESSION['namaAdmin'];
-        echo $namaAdmin;
-    ?> || Admin</span>
+        echo $namaAdmin;?> || Admin</span>
           </div>
       <div class="menu-bar">
         <div class="menu">
           <ul class="menu-links">
-            <li class="search-bar">
+            <!-- <li class="search-bar">
               <i class="bx bx-search icons"></i>
               <input type="search" placeholder="Search..." />
-            </li>
+            </li> -->
             <li class="nav-link">
               <a href="./home.php">
                 <i class="bx bx-home-alt icons"></i>
                 <span class="text nav-text">Home</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="./menu_manajemen_akun_pembina.php">
+                <i class='bx bxs-user-account icons'></i>
+                <span class="text nav-text">Manajemen Akun Pembina</span>
               </a>
             </li>
             <li class="nav-link">
@@ -51,12 +56,6 @@
               </a>
             </li>
             <li class="nav-link">
-              <a href="./menu_manajemen_akun_pembina.php">
-                <i class='bx bxs-user-account icons'></i>
-                <span class="text nav-text">Manajemen Akun Pembina</span>
-              </a>
-            </li>
-            <li class="nav-link">
               <a href="./data_terhapus.php">
                 <i class='bx bx-trash icons'></i>
                 <span class="text nav-text">Data Terhapus</span>
@@ -64,20 +63,21 @@
             </li>
           </ul>
         </div>
-      <?php } elseif ($role == 'pembina') { ?>
+
+      <?php }
+      elseif ($role == 'pembina') { ?>
         <div class="text header-text">
             <span class="main"> <?php 
         $namaAdmin = $_SESSION['namaAdmin'];
-        echo $namaAdmin;
-    ?> || Pembina</span>
+        echo $namaAdmin;?> || Pembina</span>
           </div>
           <div class="menu-bar">
         <div class="menu">
           <ul class="menu-links">
-            <li class="search-bar">
+            <!-- <li class="search-bar">
               <i class="bx bx-search icons"></i>
               <input type="search" placeholder="Search..." />
-            </li>
+            </li> -->
             <li class="nav-link">
               <a href="./home.php">
                 <i class="bx bx-home-alt icons"></i>
@@ -108,23 +108,24 @@
                 <span class="text nav-text">Data Terhapus</span>
               </a>
             </li>
-            
           </ul>
         </div>
-        <?php }elseif ($role == 'senior') { ?>
+
+        <?php }
+        elseif ($role == 'senior') { ?>
           <div class="text header-text">
             <span class="main"> <?php 
         $namaSiswa = $_SESSION['namaSiswa'];
-        echo $namaSiswa;
-    ?> || Senior</span>
+        
+        echo $namaSiswa;?> || Senior</span>
           </div>
           <div class="menu-bar">
         <div class="menu">
           <ul class="menu-links">
-            <li class="search-bar">
+            <!-- <li class="search-bar">
               <i class="bx bx-search icons"></i>
               <input type="search" placeholder="Search..." />
-            </li>
+            </li> -->
             <li class="nav-link">
               <a href="./home.php">
                 <i class="bx bx-home-alt icons"></i>
@@ -154,10 +155,25 @@
         <?php } ?>
         <ul class="bottom-content"> <!-- Perbaikan: Gunakan elemen ul untuk memasukkan elemen li -->
           <li class="nav-link">
-            <a href="../main/profil.php">
-              <i class='bx bx-user icons'></i>
-              <span class="text nav-text"> Profil</span>
-            </a>
+          <?php
+            if ($role == 'admin') { ?>
+              <a href="./profil.php">
+                <i class='bx bx-user icons'></i>
+                <span class="text nav-text"> Profil</span>
+              </a>
+          <?php }
+            elseif ($role == 'pembina') { ?>
+            <a href="./profil.php">
+                <i class='bx bx-user icons'></i>
+                <span class="text nav-text"> Profil</span>
+              </a>
+          <?php }
+            elseif ($role == 'senior') { ?>
+            <a href="./profil.php">
+                <i class='bx bx-user icons'></i>
+                <span class="text nav-text"> Profil</span>
+              </a>
+            <?php } ?>
           </li>
           <li class="mode">
             <div class="moon-sun">

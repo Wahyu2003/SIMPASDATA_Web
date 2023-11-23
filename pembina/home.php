@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    include "../main/menu.php";
+    include "../main/menu.php"
     ?>
     <center>
     <h1>Halaman Home Pembina, Selamat Datang <?php 

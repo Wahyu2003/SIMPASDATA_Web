@@ -39,12 +39,12 @@
                 $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.level FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
-                    $nisnSiswa = $_SESSION['nisnSiswa'] = $a['nisn'];
-                    $namaSiswa = $_SESSION['namaSiswa'] = $a['nama'];
-                    $kelasSiswa = $_SESSION['kelasSiswa'] = $a['kelas'];
-                    $alamatSiswa = $_SESSION['alamatSiswa'] = $a['alamat'];
-                    $genderSiswa = $_SESSION['genderSiswa'] = $a['gender'];
-                    $levelSiswa = $_SESSION['levelSiswa'] = $a['level'];
+                    $nisnSiswa = $a['nisn'];
+                    $namaSiswa = $a['nama'];
+                    $kelasSiswa = $a['kelas'];
+                    $alamatSiswa = $a['alamat'];
+                    $genderSiswa = $a['gender'];
+                    $levelSiswa = $a['level'];
 
                     if($genderSiswa == 'L'){
                         $genderSiswa = "Laki - Laki";

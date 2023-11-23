@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include "../main/menu.php";
+    include "../main/menu.php"
     ?>
     <center>
     <h1>Halaman Manajemen Akun Senior Milik Admin</h1>
@@ -40,13 +40,13 @@
 
                 <?php
                 while ($a = mysqli_fetch_assoc($query)) {
-                    $nipPembina = $_SESSION['nipPembina'] = $a['nip'];
-                    $namaPembina = $_SESSION['namaPembina'] = $a['nama'];
-                    $alamatPembina = $_SESSION['alamatPembina'] = $a['alamat'];
-                    $genderPembina = $_SESSION['genderPembina'] = $a['gender'];
-                    $noHpPembina = $_SESSION['noHpPembina'] = $a['no_hp'];
-                    $emailPembina = $_SESSION['emailPembina'] = $a['email'];
-                    $levelPembina = $_SESSION['levelPembina'] = $a['level'];
+                    $nipPembina  = $a['nip'];
+                    $namaPembina  = $a['nama'];
+                    $alamatPembina  = $a['alamat'];
+                    $genderPembina  = $a['gender'];
+                    $noHpPembina =  $a['no_hp'];
+                    $emailPembina =  $a['email'];
+                    $levelPembina =  $a['level'];
 
                     if ($genderPembina == 'L') {
                         $genderPembina = "Laki - Laki";
