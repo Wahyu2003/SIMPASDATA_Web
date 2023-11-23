@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Profil</title>
     <style>
-        body {
-            text-align: center; /* Untuk mengatur text-align menjadi center */
-        }
-
         .table {
             text-align: left;
             margin: 0 auto; /* Untuk membuat margin tabel otomatis dan membuatnya berada di tengah */
@@ -28,7 +24,8 @@
     <?php
     include "../main/menu.php"
     ?>
-    <h1>Profil Anda</h1>
+    <center>
+        <h1>Profil Anda</h1>
 
     <div>
         <img src="" alt="">
@@ -162,5 +159,7 @@
             ?>
         </table>
     </div>
+    </center>
+    
 </body>
 </html>

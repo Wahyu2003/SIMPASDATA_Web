@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Nilai Senior</title>
     <style>
-        body {
-            text-align: center;
-        }
-
         .card-body-table-menu-manajemen-akun-senior {
             margin: 20px auto;
         }
@@ -46,7 +42,8 @@
     <?php
     include "../main/menu.php" 
     ?>
-    <h1>Halaman Nilai Senior Milik Pembina</h1>
+    <center>
+        <h1>Halaman Nilai Senior Milik Pembina</h1>
 
     <div>
         <button><a href="./input_nilai_senior.php">Input Nilai</a></button>
@@ -129,6 +126,8 @@
             </tbody>
         </table>
     </div>
+    </center>
+    
 </body>
 
 </html>
