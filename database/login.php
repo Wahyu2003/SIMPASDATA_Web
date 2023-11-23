@@ -8,14 +8,10 @@ $password = $_POST["post_password"];
 
 
 //cek apakah sesuai db
-$query = "SELECT nip,password
-          FROM admin
-          WHERE nip = '$nipnisn' AND password = '$password'
-          UNION
-          SELECT nisn AS nip, password_siswa AS password
+$query = "SELECT nisn,password_siswa
           FROM siswa
           WHERE nisn = '$nipnisn' AND password_siswa = '$password'";
-
+         
 $obj_query = mysqli_query($db, $query);
 $data = mysqli_fetch_assoc($obj_query);
 
@@ -25,10 +21,10 @@ if ($data){
         array(
         'response'=>true,
         'payload'=>array(
-            "nip"=>$data["nip"],
+            "nisn"=>$data["nisn"],
             
             
-            "password"=>$data["password"]
+            "password_siswa"=>$data["password_siswa"]
 
         )
     )
