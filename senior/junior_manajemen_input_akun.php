@@ -1,29 +1,35 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Tambah Akun Junior</title>
+    <title>Tambah Akun Junior</title>
     <style>
-        table{
-            text-align:left;
+        table {
+            text-align: left;
+        }
+
+        .error {
+            color: red;
         }
     </style>
- </head>
- <body>
-    <?php
+</head>
+<body>
+    <?php 
+    
     include "../main/menu.php"
     ?>
     <center>
         <button type="submit" name="btnKembali" class="custom"><a href="./junior_manajemen_akun.php">Kembali</a></button>
     </center>
     <br>
+    
     <center>
-        <form action="junior_tambah.php" method="POST" enctype="multipart/form-data">
+        <form action="../pembina/junior_tambah.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
             <table cellpadding="5">
                 <tr>
                     <th><label for="nisn">NISN</label></th>
-                    <td><input type="text" name="nisn" id="nisn" pattern="[0-9]{4,5,18,21}"></td>
+                    <td><input type="text" name="nisn" id="nisn" pattern="[0-9]{4,21}"></td>
                 </tr>
                 <tr>
                     <th><label for="nama">Nama Lengkap</label></th>
@@ -32,19 +38,18 @@
                 <tr>
                     <th>Kelas</th>
                     <td>
-                        <select name="kelas" id="kelas">
+                        <select name="kelas" id="selectKelas" onchange="checkSelect()">
                             <option value="">Pilih Kelas</option>
                             <?php
-
                             $query_kelas = "SELECT * FROM kelas WHERE nama LIKE '%10%'";
                             $result_kelas = mysqli_query($db, $query_kelas);
-
                             while ($row_kelas = mysqli_fetch_assoc($result_kelas)) {
                                 echo "<option value='" . $row_kelas['id_kelas'] . "'>" . $row_kelas['nama'] . "</option>";
                             }
-                                
                             ?>
                         </select>
+                        <span id="errorSelect" class="error"></span>
+                        <br>
                     </td>
                 </tr>
                 <tr>
@@ -72,25 +77,51 @@
                 </tr>
                 <tr>
                     <th></th>
-                    <td><button type="submit" name="btn_input_junior">Simpan</button></td>
+                    <td><button type="submit" name="btn_input_junior" id="btn_input_junior" disabled>Simpan</button></td>
                 </tr>
             </table>
         </form>
     </center>
- </body>
- </html>
 
- <script>
-    function formatNama(inputId) {
-        var inputElement = document.getElementById(inputId);
-        var inputValue = inputElement.value;
+    <script>
+        function formatNama(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var inputValue = inputElement.value;
 
-        // Mengonversi nama menjadi format huruf besar di awal
-        var formattedValue = inputValue.replace(/\b\w/g, function (match) {
-            return match.toUpperCase();
-        });
+            var formattedValue = inputValue.replace(/\b\w/g, function (match) {
+                return match.toUpperCase();
+            });
 
-        // Menetapkan nilai yang telah diformat kembali ke input
-        inputElement.value = formattedValue;
-    }
-</script>z
+            inputElement.value = formattedValue;
+        }
+
+        function checkSelect() {
+            var selectedOption = document.getElementById('selectKelas').value;
+            var btnSimpan = document.getElementById('btn_input_junior');
+
+            console.log("Selected Option: " + selectedOption);
+
+            if (selectedOption === "") {
+                document.getElementById('errorSelect').innerHTML = 'Pilih Salah Satu Kelas';
+                btnSimpan.disabled = true;
+            } else {
+                document.getElementById('errorSelect').innerHTML = '';
+                btnSimpan.disabled = false;
+            }
+        }
+
+        function validateForm() {
+            var selectedOption = document.getElementById('selectKelas').value;
+            var errorSelect = document.getElementById('errorSelect');
+
+            if (selectedOption === "") {
+                errorSelect.innerHTML = 'Pilih salah satu opsi.';
+                return false;
+            } else {
+                errorSelect.innerHTML = '';
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
