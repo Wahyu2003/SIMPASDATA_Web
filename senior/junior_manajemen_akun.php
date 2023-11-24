@@ -1,7 +1,3 @@
-<?php
-include "../main/menu.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,91 +5,138 @@ include "../main/menu.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Manajemen Akun Junior</title>
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Manajemen Akun Junior</title>
     <style>
-   
-    table {
-        width: 80%;
-        border-collapse: collapse;
-        margin: auto;
-    }
-
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
-
-    th,
-    td {
-        padding: 15px;
-        text-align: left;
-        color: white;
-    }
-
-    th {
-        background-color: #FF0000; /* Warna merah untuk header */
-    }
-
-    .card-body-table-menu-manajemen-akun-senior {
-        margin-top: 20px;
-        text-align: center;
-    }
-    table, th, td {
-            border: 1px solid black;
-            color: black; 
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: auto;
         }
 
-    .jadikansenior,
-    .detail,
-    .hapus {
-        color: white;
-        padding: 10px;
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            color: white;
+        }
+
+        th {
+            background-color: #FF0000; /* Warna merah untuk header */
+        }
+
+        .card-body-table-menu-manajemen-akun-senior {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            color: black;
+        }
+
+        .jadikansenior,
+        .detail,
+        .batal,
+        .hapus {
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            display: inline-block;
+            width: 100px;
+        }
+
+    
+        
+        .detail {
+            background-color: #2196F3; /* Warna biru */
+        }
+
+        .hapus {
+            background-color: #FF0000; /* Warna merah */
+        }
+
+    
+
+     
+        .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        max-width: 400px; /* Sesuaikan dengan kebutuhan */
+        width: 100%;
+        text-align: center;
+    }
+
+    .popup p {
+        margin-bottom: 15px;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .popup-buttons {
+        display: flex;
+        flex-direction: column; /* Mengubah arah menjadi kolom */
+        align-items: center; /* Mengatur agar tombol berada di tengah */
+        margin-top: 20px;
+    }
+
+    .batal, .jadikansenior {
+        padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin: 5px;
-        display: inline-block;
-        width: 100px;
+        color: #fff;
+        font-size: 14px;
+        transition: background-color 0.3s;
+        display: block; /* Mengatur agar tombol memiliki display block */
+        margin-bottom: 10px; /* Menambahkan margin antar tombol */
+    }
+
+    .batal {
+        background-color: #f44336; /* Merah */
+    }
+
+    .batal:hover {
+        background-color: #d32f2f; /* Merah yang sedikit lebih gelap saat dihover */
     }
 
     .jadikansenior {
-        background-color: #0a0a23; /* Warna biru tua */
+        background-color: #4CAF50; /* Hijau */
     }
 
-    .detail {
-        background-color: #2196F3; /* Warna biru */
+    .jadikansenior:hover {
+        background-color: #388e3c; /* Hijau yang sedikit lebih gelap saat dihover */
     }
 
-    .hapus {
-        background-color: #FF0000; /* Warna merah */
-    }
-</style>
-
-
-</head>
-
-
-
-</html>
-
-
+    </style>
 </head>
 
 <body>
+    <?php include "../main/menu.php"; ?>
     <center>
         <h1>Halaman Manajemen Akun Junior Milik Senior</h1>
     </center>
     <br>
     <center>
         <style>
-            .custom {
+                      .custom {
                 background-color: var(--red);
                 color: #fff;
                 padding: 10px;
@@ -137,15 +180,9 @@ include "../main/menu.php";
                     $namaSiswa = $a['nama'];
                     $kelasSiswa = $a['kelas'];
                     $alamatSiswa = $a['alamat'];
-                    $genderSiswa = $a['gender'];
+                    $genderSiswa = ($a['gender'] == 'L') ? "Laki - Laki" : "Perempuan"; // Ubah jenis kelamin
                     $noHpSiswa = $a['no_hp'];
                     $emailSiswa = $a['email'];
-
-                    if ($genderSiswa == 'L') {
-                        $genderSiswa = "Laki - Laki";
-                    } else {
-                        $genderSiswa = "Perempuan";
-                    }
                 ?>
 
                     <tr>
@@ -157,13 +194,11 @@ include "../main/menu.php";
                         <td><?= $noHpSiswa ?></td>
                         <td><?= $emailSiswa ?></td>
                         <td>
-                            <form method="POST" action="?update&nisn=<?= $nisnSiswa ?>" onsubmit="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">
-                                <button type="submit" class="jadikansenior">Jadikan Senior</button>
-                            </form>
+                            <button class="jadikansenior"onclick="showPopup('popup-jadikan-senior', '<?= $nisnSiswa ?>')">Jadikan Senior</button>
                             <form method="POST" action="./junior_manajemen_detail_akun.php?nisn=<?= $nisnSiswa ?>">
                                 <button type="submit" class="detail">Detail</button>
                             </form>
-                            <form method="POST" action="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data tersebut?')">
+                            <form method="POST" action="?delete&nisn=<?= $nisnSiswa ?>" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data tersebut?')">
                                 <button type="submit" class="hapus">Hapus</button>
                             </form>
                         </td>
@@ -174,6 +209,32 @@ include "../main/menu.php";
             echo "<center><p>Tidak ada data yang ditemukan</p></center>";
         } ?>
     </div>
+
+    <div id="popup-jadikan-senior" class="popup">
+        <div class="popup-buttons">
+        <p>Apakah Anda yakin ingin menjadikan data ini sebagai senior?</p>
+        <br>
+         
+        <form method="POST" action="?update&nisn=">
+            <button type="submit" class="jadikansenior">Ya</button>
+        </form>
+        <form>
+        <button type="submit" class="batal" onclick="closePopup('popup-jadikan-senior')">Batal</button>
+        </form>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(popupId, nisn) {
+            document.getElementById(popupId).style.display = 'flex';
+            // Update the form action with the correct NISN
+            document.querySelector('#popup-jadikan-senior form').action += nisn;
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

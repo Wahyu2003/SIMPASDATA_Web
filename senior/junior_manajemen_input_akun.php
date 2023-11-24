@@ -102,7 +102,7 @@
     </header>
 
     <div class="container">
-        <form action="../pembina/junior_tambah.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form action="../senior/junior_tambah.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
             <label for="nisn">NISN</label>
             <input type="text" name="nisn" id="nisn" pattern="[0-9]{4,21}" required>
 
