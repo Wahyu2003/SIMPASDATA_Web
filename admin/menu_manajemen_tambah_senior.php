@@ -30,6 +30,18 @@
         .table-data-akun-senior th {
             background-color: #f2f2f2;
         }
+
+        .custom {
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            display: inline-block;
+            text-decoration: none; /* Menghilangkan garis bawah default pada tautan */
+            background-color: #2196F3; /* Warna biru */
+        }
     </style>
 </head>
 
@@ -40,7 +52,7 @@
     <h1>Halaman Tambah Akun Senior Milik Admin</h1>
 
     <div>
-        <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_akun_senior.php">Kembali</a></button>
+        <button type="submit" name="btnTambahSenior" class="custom"><a href="./menu_manajemen_akun_senior.php">Kembali</a></button>
     </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
@@ -85,7 +97,7 @@
                         <td><?= $emailSiswa ?></td>
                         <td><?= $noHpSiswa ?></td>
                         <td>
-                            <a href = "?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
+                            <a href="?update&nisn=<?= $nisnSiswa ?>" class="custom" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
                         </td>
                     </tr>
                 <?php } ?>

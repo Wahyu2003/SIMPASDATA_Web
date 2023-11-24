@@ -69,11 +69,12 @@ if(isset($_POST['signin'])){
             header("Location: senior/home.php");
             exit;
         }
-    } else {
-        echo "gagal autentifikasi";
+    }  else {
+        $_SESSION['loginError'] = "NISN/NIP atau Password Salah";
         header("Location: index.php");
         exit;
     }
+    unset($_SESSION['loginError']);
 }
 ?>
 
@@ -84,38 +85,98 @@ if(isset($_POST['signin'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Sign In</title>
-    <link rel ="stylesheet" href="assets/css/loginn.css">
+    <link rel="stylesheet" href="assets/css/loginn.css">
+    <style>
+        .notification-container {
+            position: absolute;
+            top: 1px; 
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .notification {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .login-container {
+            position: relative;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup p {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container">
-                <div class="logo">
-                    <img src="assets/logo-pasdata-3.png" alt="Logo">
-                </div>
-        
-            <div class="content">
-                
-                <h1 class="simpasdata">SIM<span>PASDATA</span></h1>
-                <h4 class="subsimpasdata">SISTEM INFORMASI MANAJEMEN PASKIBRA SMA NEGERI 2 TANGGUL</h4>
-                <h2>Sign In</h2>
-            </div>
-            <div class="login-form-container">
-                <form class ="login-form" method="post">
-                    <label for="nisnnip">NISN/NIP</label>
-                    <input type="text" name="nisnnip" id="nisnnip">
-                
+ 
+
+        <div class="logo">
+            <img src="assets/logo-pasdata-3.png" alt="Logo">
+        </div>
+
+        <div class="content">
+            <h1 class="simpasdata">SIM<span>PASDATA</span></h1>
+            <h4 class="subsimpasdata">SISTEM INFORMASI MANAJEMEN PASKIBRA <br> SMA NEGERI 2 TANGGUL</h4>
+            <h2>Sign In</h2>
+        </div>
+
+        <div class="login-form-container">
+            <form class="login-form" method="post" onsubmit="return showPopup()">
+                <label for="nisnnip">NISN/NIP</label>
+                <input type="text" name="nisnnip" id="nisnnip">
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <div class = "button-sign-in">
-                    
+                <div class="button-sign-in">
                     <button type="submit" name="signin">Sign In</button>
-                    
                     <a class="lupasandi" href="forgot_password.php">Lupa kata sandi?</a>
-                
                 </div>
-            </div>
-        </form>
-</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <p>Login Gagal. Periksa NISP/NIP Dan Password Anda.</p>
+        <button onclick="hidePopup()">Tutup</button>
+    </div>
+
+    <script>
+   <?php
+if (isset($_SESSION['loginError'])) {
+    echo "document.getElementById('popup').style.display = 'block';";
+    unset($_SESSION['loginError']);
+} else {
+    echo "document.getElementById('popup').style.display = 'none';";
+}
+?>
+
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
