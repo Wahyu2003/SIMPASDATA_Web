@@ -172,17 +172,53 @@
                 echo "<script>alert('Gagal Menampilkan Profil !!');</script>";
             }
 
-            function resizeImage($imageData, $newWidth, $newHeight) {
+            function resizeImage($imageData, $newWidth, $newHeight, $outputFormat = 'jpeg') {
                 $img = imagecreatefromstring($imageData);
+            
+                // Create a new true color image with the specified dimensions
                 $resized = imagecreatetruecolor($newWidth, $newHeight);
+            
+                // Preserve transparency for PNG and GIF images
+                if ($outputFormat === 'png' || $outputFormat === 'gif') {
+                    imagealphablending($resized, false);
+                    imagesavealpha($resized, true);
+                }
+            
+                // Copy and resize part of an image with resampling
                 imagecopyresampled($resized, $img, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($img), imagesy($img));
+            
+                // Destroy the original image resource
                 imagedestroy($img);
+            
+                // Output buffering to capture the image data
                 ob_start();
-                imagejpeg($resized);
+            
+                // Output the image based on the specified format
+                switch ($outputFormat) {
+                    case 'jpeg':
+                        imagejpeg($resized, null, 90); // You can adjust the quality (0 to 100)
+                        break;
+                    case 'png':
+                        imagepng($resized);
+                        break;
+                    case 'gif':
+                        imagegif($resized);
+                        break;
+                    // Add more cases for other image formats if needed
+                    default:
+                        throw new Exception('Unsupported output format');
+                }
+            
+                // Get the output buffer and clean it
                 $resizedImageData = ob_get_clean();
+            
+                // Destroy the resized image resource
                 imagedestroy($resized);
+            
+                // Return the resized image data
                 return $resizedImageData;
             }
+            
             ?>
         </table>
     </div>
