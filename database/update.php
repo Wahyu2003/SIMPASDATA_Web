@@ -1,79 +1,66 @@
 <?php
-require_once('koneksi.php');
+require_once("koneksi.php");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Mengecek apakah file dikirim
-    if (isset($_FILES["file"]) && isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
-        // Direktori tempat menyimpan file
-        $target_dir = "C:\Users\Acer\OneDrive\Pictures\project/";
+if (isset($_POST['update'])) {
+    $nisn = $_POST['nisn'];
+    $alamat = $_POST['alamat'];
+    $email = $_POST['email'];
+    $no_hp = $_POST['no_hp'];
+    $password = $_POST['password'];
 
-        // Membuat nama file yang unik
-        $unique_id = uniqid();
-        $original_filename = $_FILES["file"]["name"];
-        $file_extension = strtolower(pathinfo($original_filename, PATHINFO_EXTENSION));
+    // Proses foto
+    $gambarBlob = null;
 
-        // Gabungkan string unik, garis bawah, dan nama asli file
-        $target_file = $target_dir . $unique_id . "_" . basename($original_filename);
+    if (isset($_FILES['foto']['tmp_name']) && !empty($_FILES['foto']['tmp_name'])) {
+        echo json_encode(array('debug_info' => 'File received'));
 
-        // Mendapatkan ID siswa yang akan diperbarui
-        $nisn = isset($_POST['nisn']) ? $_POST['nisn'] : null;
-
-        // Memeriksa apakah file gambar
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        // Memindahkan file ke direktori yang ditentukan
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            // File berhasil diunggah, sekarang perbarui informasi di dalam database
-            $file_name = basename($original_filename);
-
-            // Menggunakan parameterized query untuk mencegah SQL injection
-            if ($db) {
-                $stmt = $db->prepare("UPDATE siswa SET foto = ? WHERE nisn = ?");
-                $stmt->bind_param("si", $file_name, $nisn);
-
-                // Eksekusi query
-                if ($stmt->execute()) {
-                    // Query berhasil dieksekusi
-                    http_response_code(200);
-                    echo json_encode(array("message" => "File updated successfully in the database."));
-                    if ($stmt->execute()) {
-                        // Query berhasil dieksekusi
-                        http_response_code(200);
-                        echo json_encode(array("message" => "File updated successfully in the database."));
-                    } else {
-                        // Terjadi kesalahan saat memperbarui data di database
-                        http_response_code(500);
-                        echo json_encode(array("message" => "Error updating data in the database: " . $stmt->error));
-                    }
-                } else {
-                    // Terjadi kesalahan saat memperbarui data di database
-                    http_response_code(500);
-                    echo json_encode(array("message" => "Error updating data in the database: " . $stmt->error));
-                }
-
-                // Tutup statement
-                $stmt->close();
-            } else {
-                // Terjadi kesalahan koneksi database
-                http_response_code(500);
-                echo json_encode(array("message" => "Error connecting to the database."));
-            }
-        } else {
-            // Terjadi kesalahan saat memindahkan file
-            http_response_code(500);
-            echo json_encode(array("message" => "Error moving the file to the specified directory."));
-        }
-    } else {
-        http_response_code(400);
-        echo json_encode(array("message" => "No file sent in the request."));
+        $tmpName = $_FILES['foto']['tmp_name'];
+        $gambarBlob = file_get_contents($tmpName);
+        var_dump($gambarBlob);  // Add this line for debugging
     }
-} else {
-    http_response_code(400);
-    echo json_encode(array("message" => "Invalid request method."));
+
+    // Cek apakah data siswa dengan NISN tersebut sudah ada
+    $result = mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisn'");
+    $cek = mysqli_num_rows($result);
+
+    if ($cek > 0) {
+        // Jika gambarBlob tidak null, masukkan ke dalam query
+        $gambarQueryPart = isset($gambarBlob) ? "`foto` = ?, " : "";
+
+        $query = "UPDATE `siswa`
+        SET `alamat` = ?, 
+            `email` = ?, 
+            `no_hp` = ?,
+            $gambarQueryPart
+            `password_siswa` = ?
+        WHERE `nisn` = ?";
+
+
+        $stmt = mysqli_prepare($db, $query);
+
+        // Urutan parameter harus sesuai dengan urutan di dalam query
+        if ($gambarBlob) {
+            // Jumlah 's' sesuaikan dengan jumlah parameter yang diikat
+            mysqli_stmt_bind_param($stmt, 'ssssss', $alamat, $email, $no_hp, $gambarBlob, $password, $nisn);
+
+        } else {
+            mysqli_stmt_bind_param($stmt, 'ssss', $alamat, $email, $no_hp, $password, $nisn);
+        }
+
+        // Eksekusi statement
+        if (mysqli_stmt_execute($stmt)) {
+            echo json_encode(array('message' => 'Data berhasil diperbarui.'));
+        } else {
+            echo json_encode(array('error' => 'Error: ' . mysqli_stmt_error($stmt)));
+        }
+
+        // Tutup statement
+        mysqli_stmt_close($stmt);
+    } else {
+        // Data siswa dengan NISN tersebut tidak ditemukan, tampilkan pesan kesalahan
+        echo json_encode(array('error' => 'Data tidak ditemukan.'));
+    }
 }
 
-// Menutup koneksi setelah selesai menggunakan
-if ($db) {
-    $db->close();  // Pastikan bahwa $db tidak null
-}
+mysqli_close($db);
 ?>
