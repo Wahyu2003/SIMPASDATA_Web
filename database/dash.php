@@ -8,7 +8,9 @@ include 'koneksi.php';
 $nipnisn = $_POST['nipnisn'];
 
 // Lakukan kueri ke database untuk mendapatkan nama dari tabel siswa
-$querySiswa = $querySiswa = "SELECT nama, nisn, email, no_hp, alamat, role FROM siswa WHERE nisn = '$nipnisn'";;
+$querySiswa = $querySiswa = "SELECT siswa.nama, siswa.nisn, siswa.email, siswa.no_hp, siswa.alamat, siswa.role, siswa.kelas_id, siswa.foto, kelas.nama_kelas
+                             FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nipnisn'";
+
 $resultSiswa = mysqli_query($db, $querySiswa);
 
 
