@@ -1,3 +1,7 @@
+<?php
+include "../main/menu.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,28 +9,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Manajemen Akun Junior</title>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM PASDATA | Manajemen Akun Junior</title>
+    <style>
+   
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: auto;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        color: white;
+    }
+
+    th {
+        background-color: #FF0000; /* Warna merah untuk header */
+    }
+
+    .card-body-table-menu-manajemen-akun-senior {
+        margin-top: 20px;
+        text-align: center;
+    }
+    table, th, td {
+            border: 1px solid black;
+            color: black; 
+        }
+
+    .jadikansenior,
+    .detail,
+    .hapus {
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        display: inline-block;
+        width: 100px;
+    }
+
+    .jadikansenior {
+        background-color: #0a0a23; /* Warna biru tua */
+    }
+
+    .detail {
+        background-color: #2196F3; /* Warna biru */
+    }
+
+    .hapus {
+        background-color: #FF0000; /* Warna merah */
+    }
+</style>
+
+
+</head>
+
+
+
+</html>
+
+
 </head>
 
 <body>
-    <?php
-    include "../main/menu.php";
-    ?>
     <center>
-    <h1>Halaman Manajemen Akun Junior Milik Senior</h1>
+        <h1>Halaman Manajemen Akun Junior Milik Senior</h1>
     </center>
     <br>
     <center>
-    <button type="submit" name="btnTambahSenior" class="custom"><a href="./junior_manajemen_input_akun.php">Tambah Akun</a></button>
+        <style>
+            .custom {
+                background-color: var(--red);
+                color: #fff;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-block;
+            }
+        </style>
+        <form action="./junior_manajemen_input_akun.php">
+            <button type="submit" name="btnTambahSenior" class="custom">Tambah Akun</button>
+        </form>
     </center>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
         <?php
-        //query menampilkan data junior
         $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'junior' AND status = 'aktif'");
 
-        if (mysqli_num_rows($query) > 0) { // Periksa apakah ada data
-            ?>
-            <table style="margin-left:auto;margin-right:auto" border=1 cellspacing=0>
+        if (!$query) {
+            die('Error executing query: ' . mysqli_error($db));
+        }
+
+        if (mysqli_num_rows($query) > 0) {
+        ?>
+            <table>
                 <tr>
                     <th>NISN</th>
                     <th>Nama Lengkap</th>
@@ -53,8 +146,8 @@
                     } else {
                         $genderSiswa = "Perempuan";
                     }
-                    ?>
-                    
+                ?>
+
                     <tr>
                         <td><?= $nisnSiswa ?></td>
                         <td><?= $namaSiswa ?></td>
@@ -64,9 +157,15 @@
                         <td><?= $noHpSiswa ?></td>
                         <td><?= $emailSiswa ?></td>
                         <td>
-                            <a href="?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
-                            <a href="./junior_manajemen_detail_akun.php?nisn=<?= $nisnSiswa ?>" class='detail'>Detail</a>
-                            <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data tersebut?')">Hapus</a>
+                            <form method="POST" action="?update&nisn=<?= $nisnSiswa ?>" onsubmit="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">
+                                <button type="submit" class="jadikansenior">Jadikan Senior</button>
+                            </form>
+                            <form method="POST" action="./junior_manajemen_detail_akun.php?nisn=<?= $nisnSiswa ?>">
+                                <button type="submit" class="detail">Detail</button>
+                            </form>
+                            <form method="POST" action="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data tersebut?')">
+                                <button type="submit" class="hapus">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                 <?php } ?>
@@ -82,7 +181,6 @@
 <?php
 if (isset($_GET['delete'])) {
     $nisn = $_GET['nisn'];
-    
 
     $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
 

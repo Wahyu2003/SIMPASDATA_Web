@@ -5,6 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Manajemen Akun Senior</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: auto;
+            margin-top: 20px; /* Tambahkan margin-top untuk memberikan ruang antara judul dan tabel */
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .card-body-table-menu-manajemen-akun-senior {
+            text-align: center;
+        }
+
+        .custom, .detail, .hapus, .update1, .update2 {
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            display: inline-block;
+            text-decoration: none; /* Menghilangkan garis bawah default pada tautan */
+        }
+
+        .custom {
+            background-color: #2196F3; /* Warna biru */
+        }
+
+        .detail {
+            background-color: #2196F3;
+        }
+
+        .hapus {
+            background-color: #FF0000;
+        }
+
+        .update1 {
+            background-color: #4CAF50;
+        }
+
+        .update2 {
+            background-color: #FFA500;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,7 +68,7 @@
     include "../main/menu.php"
     ?>
     <center>
-    <h1>Halaman Manajemen Akun Senior Milik Admin</h1>
+        <h1>Halaman Manajemen Akun Senior Milik Admin</h1>
     </center>
     <br>
     <center>
@@ -20,13 +76,12 @@
     </center>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
-
         <?php
         $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email, siswa.level FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'senior' AND status = 'aktif'");
 
         if (mysqli_num_rows($query) > 0) { // Periksa apakah ada data
             ?>
-            <table style="margin-left:auto;margin-right:auto" border="1">
+            <table>
                 <tr>
                     <th>NISN</th>
                     <th>Nama Lengkap</th>
@@ -67,10 +122,10 @@
                         <td><?= $noHpSiswa ?></td>
                         <td><?= $levelSiswa ?></td>
                         <td>
-                            <a href="?update1&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
-                            <a href="?update2&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
+                            <a href="?update1&nisn=<?= $nisnSiswa ?>" class="update1" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                            <a href="?update2&nisn=<?= $nisnSiswa ?>" class="update2" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
                             <a href="./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa ?>" class='detail'>Detail</a>
-                            <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
+                            <a href="?delete&nisn=<?= $nisnSiswa ?>" class="hapus" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
                         </td>
                     </tr>
 
