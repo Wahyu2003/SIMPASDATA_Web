@@ -1,0 +1,63 @@
+.animate__animated {
+    opacity: 0;
+    display: inline-block;
+    padding-left: 10px;
+  }
+
+.ucapan {
+    padding-left: 40px;
+    padding-top: 20px;
+}
+  .data {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items :center;
+  }
+
+  .isidata {
+      padding : 10px;
+      border : 2px solid #8c8c8c;
+      border-radius : 10px;
+      width: 250px;
+      height: 150px;
+      margin: 30px;
+      color: black;
+      font-family: Arial, sans-serif;
+  }
+
+  .isidata:hover {
+      position: relative;
+      padding : 10px;
+      border : 2px solid #333;
+      border-radius : 10px;
+      width: 280px;
+      height: 170px;
+      margin: 15px;
+      color: white;
+      background : #333;
+      font-family: Arial, sans-serif;
+  }
+
+  .data span{
+      text-align: left;
+      margin : 10px;
+      padding-top : 10px;
+      font-size : 18px;
+  }
+
+  .data ul {
+      list-style: none;
+      padding: 0;
+  }
+
+  .data ul li {
+      text-align : center;
+  }
+
+  .data .jumlah {
+      padding-bottom : 10px;
+      font-size : 56px;
+  }

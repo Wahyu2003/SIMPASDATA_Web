@@ -149,7 +149,7 @@ if(isset($_POST['signin'])){
                     <input type="password" name="password" id="password" placeholder="Masukan Kata Sandi">
                 </div>
                 <div class="button-sign-in">
-                    <button type="submit" name="signin">Sign In</button>
+                    <button type="submit" name="signin">Masuk</button>
                 </div><br>
                 <a class="lupasandi" href="forgot_password.php">Lupa kata sandi?</a>
             </form>

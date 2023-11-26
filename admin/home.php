@@ -1,36 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Admin Home</title>
-    <link rel="stylesheet" href="../main/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <title>SIMPASDATA || Admin Home</title>
+  <link rel="stylesheet" href="../assets/css/homeadmin.css">
 </head>
 <body>
-    <?php
+<?php
         include "../main/menu.php";
-    ?>
-    <main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Dashboard</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a  href="#">Home</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-            <h1 class="box-info">Halaman Home Admin, Selamat Datang 
-            <?php 
-                $namaAdmin = $_SESSION['namaAdmin'];
-                echo $namaAdmin;
-            ?>
-            </h1>
-		</main> 
+
+		//mengambil data pembina
+		$jumlahpembina = mysqli_query($db, "SELECT COUNT(*) as total FROM admin WHERE role = 'pembina'");
+		$jumlahpembina_data = mysqli_fetch_assoc($jumlahpembina);
+		$totalpembina = $jumlahpembina_data['total'];
+
+		//mengambil data senior
+		$jumlahsiswas = mysqli_query($db, "SELECT COUNT(*) as total FROM siswa WHERE role = 'senior'");
+		$jumlahsiswa_datas = mysqli_fetch_assoc($jumlahsiswas);
+		$totalSiswaS = $jumlahsiswa_datas['total'];
+
+		//mengambil data junior
+		$jumlahsiswaj = mysqli_query($db, "SELECT COUNT(*) as total FROM siswa WHERE role = 'junior'");
+		$jumlahsiswa_dataj = mysqli_fetch_assoc($jumlahsiswaj);
+		$totalSiswaJ = $jumlahsiswa_dataj['total'];
+    ?><div class="ucapan">
+		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 1s;">Selamat</h1>
+		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 2s;">	Datang</h1>
+		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 3s;">	<?php $namaAdmin = $_SESSION['namaAdmin'];echo $namaAdmin;
+	?></h1>
+    </div>
+
+	<div class="data">
+		<a href="./menu_manajemen_akun_pembina.php" class="isidata">
+			<span>Data Pembina</span>
+			<ul>
+				<li class="jumlah"><?php echo $totalpembina?></li>
+				<li>Orang</li>
+			</ul>
+		</a><a href="" class="isidata">
+			<span>Data Purna</span>
+			<ul>
+				<li class="jumlah">?</li>
+				<li>Orang</li>
+			</ul>
+		</a><a href="./menu_manajemen_akun_senior.php" class="isidata">
+			<span>Data Senior</span>
+			<ul>
+				<li class="jumlah"><?php echo $totalSiswaS;?></li>
+				<li>Orang</li>
+			</ul>
+		</a><a href="./junior_manajemen_akun.php" class="isidata">
+			<span>Data Junior</span>
+			<ul>
+				<li class="jumlah"><li class="jumlah"><?php echo $totalSiswaS;?></li></li>
+				<li>Orang</li>
+			</ul>
+		</a>
+	</div>
+
 </body>
 </html>
