@@ -1,210 +1,241 @@
-<?php  include "../main/auth.php"; ?>
+<?php  include "../main/auth.php"; 
+function resizeImage($imageData, $newWidth, $newHeight) {
+  $img = imagecreatefromstring($imageData);
+
+  // Check if image creation failed
+  if (!$img) {
+      // Log an error or handle it as needed
+      error_log("Failed to create image from string");
+      return false;
+  }
+
+  $resized = imagecreatetruecolor($newWidth, $newHeight);
+  imagecopyresampled($resized, $img, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($img), imagesy($img));
+  imagedestroy($img);
+  ob_start();
+  imagejpeg($resized);
+  $resizedImageData = ob_get_clean();
+  imagedestroy($resized);
+  return $resizedImageData;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../main/style.css">
-
-	<title>SideBar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPASDATA || Menu</title>
+    <link rel="stylesheet" href="../main/style.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <?php
-        if ($role == 'admin') { ?>
-
-	<!-- SIDEBAR -->
-    <section id="sidebar">
-      <a href="#" class="brand">
-        <i class='bx bxs-smile'></i>
+    if ($role == 'admin') { ?>
+      <div class="top-bar">
+      <div class="logo">
+        <img src="../assets/logo-pasdata-3.png" alt="Logo">
+        <span class="logo">SIMPASDATA</span>
+      </div>
+        <div class="menu-container">
+            <div class="menu">
+                <a href="./home.php">
+                  <!-- <i class='bx bx-home-alt' ></i> -->
+                  <span class="text active" onclick="setActive()">Home</span></a>
+            </div>
+            <div class="menu">
+                <span class="text">Management</span>
+                <ul>
+                <li>
+                    <a href="./menu_manajemen_akun_pembina.php">
+                        <!-- <i class='bx bxs-user-account' ></i> -->
+                        <span class="text" onclick="setActive()">Manajemen Akun Pembina</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./menu_manajemen_akun_senior.php">
+                        <!-- <i class='bx bxs-doughnut-chart' ></i> -->
+                        <span class="text" onclick="setActive()">Manajemen Akun Senior</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./junior_manajemen_akun.php">
+                        <!-- <i class='bx bxs-message-dots' ></i> -->
+                        <span class="text" onclick="setActive()">Manajemen Akun Junior</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            <div class="menu">
+                    <a href="./data_terhapus.php">
+                        <!-- <i class='bx bx-trash' ></i> -->
+                        <span class="text" onclick="setActive()">Data Terhapus</span>
+                    </a>
+            </div>
+        </div>
+        <div class="profile menu">
           <span class="text">
-          <?php 
-                $namaAdmin = $_SESSION['namaAdmin'];
-                echo $namaAdmin;?> || Admin
-          </span>
+            <?php echo $namaAdmin;?></span>
+          <?php
+          if (!empty($fotoAdmin)) {
+            $fotoAdmin = resizeImage($fotoAdmin, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar'>";
+        } else {
+          echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
+      }      
         
-      </a>
-      <ul class="side-menu top">
-        <li class="active">
-          <a href="./home.php">
-            <i class='bx bx-home-alt' ></i>
-            <span class="text">Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="./menu_manajemen_akun_pembina.php">
-            <i class='bx bxs-user-account' ></i>
-            <span class="text">Manajemen Akun Pembina</span>
-          </a>
-        </li>
-        <li>
-          <a href="./menu_manajemen_akun_senior.php">
-            <i class='bx bxs-doughnut-chart' ></i>
-            <span class="text">Manajemen Akun Senior</span>
-          </a>
-        </li>
-        <li>
-          <a href="./junior_manajemen_akun.php">
-            <i class='bx bxs-message-dots' ></i>
-            <span class="text">Manajemen Akun Junior</span>
-          </a>
-        </li>
-        <li>
-          <a href="./data_terhapus.php">
-            <i class='bx bx-trash' ></i>
-            <span class="text">Data Terhapus</span>
-          </a>
-        </li>
-      </ul>
-      <?php }
-      elseif ($role == 'pembina') { ?>
-    <!-- SIDEBAR -->
-      <section id="sidebar">
-        <a href="#" class="brand">
-          <i class='bx bxs-smile'></i>
-            <span class="text">
-            <?php 
-                  $namaAdmin = $_SESSION['namaAdmin'];
-                  echo $namaAdmin;?> || Admin
-            </span>
-          
-        </a>
-        <ul class="side-menu top">
-          <li class="active">
-            <a href="./home.php">
-              <i class='bx bx-home-alt' ></i>
-              <span class="text">Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="./menu_manajemen_akun_senior.php">
-              <i class='bx bxs-doughnut-chart' ></i>
-              <span class="text">Manajemen Akun Senior</span>
-            </a>
-          </li>
-          <li>
-            <a href="./junior_manajemen_akun.php">
-              <i class='bx bxs-message-dots' ></i>
-              <span class="text">Manajemen Akun Junior</span>
-            </a>
-          </li>
-          <li>
-            <a href="./nilai_senior.php">
-              <i class='bx bx-edit' ></i>
-              <span class="text nav-text">Nilai Senior</span>
-            </a>
-          </li>
-          <li>
-            <a href="./data_terhapus.php">
-              <i class='bx bx-trash' ></i>
-              <span class="text">Data Terhapus</span>
-            </a>
-          </li>
-        </ul>
-      <?php }
-      elseif ($role == 'senior') { ?>
-      <!-- SIDEBAR -->
-        <section id="sidebar">
-          <a href="#" class="brand">
-            <i class='bx bxs-smile'></i>
-              <span class="text">
-              <?php 
-                    $namaSiswa = $_SESSION['namaSiswa'];
-                    echo $namaSiswa;?> || Senior
-              </span>
-          </a>
-          <ul class="side-menu top">
-            <li class="active">
+         ?>
+        
+            <ul>
+            <li>
+              <a href="./profil.php" class="text">
+                <!-- <i class="bx bx-user icons"></i> -->
+              <span class="text">Profile</span>
+              </a>
+            </li>
+            <li>
+                <a href="../main/signout.php" class="logout">
+                <!-- <i class='bx bxs-log-out-circle' ></i> -->
+                <span class="text">Logout</span>
+              </a>
+            </li>
+            </ul>
+          </div>  
+      </div>
+    <?php }
+    elseif ($role == 'pembina') { ?>
+      <div class="top-bar">
+        <div class="logo">
+          <img src="../assets/logo-pasdata-3.png" alt="Logo">
+          <span class="logo">SIMPASDATA</span>
+        </div>
+        <div class="menu-container">
+            <div class="menu">
+                <a href="./home.php">
+                  <!-- <i class='bx bx-home-alt' ></i> -->
+                  <span class="text active">Home</span></a>
+                </a>
+            </div>
+            <div class="menu">
+                <span class="text">Management</span>
+                <ul>
+                <li>
+                    <a href="./menu_manajemen_akun_senior.php">
+                        <!-- <i class='bx bxs-doughnut-chart' ></i> -->
+                        <span class="text">Manajemen Akun Senior</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./junior_manajemen_akun.php">
+                        <!-- <i class='bx bxs-message-dots' ></i> -->
+                        <span class="text">Manajemen Akun Junior</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            <div class="menu">
+                <a href="./nilai_senior.php">
+                  <!-- <i class='bx bx-edit' ></i> -->
+                  <span class="text">Nilai Senior</span>
+                </a>
+            </div>
+            <div class="menu">
+                <a href="./data_terhapus.php">
+                  <!-- <i class='bx bx-trash'></i> -->
+                  <span class="text">Data Terhapus</span>
+                </a>
+            </div>
+        </div>
+        <div class="profile menu">
+          <span class="text">
+            <?php echo $namaAdmin;?></span>
+          <?php
+          if (!empty($fotoAdmin)) {
+            $fotoAdmin = resizeImage($fotoAdmin, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar'>";
+        } else {
+          echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
+      }      
+         ?>
+        
+            <ul>
+            <li>
+              <a href="./profil.php">
+                <!-- <i class="bx bx-user icons"></i> -->
+              <span class="text">Profile</span>
+              </a>
+            </li>
+            <li>
+                <a href="../main/signout.php" class="logout">
+                <!-- <i class='bx bxs-log-out-circle' ></i> -->
+                <span class="text">Logout</span>
+              </a>
+            </li>
+            </ul>
+          </div>  
+      </div>
+    <?php }
+    elseif ($role == 'senior') { ?>
+      <div class="top-bar">
+      <div class="logo">
+        <img src="../assets/logo-pasdata-3.png" alt="Logo">
+        <span class="logo">SIMPASDATA</span>
+      </div>
+        <div class="menu-container">
+          <div class="menu">
               <a href="./home.php">
-                <i class='bx bx-home-alt' ></i>
-                <span class="text">Home</span>
+                <!-- <i class='bx bx-home-alt' ></i> -->
+                <span class="text active">Home</span>
               </a>
-            </li>
-            <li>
+          </div>
+          <div class="menu">
               <a href="./junior_manajemen_akun.php">
-                <i class='bx bxs-message-dots' ></i>
-                <span class="text">Manajemen Akun Junior</span>
+                  <!-- <i class='bx bxs-message-dots' ></i> -->
+                  <span class="text">Manajemen Akun Junior</span>
               </a>
-            </li>
-            <li>
+          </div>
+          <div class="menu">
               <a href="./nilai_junior.php">
-                <i class='bx bx-edit' ></i>
-                <span class="text nav-text">Nilai Senior</span>
+                <!-- <i class='bx bx-edit' ></i> -->
+                <span class="text nav-text">Nilai Junior</span>
+              </a>
+          </div>
+          <div class="menu">
+              <a href="./data_terhapus.php">
+                  <!-- <i class='bx bx-trash' ></i> -->
+                  <span class="text">Data Terhapus</span>
+              </a>
+          </div>
+        </div>
+          <div class="profile menu">
+          <span class="text">
+            <?php echo $namaSiswa;?></span>
+          <?php
+          if (!empty($fotoSiswa)) {
+            $fotoSiswa = resizeImage($fotoSiswa, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoSiswa) . "' alt='Gambar'>";
+        } else {
+          echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
+      }      
+         ?>
+        
+            <ul>
+            <li>
+              <a href="./profil.php">
+                <!-- <i class="bx bx-user icons"></i> -->
+              <span class="text">Profile</span>
               </a>
             </li>
             <li>
-              <a href="./data_terhapus.php">
-                <i class='bx bx-trash' ></i>
-                <span class="text">Data Terhapus</span>
+                <a href="../main/signout.php" class="logout">
+                <!-- <i class='bx bxs-log-out-circle' ></i> -->
+                <span class="text">Logout</span>
               </a>
             </li>
-          </ul>
-          <?php } ?>
-
-
-      <ul class="side-menu">
-        <li>
-          <a href="#">
-            <i class='bx bxs-cog' ></i>
-            <span class="text">Settings</span>
-          </a>
-        </li>
-        <li>
-        <a href="../main/signout.php" class="logout">
-            <i class='bx bxs-log-out-circle' ></i>
-            <span class="text">Logout</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-	<!-- SIDEBAR -->
-  
-
-	<!-- CONTENT -->
-	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<!-- <input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button> -->
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-      <?php
-        if ($role == 'admin') { ?>
-          <a href="./profil.php" class="profile">
-            <i class='bx bx-user icons'></i>
-          </a>
-      <?php }
-        elseif ($role == 'pembina') { ?>
-        <a href="./profil.php" class="profile">
-            <i class='bx bx-user icons'></i>
-          </a>
-      <?php }
-        elseif ($role == 'senior') { ?>
-        <a href="./profil.php" class="profile">
-            <i class='bx bx-user icons'></i>
-          </a>
+            </ul>
+          </div>      
+      </div>
       <?php } ?>
-			<!-- <a href="#" class="profile">
-				<img src="img/people.png">
-			</a> -->
-		</nav>
-		<!-- NAVBAR -->
-		<!-- MAIN -->
-	</section>
-	<script src="../main/script.js"></script>
+<script src="../main/script.js"></script>
 </body>
 </html>

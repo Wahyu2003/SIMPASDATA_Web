@@ -12,8 +12,26 @@ if (isset($_POST['btn_input_junior'])) {
     $password = $nisn;
     //proses foto
     $tmpName = $_FILES['foto']['tmp_name'];
-    $gambarBlob = addslashes(file_get_contents($tmpName));
 
+    // Mendapatkan info gambar
+    $imageInfo = getimagesize($tmpName);
+
+    // Mengecek jenis gambar
+    switch ($imageInfo['mime']) {
+        case 'image/jpeg':
+            $gambarBlob = addslashes(file_get_contents($tmpName));
+            break;
+        case 'image/png':
+            $gambar = imagecreatefrompng($tmpName);
+            $outputFile = '../assets/foto/output.jpg';
+            imagejpeg($gambar, $outputFile, 90); // Ubah kualitas sesuai kebutuhan
+            $gambarBlob = addslashes(file_get_contents($outputFile));
+            unlink($outputFile); // Hapus file sementara
+            break;
+        // Tambahkan case untuk format gambar lainnya jika diperlukan
+        default:
+            throw new Exception("Format gambar tidak didukung.");
+    }
 
     $cek = mysqli_num_rows(mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisn'"));
 

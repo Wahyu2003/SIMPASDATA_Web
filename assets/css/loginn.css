@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,14 +20,15 @@ body {
 .logo{
     grid-column: 1;
     grid-row: 1 / span 2;
-    padding-top: 60px;
-    padding-left: 60px;
+    padding-right: 20px;
+    padding-left: 10%;
 }
 
 .content {
     grid-column: 2;
     grid-row: 1;
-    padding: 20px;
+    padding-right: 80px;
+    padding-bottom: 20px;
 }
 
 .simpasdata{
@@ -35,35 +36,35 @@ body {
     font-weight: 800;
     flex-shrink: 0;
     color: #F00;
+    margin-bottom: -20px;
 }
 
 .simpasdata span {
-    color: #FFF;
+    color: black;
 }
 
 .subsimpasdata {
     flex-shrink: 0;
-    color: #fff;
+    color: black;
     font-family: Bungee;
     font-size: 24px;
     font-style: normal;
     font-weight: 300;
-    line-height: normal;
 }
 
 .login-form-container {
     grid-column: 3;
     grid-row: 1;
-    background: #fff;
+    background: #cccaca;
     width: 400px;
-    height: 350px;
-    border-radius: 20px;
+    height: auto;
+    border-radius: 5px;
     flex-shrink: 0;
 }
 
 .login-form {
     text-align: center;
-    margin-top: 70px;
+    margin: 30px 10px;
 }
 
 .form-group {
@@ -77,15 +78,33 @@ input[type="text"], input[type="password"] {
     border-radius: 5px;
 }
 
+input:focus {
+    border: 1px solid #333;
+    outline: none; 
+  }
+
 .button-sign-in {
     margin-top: 20px;
     color: #F00;
+    line-height: normal;
 }
 
 button {
     width: 95%;
     padding: 10px;
-    background: #F00;
+    background: #f00;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    font-family: Inria Sans;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+button:hover {
+    width: 95%;
+    padding: 10px;
+    background: #C91515;
     color: #FFF;
     border: none;
     border-radius: 5px;
@@ -102,11 +121,28 @@ button {
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    color:rgb(165, 119, 119) ;
+    color:#f00;
     font-family: Inria Sans;
-    font-size: 20px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
     text-align: center;
+    padding-top: 30px;
+}
+
+.lupasandi:hover{
+    text-decoration: none;
+    text-align: center;
+    width: 184px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color:#C91515;
+    font-family: Inria Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 30px;
 }
