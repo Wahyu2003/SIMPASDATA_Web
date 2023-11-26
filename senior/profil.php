@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Profil</title>
     <style>
+        
+
         .table {
             text-align: left;
             margin: 0 auto; /* Untuk membuat margin tabel otomatis dan membuatnya berada di tengah */
@@ -13,9 +15,6 @@
 
         .p {
             pointer-events: none;
-        }
-        img{
-            width:100%;
         }
     </style>
 </head>
@@ -25,9 +24,11 @@
     include "../main/menu.php"
     ?>
     <center>
-        <h1>Profil Anda</h1>
+    <h1>Profil Anda</h1>
 
-
+    <div>
+        <img src="" alt="">
+    </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
         <table class="table" border="1"> <!-- Menambahkan class "table" pada elemen tabel -->
@@ -48,16 +49,12 @@
                     $noHpA = $admin['no_hp'];
                     $passwordA = $admin['password'];
                     $roleA = $admin['role'];
-                    
-                    if(isset($fotoA)){
+                    if (!empty($fotoA)) {
                         $fotoA = resizeImage($fotoA, 100, 100);
-                        echo "<td><img src='data:image/*;base64," . base64_encode($fotoA) . "' alt='Gambar'></td>";
-                    }else{
-                        ?>
-                        <img src="../assets/foto/user-solid-240.png" alt="">
-                        <?php
-                    }
-                    
+                        echo "<img src='data:image/*;base64," . base64_encode($fotoA) . "' alt='Gambar'>";
+                    } else {
+                      echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 100px; height: 100px;'>";
+                  }      
                     ?>
                     <br>
                     <table class="table" border=1>
@@ -116,14 +113,13 @@
                     $passwordS = $siswa['password'];
                     $roleS = $siswa['role'];
                     
-                    if(isset($fotoS)){
+                    if (!empty($fotoS)) {
                         $fotoS = resizeImage($fotoS, 100, 100);
-                        echo "<td><img src='data:image/*;base64," . base64_encode($fotoS) . "' alt='Gambar'></td>";
-                    }else{
-                        ?>
-                        <img src="../assets/foto/user-solid-240.png" alt="">
-                        <?php
-                    }
+                        echo "<img src='data:image/*;base64," . base64_encode($fotoS) . "' alt='Gambar'>";
+                    } else {
+                      echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 100px; height: 100px;'>";
+                  }      
+                    
                     ?>
                     <br>
                     <table class="table" border=1>
@@ -166,58 +162,11 @@
                     </table>
                 <?php
             }?>
-
             <?php
             }else{
                 echo "<script>alert('Gagal Menampilkan Profil !!');</script>";
             }
 
-            function resizeImage($imageData, $newWidth, $newHeight, $outputFormat = 'jpeg') {
-                $img = imagecreatefromstring($imageData);
-            
-                // Create a new true color image with the specified dimensions
-                $resized = imagecreatetruecolor($newWidth, $newHeight);
-            
-                // Preserve transparency for PNG and GIF images
-                if ($outputFormat === 'png' || $outputFormat === 'gif') {
-                    imagealphablending($resized, false);
-                    imagesavealpha($resized, true);
-                }
-            
-                // Copy and resize part of an image with resampling
-                imagecopyresampled($resized, $img, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($img), imagesy($img));
-            
-                // Destroy the original image resource
-                imagedestroy($img);
-            
-                // Output buffering to capture the image data
-                ob_start();
-            
-                // Output the image based on the specified format
-                switch ($outputFormat) {
-                    case 'jpeg':
-                        imagejpeg($resized, null, 90); // You can adjust the quality (0 to 100)
-                        break;
-                    case 'png':
-                        imagepng($resized);
-                        break;
-                    case 'gif':
-                        imagegif($resized);
-                        break;
-                    // Add more cases for other image formats if needed
-                    default:
-                        throw new Exception('Unsupported output format');
-                }
-            
-                // Get the output buffer and clean it
-                $resizedImageData = ob_get_clean();
-            
-                // Destroy the resized image resource
-                imagedestroy($resized);
-            
-                // Return the resized image data
-                return $resizedImageData;
-            }
             
             ?>
         </table>

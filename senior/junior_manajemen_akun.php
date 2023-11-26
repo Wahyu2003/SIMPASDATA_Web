@@ -137,7 +137,8 @@
     <center>
         <style>
                       .custom {
-                background-color: var(--red);
+                /* background-color: var(--red); */
+                background-color : #444;
                 color: #fff;
                 padding: 10px;
                 border: none;

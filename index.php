@@ -87,6 +87,7 @@ if(isset($_POST['signin'])){
     <title>SIM PASDATA | Sign In</title>
     <link rel="stylesheet" href="assets/css/loginn.css">
     <style>
+
         .notification-container {
             position: absolute;
             top: 1px; 
@@ -138,22 +139,19 @@ if(isset($_POST['signin'])){
         <div class="content">
             <h1 class="simpasdata">SIM<span>PASDATA</span></h1>
             <h4 class="subsimpasdata">SISTEM INFORMASI MANAJEMEN PASKIBRA <br> SMA NEGERI 2 TANGGUL</h4>
-            <h2>Sign In</h2>
         </div>
 
         <div class="login-form-container">
             <form class="login-form" method="post" onsubmit="return showPopup()">
-                <label for="nisnnip">NISN/NIP</label>
-                <input type="text" name="nisnnip" id="nisnnip">
+                <input type="text" name="nisnnip" id="nisnnip" placeholder="Masukan NIS/NIP">
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" placeholder="Masukan Kata Sandi">
                 </div>
                 <div class="button-sign-in">
                     <button type="submit" name="signin">Sign In</button>
-                    <a class="lupasandi" href="forgot_password.php">Lupa kata sandi?</a>
-                </div>
+                </div><br>
+                <a class="lupasandi" href="forgot_password.php">Lupa kata sandi?</a>
             </form>
         </div>
     </div>
