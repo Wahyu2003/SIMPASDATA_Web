@@ -44,7 +44,7 @@
                 if($_POST['nama_siswa'] == 0){
                     $nisn = null;
                     $kelas = null;
-                }else{
+                }else{                                  
                     $tampilData = mysqli_query($db, "SELECT siswa.nisn, kelas.nama FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id_kelas WHERE nisn= $_POST[nama_siswa]");
                         while($row = mysqli_fetch_assoc($tampilData)){
                             $nisn = $row['nisn'];
