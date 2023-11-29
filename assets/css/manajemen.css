@@ -1,0 +1,138 @@
+.container {
+    margin : 0 40px;
+    padding : 0;
+}
+
+.footer {
+    align-items: center;
+    display : flex;
+}
+
+.footerakun {
+    align-items: center;
+    display : flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.namaform {
+    display: block;
+    flex-grow : 1;
+    align-items: center;
+}
+
+.akun {
+    flex-grow: 1;
+    align-items: center;
+}
+
+.akun .tambahakun {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #58AFEE;
+}
+
+.akun .tambahakun:hover {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+
+.akun .hapusemua {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #FF0000;
+}
+
+.akun .hapusemua:hover {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #bb0000;
+}
+
+.search {
+    display : flex;
+    align-items : center;
+    border : 1px solid #a5a5a5;
+    padding : 3px 0;
+    border-radius : 3px;
+}
+
+.search input {
+    border : 0;
+    padding-left : 20px;
+    font-size : 11px;
+    width : 250px; 
+    outline: none; 
+}
+
+.search img {
+    padding-right : 10px;
+    width : auto;
+    height : 20px;
+}
+
+.container .table {
+    width: 100%;
+    box-sizing: border-box;
+    text-align : left;
+}
+
+.container .table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-left : 1px solid #a5a5a5;
+    border-right : 1px solid #a5a5a5;
+}
+
+.container .table th, .container .table td {
+    padding : 20px 10px;
+    border-bottom: 1px solid #a5a5a5;
+    border-top: 1px solid #a5a5a5;
+}
+/* 
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding-top: 20px;
+}
+
+.pagination a {
+    color: #333;
+    padding: 0 5px;
+    font-size : 24px;
+}
+
+.pagination a:hover {
+    border-radius: 5px;
+    color : #fff;
+    background-color: #FF5E5E;
+    font-size : 24px;
+}
+
+.pagination a.active {
+    border-radius: 3px;
+    color : #fff;
+    background-color: #FF5E5E;
+    font-size : 24px;
+}
+
+.pagination a.active:hover {
+    border-radius: 3px;
+    color : #fff;
+    background-color: #fa3636;
+    font-size : 24px;
+} */
+
+.sembunyi {
+    display: none;
+}

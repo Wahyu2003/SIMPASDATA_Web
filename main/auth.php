@@ -2,16 +2,8 @@
 session_start();
 require_once("../database/koneksi.php");
 
-if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
-    header("Location: ../index.php");
-    exit;
-} elseif (!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'pembina') {
-    header("Location: ../index.php");
-    exit;
-} elseif (!isset($_SESSION['nisnSiswa']) AND !isset($_SESSION['roleSiswa']) != 'senior') {
-    header("Location: ../index.php");
-    exit;
-} elseif(isset($_SESSION['nipAdmin']) AND isset($_SESSION['roleAdmin']) == 'admin' || 'pembina'){
+// Cek apakah admin yang login
+if (isset($_SESSION['nipAdmin']) && ($_SESSION['roleAdmin'] == 'admin' || $_SESSION['roleAdmin'] == 'pembina')) {
     $nipAdmin = $_SESSION['nipAdmin'];
     $fotoAdmin = $_SESSION['fotoAdmin'];
     $namaAdmin = $_SESSION['namaAdmin'];
@@ -21,7 +13,9 @@ if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
     $noHpAdmin = $_SESSION['noHpAdmin'];
     $passwordAdmin = $_SESSION['passwordAdmin'];
     $role = $_SESSION['roleAdmin'];
-} elseif(isset($_SESSION['nisnSiswa']) AND isset($_SESSION['roleSiswa']) == 'senior'  AND isset($_SESSION['levelSiswa']) == 'allow' AND isset($_SESSION['statusSiswa']) == 'aktif'){
+
+    // Lanjutkan eksekusi halaman admin atau pembina
+} elseif (isset($_SESSION['nisnSiswa']) && $_SESSION['roleSiswa'] == 'senior' && $_SESSION['levelSiswa'] == 'allow' && $_SESSION['statusSiswa'] == 'aktif') {
     $nisnSiswa = $_SESSION['nisnSiswa'];
     $kelas_idSiswa = $_SESSION['kelas_idSiswa'];
     $fotoSiswa = $_SESSION['fotoSiswa'];
@@ -33,8 +27,12 @@ if(!isset($_SESSION['nipAdmin']) AND !isset($_SESSION['roleAdmin']) != 'admin'){
     $passwordSiswa = $_SESSION['passwordSiswa'];
     $statusSiswa = $_SESSION['statusSiswa'];
     $role = $_SESSION['roleSiswa'];
-    $levelSiswa = $_SESSION['levelSiswa'];  
+    $levelSiswa = $_SESSION['levelSiswa'];
+
+    // Lanjutkan eksekusi halaman siswa senior
 } else {
-    echo "Gagal autentifikasi di main/auth";
+    // Jika tidak memenuhi syarat di atas, redirect ke halaman login
+    header("Location: ../index.php");
+    exit;
 }
 ?>

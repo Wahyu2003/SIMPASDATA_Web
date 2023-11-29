@@ -67,9 +67,9 @@ function resizeImage($imageData, $newWidth, $newHeight) {
                 </ul>
             </div>
             <div class="menu">
-                    <a href="./data_terhapus.php">
+                    <a href="./data_nilai.php">
                         <!-- <i class='bx bx-trash' ></i> -->
-                        <span class="text" onclick="setActive()">Data Terhapus</span>
+                        <span class="text" onclick="setActive()">Data Nilai</span>
                     </a>
             </div>
         </div>
@@ -91,6 +91,12 @@ function resizeImage($imageData, $newWidth, $newHeight) {
               <a href="./profil.php" class="text">
                 <!-- <i class="bx bx-user icons"></i> -->
               <span class="text">Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="./notifikasi.php" class="text">
+                <!-- <i class="bx bx-user icons"></i> -->
+              <span class="text">Notifikasi</span>
               </a>
             </li>
             <li>
@@ -163,6 +169,12 @@ function resizeImage($imageData, $newWidth, $newHeight) {
               <a href="./profil.php">
                 <!-- <i class="bx bx-user icons"></i> -->
               <span class="text">Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="./notifikasi.php" class="text">
+                <!-- <i class="bx bx-user icons"></i> -->
+              <span class="text">Notifikasi</span>
               </a>
             </li>
             <li>

@@ -16,6 +16,11 @@
 		$jumlahpembina_data = mysqli_fetch_assoc($jumlahpembina);
 		$totalpembina = $jumlahpembina_data['total'];
 
+		//mengambil data Purna
+		$jumlahpurna = mysqli_query($db, "SELECT COUNT(*) as total FROM siswa WHERE role = 'purna'");
+		$jumlahpurna_data = mysqli_fetch_assoc($jumlahpurna);
+		$totalpurna = $jumlahpurna_data['total'];
+
 		//mengambil data senior
 		$jumlahsiswas = mysqli_query($db, "SELECT COUNT(*) as total FROM siswa WHERE role = 'senior'");
 		$jumlahsiswa_datas = mysqli_fetch_assoc($jumlahsiswas);
@@ -33,28 +38,28 @@
     </div>
 
 	<div class="data">
-		<a href="./menu_manajemen_akun_pembina.php" class="isidata">
+		<a href="./menu_manajemen_akun_pembina.php?action=klik" class="isidata">
 			<span>Data Pembina</span>
 			<ul>
 				<li class="jumlah"><?php echo $totalpembina?></li>
 				<li>Orang</li>
 			</ul>
-		</a><a href="" class="isidata">
+		</a><a href="./data_purna.php?action=klik" class="isidata">
 			<span>Data Purna</span>
 			<ul>
-				<li class="jumlah">?</li>
+				<li class="jumlah"><?php echo $totalpurna ?></li>
 				<li>Orang</li>
 			</ul>
-		</a><a href="./menu_manajemen_akun_senior.php" class="isidata">
+		</a><a href="./menu_manajemen_akun_senior.php?action=klik" class="isidata">
 			<span>Data Senior</span>
 			<ul>
 				<li class="jumlah"><?php echo $totalSiswaS;?></li>
 				<li>Orang</li>
 			</ul>
-		</a><a href="./junior_manajemen_akun.php" class="isidata">
+		</a><a href="./junior_manajemen_akun.php?action=klik" class="isidata">
 			<span>Data Junior</span>
 			<ul>
-				<li class="jumlah"><li class="jumlah"><?php echo $totalSiswaS;?></li></li>
+				<li class="jumlah"><li class="jumlah"><?php echo $totalSiswaJ;?></li></li>
 				<li>Orang</li>
 			</ul>
 		</a>
