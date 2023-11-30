@@ -18,12 +18,12 @@
 	<div class="data">
         <a href="./data_nilai_junior.php" class="isidata">
 			<ul>
-				<li class="jumlah">0</li>
+				<li class="jumlah"><div class="bx bx-book"></div></li>
 				<li>Data Junior</li>
 			</ul>
 		</a><a href="./data_nilai_senior.php" class="isidata">
 			<ul>
-				<li class="jumlah">0</li></li>
+			<li class="jumlah"><div class="bx bx-book-bookmark"></div></li>
 				<li>Data Senior</li>
 			</ul>
 		</a>

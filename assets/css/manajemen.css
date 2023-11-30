@@ -181,7 +181,7 @@ h1{
     border-radius: 3px;
     padding: 10px;
     color: white;
-    background-color: #4CAF51;
+    background-color: rgb(42, 153, 47);
 }
 .detail:hover{
     font-size: 14px;
