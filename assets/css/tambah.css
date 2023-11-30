@@ -2,6 +2,23 @@
     padding: 0;
     margin: 0 40px;
 }
+button {
+    background-color: #58AFEE;
+    color: white;
+    border-radius: 10%;
+    width: 75px;
+    height: 40px;
+    margin-left: 60px;
+    margin-bottom: 40px;
+}
+.imput{
+    width: 360px;
+    height:30px;
+}
+.imnpuut{
+    width: 3px;
+    height: 30px;
+}
 
 .header {
     cursor : default;
@@ -24,3 +41,38 @@
     padding: 30px;
     
 }
+.form {
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding: 30px;
+    margin : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+    line-height: 1.5;
+}
+
+.kanan, .kiri{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+
+
+@media (max-width : 600px) {
+    form {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 100px;
+        line-height: 1.5;
+    }
+    .kanan, .kiri{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        width: 100%;
+    }
+}
+

@@ -6,40 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Manajemen Akun Junior</title>
     <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: auto;
-        }
+        .container {
+    margin : 0 40px;
+    padding : 0;
+}
+       .container .table {
+    width: 100%;
+    box-sizing: border-box;
+    text-align : left;
+}
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
+.container .table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-left : 1px solid #a5a5a5;
+    border-right : 1px solid #a5a5a5;
+}
 
-        th,
-        td {
-            padding: 15px;
-            text-align: left;
-            color: white;
-        }
-
-        th {
-            background-color: #FF0000; /* Warna merah untuk header */
-        }
-
-        .card-body-table-menu-manajemen-akun-senior {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            color: black;
-        }
+.container .table th, .container .table td {
+    padding : 10px 5px;
+    border-bottom: 1px solid #a5a5a5;
+    border-top: 1px solid #a5a5a5;
+}
 
         .jadikansenior,
         .detail,
@@ -129,31 +117,37 @@
 </head>
 
 <body>
+<div class="container">
     <?php include "../main/menu.php"; ?>
     <center>
-        <h1>Halaman Manajemen Akun Junior Milik Senior</h1>
+        <h1>Manajemen Akun Junior</h1>
     </center>
     <br>
-    <center>
+    
         <style>
                       .custom {
                 /* background-color: var(--red); */
-                background-color : #444;
-                color: #fff;
+                font-size: 14px;
+                border-radius: 3px;
                 padding: 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                text-decoration: none;
-                display: inline-block;
+                color: white;
+                background-color: #58AFEE;
+                
+            }
+            .custom:hover {
+                font-size: 14px;
+                border-radius: 3px;
+                padding: 10px;
+                color: white;
+                background-color: #3c83b6;
             }
         </style>
         <form action="./junior_manajemen_input_akun.php">
             <button type="submit" name="btnTambahSenior" class="custom">Tambah Akun</button>
         </form>
-    </center>
+  
     <br>
-    <div class="card-body-table-menu-manajemen-akun-senior">
+    <div class="table">
         <?php
         $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE role = 'junior' AND status = 'aktif'");
 
@@ -236,6 +230,8 @@
             document.getElementById(popupId).style.display = 'none';
         }
     </script>
+</div>
+   
 </body>
 
 </html>

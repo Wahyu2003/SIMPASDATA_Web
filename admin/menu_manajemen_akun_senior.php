@@ -36,7 +36,7 @@ if (!$query) {
             <h1 class="namaform">Data Senior</h1>
             <div class="footerakun ">
                 <div class="akun">
-                    <a class="tambahakun" href="./menu_manajemen_akun_senior.php">Tambah Senior</a>
+                    <a class="tambahakun" href="./menu_manajemen_tambah_senior.php">Tambah Senior</a>
                 </div>
             <?php } ?>
             <div class="search">
@@ -97,10 +97,10 @@ if (!$query) {
                             <?php } else { ?>
                                 <td>
                                     <div class="opsi">
-                                    <a href="?update1&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
-                                    <a href="?update2&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
+                                    <a href="?update1&nisn=<?= $nisnSiswa ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                                    <a href="?update2&nisn=<?= $nisnSiswa ?>"class="jadikanpurna" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi purna?')">Jadikan Purna</a>
                                     <a href="./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa ?>" class='detail'>Detail</a>
-                                    <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
+                                    <a href="?delete&nisn=<?= $nisnSiswa ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
                                     </div>
                                 </td>
                             <?php } ?>

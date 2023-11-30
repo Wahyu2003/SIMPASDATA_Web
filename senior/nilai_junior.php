@@ -7,7 +7,50 @@
     <title>SIM PASDATA | Nilai Junior</title>
 </head>
 
+
 <body>
+<style>
+    .container {
+    margin : 0 40px;
+    padding : 0;
+}
+       .container .table {
+    width: 100%;
+    box-sizing: border-box;
+    text-align : left;
+}
+
+.container .table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-left : 1px solid #a5a5a5;
+    border-right : 1px solid #a5a5a5;
+}
+
+.container .table th, .container .table td {
+    padding : 10px 5px;
+    border-bottom: 1px solid #a5a5a5;
+    border-top: 1px solid #a5a5a5;
+}
+    .tambah{
+    
+                /* background-color: var(--red); */
+                font-size: 14px;
+                border-radius: 3px;
+                padding: 10px;
+                color: white;
+                background-color: #58AFEE;
+                
+            }
+            .tambah:hover {
+                font-size: 14px;
+                border-radius: 3px;
+                padding: 10px;
+                color: white;
+                background-color: #3c83b6;
+            }
+
+</style>
     <?php
     include "../main/menu.php";
     ?>
@@ -15,11 +58,11 @@
     <h1>Halaman Nilai Junior</h1>
     </center>
     <br>
-    <center>
-        <button><a href="./nilai_junior_input.php?action=add">Tambah Nilai</a></button>
-    </center>
-    <center>
-        <table border=1 cellspacing=0 cellpadding=10>
+<div class="container">
+    <button class="tambah"><a href="./nilai_junior_input.php?action=add">Tambah Nilai</a></button>
+    
+     <div class=" table">
+         <table>
             <tr>
                 <th>NISN</th>
                 <th>Nama Lengkap</th>
@@ -73,8 +116,12 @@
             ?>
             
         </table>
+    </div>
+       
+    </div>
+        
         <br>
         <button><a href="./data_nilai_junior.php">Data Nilai Junior</a></button>
-    </center>
+
 </body>
 </html>

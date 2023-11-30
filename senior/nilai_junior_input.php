@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Nilai Junior</title>
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -133,8 +136,9 @@
         <p><?=$notifInput?></p>
         
     </center>
-    <center>
-    <form method="POST">
+   
+    <form method="POST">\
+        <div class="container">
         <table>
             <tr>
                 <td></td>
@@ -234,8 +238,9 @@
                 <td><button type="submit" name="simpan" id="simpan">Simpan</button></td>
             </tr>
         </table>
+        </div>
+       
     </form>
-    </center>
 </body>
 </html>
 

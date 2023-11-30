@@ -35,7 +35,7 @@ if (!$query) {
         <h1 class="namaform">Data Junior</h1>
         <div class="footerakun ">
             <div class="akun">
-                <a class="tambahakun" href="./junior_tambah.php">Tambah Junior</a>
+                <a class="tambahakun" href="./junior_manajemen_input_akun.php">Tambah Junior</a>
             </div>
         <?php } ?>
         <div class="search">
@@ -83,13 +83,13 @@ if (!$query) {
                             <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
                                 <td class="sembunyi">
                                     <div class="opsi">
-                                    <a href="?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
+                                    <a href="?update&nisn=<?= $nisnSiswa ?>" class="jadikansenior" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
                                     </div>
                                 </td>
                             <?php } else { ?>
                                 <td>
                                     <div class="opsi">
-                                    <a href="?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
+                                    <a href="?update&nisn=<?= $nisnSiswa ?>"  class="jadikansenior" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
                                     </div>
                                 </td>
                             <?php } ?>
@@ -101,6 +101,7 @@ if (!$query) {
             } ?>
         </div>
     </div>
+ 
     <script src="../assets/js/search.js"></script>
 </body>
 

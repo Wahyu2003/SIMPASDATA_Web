@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Detail Junior</title>
     <style>
+        
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -21,6 +22,7 @@
         }
 
         h1 {
+            color:black;
             margin-bottom: 20px;
         }
 
@@ -64,7 +66,7 @@
         }
 
         button {
-            background-color: var(--red);
+            background-color: #58AFEE;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -87,7 +89,7 @@
     ?>
     <header>
     
-        <h1>SIM PASDATA | Detail Junior</h1>
+        <h1>Detail Junior</h1>
     </header>
 
    

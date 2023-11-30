@@ -2,7 +2,9 @@
     margin : 0 40px;
     padding : 0;
 }
-
+h1{
+    text-align: center;
+}
 .footer {
     align-items: center;
     display : flex;
@@ -41,7 +43,20 @@
     color: white;
     background-color: #3c83b6;
 }
-
+.kembali :hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+.jadikansenior:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
 .akun .hapusemua {
     font-size: 14px;
     border-radius: 3px;
@@ -133,6 +148,93 @@
     font-size : 24px;
 } */
 
-.sembunyi {
-    display: none;
+.jadikanadmin,
+.jadikanpurna,
+.detail,
+.jadikansenior,
+.batal,.kembali,
+.hapus {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+    display: inline-block;
+    width: 100px;
+    font-size: 10px;
+    border-radius: 3px;
+    padding: 10px;
+    
+    
+}
+.jadikanadmin:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+.jadikanpurna:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #4CAF51;
+}
+.detail:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color:#808081;
+}
+.jadikansenior:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+.batal:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+.kembali:hover{
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #3c83b6;
+}
+.hapus:hover {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #bb0000;  
+    
+}
+.jadikanadmin{
+    background-color:#2196F3;
+}
+.jadikanpurna{
+    background-color:#4CAF50;
+}
+.detail {
+    background-color: #808080; /* Warna biru */
+}
+.jadikansenior{
+    background-color: #2196F3;
+
+}
+.kembali{
+    background-color: #2196F3;
+}
+.hapus {
+    background-color: #FF0000; /* Warna merah */
 }

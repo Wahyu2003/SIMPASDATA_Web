@@ -12,13 +12,15 @@
         
         include "../main/menu.php";
     ?>
-
-    <h1>Halaman Home Senior, Selamat Datang 
+<center>
+<h1>Halaman Home Senior, Selamat Datang 
     <?php 
         $namaSiswa = $_SESSION['namaSiswa'];
         echo $namaSiswa;
     ?>
     </h1>
+    
+</center>
     
 </body>
 </html>

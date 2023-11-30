@@ -5,32 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Tambah Akun Senior</title>
-    <style>
-        body {
-            text-align: center;
-        }
-
-        .card-body-table-menu-manajemen-akun-senior {
-            margin: 20px auto; /* Menambahkan margin dan mengatur otomatis ke tengah */
-        }
-
-        .table-data-akun-senior {
-            width: 80%; /* Menentukan lebar tabel */
-            margin: 0 auto; /* Mengatur otomatis ke tengah */
-            border-collapse: collapse;
-        }
-
-        .table-data-akun-senior th,
-        .table-data-akun-senior td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .table-data-akun-senior th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/manajemen.css">
+    
 </head>
 
 <body>
@@ -38,13 +14,13 @@
     include "../main/menu.php"
     ?>
     <h1>Halaman Tambah Akun Senior Milik Pembina</h1>
+<div class="container">
+<a href="./menu_manajemen_akun_senior.php" class="kembali">Kembali</a>
 
-    <div>
-        <button type="submit" name="btnTambahSenior"><a href="./menu_manajemen_akun_senior.php">Kembali</a></button>
-    </div>
+    
     <br>
-    <div class="card-body-table-menu-manajemen-akun-senior">
-        <table class="table-data-akun-senior" border="1" cellpadding="5" cellspacing="0">
+    <div class="table">
+        <table class>
             <thead>
                 <tr>
                     <th>NISN</th>
@@ -85,13 +61,16 @@
                         <td><?= $emailSiswa ?></td>
                         <td><?= $noHpSiswa ?></td>
                         <td>
-                            <a href = "?update&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
+                            <a href = "?update&nisn=<?= $nisnSiswa ?>"class="jadikansenior" onclick="return confirm('Apakah kamu yakin ?')">Jadikan Senior</a>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
+</div>
+    
+   
 </body>
 </html>
 

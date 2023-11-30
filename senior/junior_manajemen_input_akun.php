@@ -11,7 +11,9 @@
             margin: 0;
             padding: 0;
         }
-
+        h1 {
+            color:black;
+        }
         header {
             background-color: var(--red);
             padding: 10px;
@@ -82,7 +84,7 @@
 
         button {
             padding: 10px;
-            background-color: var(--red);
+            background-color: #2196F3;
             color: white;
             border: none;
             border-radius: 4px;

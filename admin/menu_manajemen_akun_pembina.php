@@ -30,19 +30,19 @@ if (!$query) {
         <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
         <div class="footer">
             <h1 class="namaform">Data Pembina</h1>
-        <?php } else { ?>
-        <h1 class="namaform">Data Pembina</h1>
-        <div class="footerakun ">
-            <div class="akun">
-                <a class="tambahakun" href="./menu_manajemen_tambah_pembina.php">Tambah Pembina</a>
-            </div>
-        <?php } ?>
-        <div class="search">
-            <input type="text" id="searchInput" placeholder="Masukkan data yang ingin anda cari">
-            <img id="searchButton" src="../assets/foto/icons8-search-50.png" alt="">
-        </div>
-    </div>
-    <div class="table">
+            <?php } else { ?>
+            <h1 class="namaform">Data Pembina</h1>
+                 <div class="footerakun ">
+                    <div class="akun">
+                    <a class="tambahakun" href="./menu_manajemen_tambah_pembina.php">Tambah Pembina</a>
+                 </div>
+                     <?php } ?>
+                    <div class="search">
+                        <input type="text" id="searchInput" placeholder="Masukkan data yang ingin anda cari">
+                        <img id="searchButton" src="../assets/foto/icons8-search-50.png" alt="">
+                    </div>
+         </div>
+        <div class="table">
         <?php
         if (mysqli_num_rows($query) > 0) { // Periksa apakah ada data
             ?>
@@ -90,26 +90,18 @@ if (!$query) {
                         <td><?= $emailPembina ?></td>
                         <td><?= $noHpPembina ?></td>
                         <td><?= $status ?></td>
-                        <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
-                            <td class="sembunyi">
-                                <div class="opsi">
-                                    <a href="?update1&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
-                                    <a href="./menu_manajemen_detail_senior.php?nip=<?= $nipPembina ?>" class='detail'>Detail</a>
-                                    <a href="?delete&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ?')">Hapus</a>
-                                </div>
-                            </td>
-                        <?php } else { ?>
+
                             <td>
                                 <div class="opsi">
-                                    <a href="?update1&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')" class='bx bx-trending-up' title="Jadikan Admin Web"></a>
-                                    <a href="./menu_manajemen_detail_senior.php?nip=<?= $nipPembina ?>" class='bx bxs-detail' title="detail"></a>
-                                    <a href="?delete&nip=<?= $nipPembina ?>" onclick="return confirm('Apakah kamu yakin ?')" class='bx bx-trash' title="hapus"></a>
+                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                                        <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
+                                       
+                                        
+                                         
                                 </div>
                             </td>
-                        <?php
-                        }
-                        ?>
-                    </tr>
+                         
+                     
 
                 <?php } ?>
             </table>
@@ -140,9 +132,9 @@ if (isset($_GET['delete'])) {
 
 <?php
 if (isset($_GET['update1'])) {
-    $nisn = $_GET['nisn'];
+    $nipPembina = $_GET['nip'];
 
-    $delete = mysqli_query($db, "UPDATE siswa SET level = 'allow' WHERE siswa.nisn = '$nisn'");
+    $delete = mysqli_query($db, "UPDATE admin SET level = 'allow' WHERE admin.nip = '$nipPembina'");
     if ($delete) {
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
         exit;
