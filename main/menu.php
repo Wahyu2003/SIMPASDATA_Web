@@ -88,7 +88,7 @@ function resizeImage($imageData, $newWidth, $newHeight) {
         
             <ul>
             <li>
-              <a href="./profil.php" class="text">
+              <a href="./profile.php" class="text">
                 <!-- <i class="bx bx-user icons"></i> -->
               <span class="text">Profile</span>
               </a>
@@ -140,15 +140,9 @@ function resizeImage($imageData, $newWidth, $newHeight) {
                 </ul>
             </div>
             <div class="menu">
-                <a href="./nilai_senior.php">
+                <a href="./data_nilai.php">
                   <!-- <i class='bx bx-edit' ></i> -->
-                  <span class="text">Nilai Senior</span>
-                </a>
-            </div>
-            <div class="menu">
-                <a href="./data_terhapus.php">
-                  <!-- <i class='bx bx-trash'></i> -->
-                  <span class="text">Data Terhapus</span>
+                  <span class="text">Data Nilai</span>
                 </a>
             </div>
         </div>
@@ -210,12 +204,6 @@ function resizeImage($imageData, $newWidth, $newHeight) {
               <a href="./nilai_junior.php">
                 <!-- <i class='bx bx-edit' ></i> -->
                 <span class="text nav-text">Nilai Junior</span>
-              </a>
-          </div>
-          <div class="menu">
-              <a href="./data_terhapus.php">
-                  <!-- <i class='bx bx-trash' ></i> -->
-                  <span class="text">Data Terhapus</span>
               </a>
           </div>
         </div>

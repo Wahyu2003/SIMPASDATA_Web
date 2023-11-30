@@ -2,9 +2,6 @@
     margin : 0 40px;
     padding : 0;
 }
-h1{
-    text-align: center;
-}
 .footer {
     align-items: center;
     display : flex;
@@ -43,6 +40,22 @@ h1{
     color: white;
     background-color: #3c83b6;
 }
+.akun .cetaknilai {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #8ed33f;
+}
+
+.akun .cetaknilai:hover {
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(14, 155, 73);
+}
+
 .kembali :hover{
     font-size: 14px;
     border-radius: 3px;
@@ -108,7 +121,7 @@ h1{
     border-right : 1px solid #a5a5a5;
 }
 
-.container .table th, .container .table td {
+.container .table th,table,  .container .table td {
     padding : 20px 10px;
     border-bottom: 1px solid #a5a5a5;
     border-top: 1px solid #a5a5a5;
@@ -147,6 +160,10 @@ h1{
     background-color: #fa3636;
     font-size : 24px;
 } */
+
+.sembunyi {
+    display: none;
+}
 
 .jadikanadmin,
 .jadikanpurna,

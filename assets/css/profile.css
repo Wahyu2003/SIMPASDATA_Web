@@ -1,0 +1,36 @@
+.container {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.foto, .data {
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* .foto {
+    text-align: center;
+} */
+.data {
+    text-align: left;
+}
+
+.isidata{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: auto;
+}
+
+.volume {
+    height: 20px;
+}

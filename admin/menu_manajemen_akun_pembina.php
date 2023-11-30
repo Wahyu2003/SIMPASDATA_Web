@@ -90,19 +90,23 @@ if (!$query) {
                         <td><?= $emailPembina ?></td>
                         <td><?= $noHpPembina ?></td>
                         <td><?= $status ?></td>
-
+                        <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
+                            <td>
+                                <div class="opsi sembunyi">
+                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                                        <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
+                                </div>
+                            </td>
+                        <?php } else { ?>
                             <td>
                                 <div class="opsi">
                                 <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
                                         <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
-                                       
-                                        
-                                         
                                 </div>
                             </td>
-                         
-                     
-
+                        <?php
+                        }
+                        ?>
                 <?php } ?>
             </table>
         <?php } else {

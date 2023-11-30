@@ -6,51 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Profil</title>
     <style>
-    .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        .profile-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .profile-header img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border: 2px solid #fff;
-        }
-
-        .profile-info {
-            padding: 20px;
-        }
-
-        .profile-info table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .profile-info th,
-        .profile-info td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .profile-info th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 
 <body>
@@ -94,7 +49,7 @@
                     <table class="table" border=1>
                         <tr>
                             <th>NIP</th>
-                            <td><?=$nipA?></td>
+                            <td><?php echo $namaAdmin; ?></td>
                         </tr>
                         <tr>
                             <th>Nama Lengkap</th>

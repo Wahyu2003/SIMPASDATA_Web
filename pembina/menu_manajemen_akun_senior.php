@@ -36,7 +36,7 @@ if (!$query) {
             <h1 class="namaform">Data Senior</h1>
             <div class="footerakun ">
                 <div class="akun">
-                    <a class="tambahakun" href="./menu_manajemen_akun_senior.php">Tambah Senior</a>
+                    <a class="tambahakun" href="./menu_manajemen_tambah_senior.php">Tambah Senior</a>
                 </div>
             <?php } ?>
             <div class="search">

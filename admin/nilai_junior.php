@@ -11,11 +11,12 @@ $query = mysqli_query($db,
     kelas.nama AS kelas,
     SUM(CASE WHEN nilai.nama = 'nilai sikap' THEN detail_nilai.total_nilai ELSE 0 END) AS total_nilai_sikap,
     SUM(CASE WHEN nilai.nama = 'nilai pola pikir' THEN detail_nilai.total_nilai ELSE 0 END) AS total_nilai_pola_pikir,
-    SUM(CASE WHEN nilai.nama = 'nilai keaktifan' THEN detail_nilai.total_nilai ELSE 0 END) AS total_nilai_keaktifan
+    SUM(CASE WHEN nilai.nama = 'nilai keaktifan' THEN detail_nilai.total_nilai ELSE 0 END) AS total_nilai_keaktifan,
+    SUM(CASE WHEN nilai.nama = 'nilai pbb' THEN detail_nilai.total_nilai ELSE 0 END) AS total_nilai_pbb
 FROM
     siswa
 JOIN kelas ON siswa.kelas_id = kelas.id_kelas
-JOIN entered ON siswa.nisn = entered.nisn_s
+JOIN entered ON siswa.nisn = entered.nisn_j
 JOIN detail_nilai ON entered.id_enter = detail_nilai.enter_id
 JOIN nilai ON detail_nilai.nilai_id = nilai.id_nilai
 WHERE
@@ -36,16 +37,16 @@ if (!$query) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Input Nilai Senior</title>
+    <title>SIM PASDATA | Input Nilai Junior</title>
     <link rel="stylesheet" href="../assets/css/manajemen.css">
 </head>
 
 <body>
 <div class="container">
-    <h1 class="namaform">Input Nilai Senior</h1>
+    <h1 class="namaform">Input Nilai Junior</h1>
     <div class="footerakun ">
         <div class="akun">
-            <a class="tambahakun" href="./nilai_senior_input.php?action=add">Tambah Nilai</a>
+            <a class="tambahakun" href="./nilai_junior_input.php?action=add">Tambah Nilai</a>
         </div>
         <div class="search">
             <input type="text" id="searchInput" placeholder="Masukkan data yang ingin anda cari">
@@ -62,24 +63,27 @@ if (!$query) {
                         <th>Nilai Sikap</th>
                         <th>Nilai Pola Pikir</th>
                         <th>Nilai Keaktifan</th>
+                        <th>Nilai PBB</th>
                     </tr>
 
                     <?php
                     while($a = mysqli_fetch_assoc($query)){
-                        $nisnSenior = $a['nisn'];
-                        $namaSenior = $a['nama'];
-                        $kelasSenior = $a['kelas'];
-                        $nilaiSikapSenior = $a['total_nilai_sikap'];
-                        $nilaiPolaPikirSenior = $a['total_nilai_pola_pikir'];
-                        $nilaiKeaktifanSenior = $a['total_nilai_keaktifan'];?>
+                        $nisnJunior = $a['nisn'];
+                        $namaJunior = $a['nama'];
+                        $kelasJunior = $a['kelas'];
+                        $nilaiSikapJunior = $a['total_nilai_sikap'];
+                        $nilaiPolaPikirJunior = $a['total_nilai_pola_pikir'];
+                        $nilaiKeaktifanJunior = $a['total_nilai_keaktifan'];
+                        $nilaiPBBJunior = $a['total_nilai_pbb'];?>
     
                     <tr>
-                        <td><?=$nisnSenior?></td>
-                        <td><?=$namaSenior?></td>
-                        <td><?=$kelasSenior?></td>
-                        <td><?=$nilaiSikapSenior?></td>
-                        <td><?=$nilaiPolaPikirSenior?></td>
-                        <td><?=$nilaiKeaktifanSenior?></td>
+                        <td><?=$nisnJunior?></td>
+                        <td><?=$namaJunior?></td>
+                        <td><?=$kelasJunior?></td>
+                        <td><?=$nilaiSikapJunior?></td>
+                        <td><?=$nilaiPolaPikirJunior?></td>
+                        <td><?=$nilaiKeaktifanJunior?></td>
+                        <td><?=$nilaiPBBJunior?></td>
                     
                     </tr>
                 <?php }

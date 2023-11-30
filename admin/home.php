@@ -38,6 +38,7 @@
     </div>
 
 	<div class="data">
+	<div class="dataisi">
 		<a href="./menu_manajemen_akun_pembina.php?action=klik" class="isidata">
 			<span>Data Pembina</span>
 			<ul>
@@ -63,6 +64,7 @@
 				<li>Orang</li>
 			</ul>
 		</a>
+		</div>
 	</div>
 
 </body>

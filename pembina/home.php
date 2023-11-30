@@ -63,22 +63,22 @@
     <div class="isikan">
       <div class="satu">
         <div class="ft">
-          <span>apasa</span>
+          <span>Senior</span>
           <input type="text" class="search">
         </div>
         <div class="datatable">
           <table>
             <tr>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
+              <th>NISN</th>
+              <th>Nama Lengkap</th>
+              <th>Kelas</th>
+              <th>Total Nilai</th>
             </tr>
             <tr>
-              <td>adgyi</td>
-              <td>adgyi</td>
-              <td>adgyi</td>
-              <td>adgyi</td>
+              <td><?php ?></td>
+              <td><?php ?></td>
+              <td><?php ?></td>
+              <td><?php ?></td>
             </tr>
           </table>
         </div>
@@ -91,16 +91,16 @@
         <div class="datatable">
           <table>
             <tr>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
-              <th>cakjsa</th>
+              <th>NISN</th>
+              <th>Nama Lengkap</th>
+              <th>Kelas</th>
+              <th>Total Nilai</th>
             </tr>
             <tr>
-              <td>adgyi</td>
-              <td>adgyi</td>
-              <td>adgyi</td>
-              <td>adgyi</td>
+              <td><?php ?></td>
+              <td><?php ?></td>
+              <td><?php ?></td>
+              <td><?php ?></td>
             </tr>
           </table>
         </div>
