@@ -81,44 +81,31 @@ if (isset($_POST["updatePassword"])) {
 <html lang="en">
 <head>
     <!-- ... (head section) -->
+    <title>Lupa Password</title>
+    <link rel="stylesheet" href="forgot.css">
 </head>
 <body>
 
 <!-- ... (navigation bar) -->
 
-<main class="login-form">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Register</div>
-                    <div class="card-body">
-                        <form action="#" method="POST" name="register">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="email" class="form-control" name="email" required autofocus>
-                                </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="newPassword" required>
-                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Update Password" name="updatePassword">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+   
+    <div class="login-form-container">
+        <form class="login-form" method="post" name="forgot">
+            <h4>Masukkan Email Yang Sudah Terdaftar Dan Masukkan Password Baru Anda</h4>
+            <div class="form-group">
+                <input type="text" name="email" id="email" placeholder="Masukan Email Yang Sudah Terdaftar">
             </div>
-        </div>
+                <div class="form-group">
+                    <input type="password" name="newPassword" id="newPassword" placeholder="Masukan Kata Sandi Baru ">
+            </div>
+            
+            <div class="button-sign-in">
+                    <button type="submit" name="updatePassword">Send OTP</button>
+            </div>
+        </form>
     </div>
-</main>
+
 
 <!-- ... (script to toggle password visibility) -->
 

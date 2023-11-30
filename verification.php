@@ -61,36 +61,23 @@ if (isset($_POST["verifyOTP"])) {
 <html lang="en">
 <head>
     <!-- ... (head section) -->
+    <link rel="stylesheet" href="forgot.css">
 </head>
 <body>
 
 <!-- ... (navigation bar) -->
 
-<main class="verification-form">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Verification</div>
-                    <div class="card-body">
-                        <form action="#" method="POST" name="verification">
-                            <div class="form-group row">
-                                <label for="otp" class="col-md-4 col-form-label text-md-right">Enter OTP</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="otp" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Verify OTP" name="verifyOTP">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+<div class="login-form-container">
+        <form class="login-form" method="post" name="verification">
+            <h4>Masukkan OTP yang Sudah di Kirim ke Email Anda</h4>
+            <div class="form-group">
+                <input type="text" name="otp" id="otp" placeholder="Masukan KODE OTP" required autofocus>
             </div>
-        </div>
+            <div class="button-sign-in">
+                    <button type="submit" name="verifyOTP" value="verifyOTP">Send OTP</button>
+            </div>
+        </form>
     </div>
-</main>
 
 </body>
 </html>
