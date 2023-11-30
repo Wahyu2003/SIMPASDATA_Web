@@ -9,7 +9,7 @@ if (isset($_POST['btn_input_junior'])) {
     $alamat = $_POST['alamat'];
     $email = $_POST['email'];
     $no_hp = $_POST['no_hp'];
-    $password = $nisn.$nama;
+    $password = $nisn;
 
     // tambahkan proses untuk menyimpan foto ke direktori dan nama file ke database
     $foto_name = $_FILES['foto']['name'];
