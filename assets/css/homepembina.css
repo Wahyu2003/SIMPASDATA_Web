@@ -141,21 +141,21 @@ span {
     outline: none; 
 }
 
-.datatable {
+.datatable,.datatable2 {
     width: 100%;
     box-sizing: border-box;
     text-align : left;
     padding: 20px 0;
 }
 
-.datatable table {
+.datatable table,.datatable2 table {
     width: 100%;
     border-collapse: collapse;
     border-left : 1px solid #a5a5a5;
     border-right : 1px solid #a5a5a5;
 }
 
-.datatable th, .datatable td {
+.datatable th,.datatable2 th, .datatable td,.datatable2 td {
     padding : 20px 10px;
     border-bottom: 1px solid #a5a5a5;
     border-top: 1px solid #a5a5a5;
