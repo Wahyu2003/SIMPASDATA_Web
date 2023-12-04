@@ -187,51 +187,31 @@
     
 }
 .jadikanadmin:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
 .jadikanpurna:hover{
     font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: rgb(42, 153, 47);
 }
 .detail:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color:#808081; 
 }
 .jadikansenior:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
 .batal:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
 .kembali:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
 .hapus:hover {
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #bb0000;  
     

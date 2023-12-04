@@ -106,7 +106,8 @@
                       siswa.nisn, siswa.nama, kelas.nama
                       ORDER BY
                       total_nilai
-                      DESC;"
+                      DESC
+                      LIMIT 3;"
                       );
                           while($row = mysqli_fetch_assoc($tampilData)){
                               ?>
@@ -168,7 +169,8 @@
                         siswa.nisn, siswa.nama, kelas.nama
                     ORDER BY
                     total_nilai
-                    DESC;"
+                    DESC
+                    LIMIT 3;"
                     );
                         while($row = mysqli_fetch_assoc($tampilData)){
                             ?>

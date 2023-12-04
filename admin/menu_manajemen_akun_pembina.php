@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM PASDATA | Manajemen Akun Pembina</title>
+    <link rel="stylesheet" href="../assets/css/manajemen.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
 <?php
 include "../main/menu.php";
 
@@ -11,20 +23,6 @@ if (!$query) {
     die('Error executing query: ' . mysqli_error($db));
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Manajemen Akun Pembina</title>
-    <link rel="stylesheet" href="../assets/css/manajemen.css">
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-</head>
-
 <body>
     <div class="container">
         <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
@@ -93,14 +91,14 @@ if (!$query) {
                         <?php if (isset($_GET['action']) && $_GET['action'] == 'klik') {?>
                             <td>
                                 <div class="opsi sembunyi">
-                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin web?')">Jadikan Admin Web</a>
                                         <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
                                 </div>
                             </td>
                         <?php } else { ?>
                             <td>
                                 <div class="opsi">
-                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin?')">Jadikan Admin Web</a>
+                                <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin web?')">Jadikan Admin Web</a>
                                         <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
                                 </div>
                             </td>
@@ -117,7 +115,6 @@ if (!$query) {
     <script src="../assets/js/search.js"></script>
 </body>
 </html>
-<script>
     <?php
 if (isset($_GET['delete'])) {
 
@@ -138,27 +135,12 @@ if (isset($_GET['delete'])) {
 if (isset($_GET['update1'])) {
     $nipPembina = $_GET['nip'];
 
-    $delete = mysqli_query($db, "UPDATE admin SET level = 'allow' WHERE admin.nip = '$nipPembina'");
+    $delete = mysqli_query($db, "UPDATE admin SET status = 'aktif' WHERE admin.nip = '$nipPembina'");
     if ($delete) {
-        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_pembina.php">';
         exit;
     } else {
         echo "<script>alert('Data Gagal Diupdate !!');</script>";
     }
 }
 ?>
-
-<?php
-if (isset($_GET['update2'])) {
-    $nisn = $_GET['nisn'];
-
-    $delete = mysqli_query($db, "UPDATE siswa SET role = 'purna', level = 'denied' WHERE siswa.nisn = '$nisn'");
-    if ($delete) {
-        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
-        exit;
-    } else {
-        echo "<script>alert('Data Gagal Diupdate !!');</script>";
-    }
-}
-?>
-</script>

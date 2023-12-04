@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <title>SIMPASDATA || Admin Home</title>
+  <title>SIMPASDATA || Data Nilai</title>
   <link rel="stylesheet" href="../assets/css/homeadmin.css">
 </head>
 <body>

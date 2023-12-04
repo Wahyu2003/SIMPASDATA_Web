@@ -1,0 +1,79 @@
+@media print {
+            
+    .noPrint{
+        display:none;
+    }
+    /* Set lebar tabel agar sesuai dengan lebar kertas A4 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Set font ukuran dan jenis untuk mencetak */
+    body {
+        font-size: 12pt;
+        font-family: Arial, sans-serif;
+    }
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* or display: flex; depending on your layout needs */
+    align-items: center;
+    justify-content: center;
+}
+
+.container .table{
+    width: 100%;
+}
+
+.container .header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.container .header .judul {
+    width: 45%;
+    line-height: 0.7;
+}
+
+.container .header .judul h3{
+    line-height: 1;
+}
+
+.container .header .judul p{
+    line-height: 1;
+    font-size: 14px;
+}
+
+.tahunpelajaran {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    border-top: 3px solid #333;
+}
+
+.tahunpelajaran h3{
+    width: 45%;
+}
