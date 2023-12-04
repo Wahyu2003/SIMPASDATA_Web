@@ -142,7 +142,7 @@ $selectNamaSiswa = mysqli_query($db, "SELECT nisn, nama FROM siswa WHERE role = 
     </div>
     
     <select class="isitext" name="nama_siswa" id="nama_siswa" onchange="this.form.submit()">
-        <option value="" required>Pilih siswa</option>
+        <option value="" >Pilih siswa</option>
         <?=$options?>
     </select>
     </div>
@@ -156,23 +156,23 @@ $selectNamaSiswa = mysqli_query($db, "SELECT nisn, nama FROM siswa WHERE role = 
     </div>
     <div class="data">
     <label class="isitext" for="">Nilai Sikap</label>
-    <input class="isitext nilai-panah" type="number" name="nilaiSikap" id="nilaiSikap" max="10" min="5" onkeydown="return false;"required>
+    <input class="isitext nilai-panah" type="number" name="nilaiSikap" id="nilaiSikap" max="10" min="5" onkeydown="return false;">
     </div>
     <div class="data">
     <label class="isitext" for="">Nilai Pola Pikir</label>
-    <input class="isitext nilai-panah" type="number" name="nilaiPolaPikir" id="nilaiPolaPikir" max="10" min="5" onkeydown="return false;"required>
+    <input class="isitext nilai-panah" type="number" name="nilaiPolaPikir" id="nilaiPolaPikir" max="10" min="5" onkeydown="return false;">
     </div>
     <div class="data">
     <label class="isitext" for="">Nilai Keaktifan</label>
-    <input class="isitext nilai-panah" type="number" name="nilaiKeaktifan" id="nilaiKeaktifan" max="10" min="5" onkeydown="return false;"required>
+    <input class="isitext nilai-panah" type="number" name="nilaiKeaktifan" id="nilaiKeaktifan" max="10" min="5" onkeydown="return false;">
     </div>
     <div class="data">
     <label class="isitext" for="">Nilai PBB</label>
-    <input class="isitext nilai-panah" type="number" name="nilaiPBB" id="nilaiPBB" max="10" min="5" onkeydown="return false;"required>
+    <input class="isitext nilai-panah" type="number" name="nilaiPBB" id="nilaiPBB" max="10" min="5" onkeydown="return false;">
     </div>
     <div class="data">
     <label class="isitext" for="">Pelanggaran</label>
-    <select class="isitext" name="pelanggaran" id="pelanggaran"required>
+    <select class="isitext" name="pelanggaran" id="pelanggaran">
         <option value="0">Tidak Ada</option>
         <option value="5">Ringan</option>
         <option value="7">Sedang</option>
