@@ -42,6 +42,10 @@ body {
     justify-content: center;
 }
 
+.container .table{
+    width: 100%;
+}
+
 .container .header {
     display: flex;
     justify-content: space-between;
