@@ -84,12 +84,16 @@ if (!$query) {
                                 <td class="sembunyi">
                                     <div class="opsi">
                                     <a href="?update&nisn=<?= $nisnSiswa ?>" class="jadikansenior" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
+                                    <a href="./junior_manajemen_detail_akun">Detail</a>
+                                    <a href="?delete&nisn=<?= $nisnSiswa ?>" onclick="return confirm('Apakah kamu yakin ingin menhapus data tersebut?')">Hapus</a>
                                     </div>
                                 </td>
                             <?php } else { ?>
                                 <td>
                                     <div class="opsi">
                                     <a href="?update&nisn=<?= $nisnSiswa ?>"  class="jadikansenior" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
+                                    <a href="./junior_manajemen_detail_akun.php" class="detail">Detail</a>
+                                    <a href="?delete&nisn=<?= $nisnSiswa ?>" class="hapus"onclick="return confirm('Apakah kamu yakin ingin menhapus data tersebut?')">Hapus</a>
                                     </div>
                                 </td>
                             <?php } ?>
@@ -117,6 +121,19 @@ if (isset($_GET['update'])) {
         exit;
     } else {
         echo "<script>alert('Data Gagal Diupdate!!');</script>";
+    }
+}
+if (isset($_GET['delete'])) {
+    $nisn = $_GET['nisn'];
+    
+
+    $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
+
+    if ($delete) {
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./junior_manajemen_akun.php">';
+        exit;
+    } else {
+        echo "<script>alert('Data Gagal Dihapus !!');</script>";
     }
 }
 ?>

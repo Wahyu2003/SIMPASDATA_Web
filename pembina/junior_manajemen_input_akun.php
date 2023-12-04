@@ -113,7 +113,7 @@
             <select name="kelas" id="selectKelas" onchange="checkSelect()" required>
                 <option value="">Pilih Kelas</option>
                 <?php
-                $query_kelas = "SELECT * FROM kelas WHERE nama LIKE '%10%'";
+                $query_kelas = "SELECT * FROM kelas";
                 $result_kelas = mysqli_query($db, $query_kelas);
                 while ($row_kelas = mysqli_fetch_assoc($result_kelas)) {
                     echo "<option value='" . $row_kelas['id_kelas'] . "'>" . $row_kelas['nama'] . "</option>";
@@ -143,8 +143,6 @@
             <label for="no_hp">Nomor HP</label>
             <input type="tel" name="no_hp" pattern="[0-9]{12,13}">
 
-            <label for="foto">Foto</label>
-            <input type="file" name="foto">
 
             <button type="submit" name="btn_input_junior" id="btn_input_junior" disabled>Simpan</button>
         </form>

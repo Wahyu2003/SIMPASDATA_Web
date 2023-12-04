@@ -1,5 +1,5 @@
  <?php
-session_start();
+ session_start();
 require_once("database/koneksi.php");
 
 if(isset($_SESSION['nipAdmin']) && isset($_SESSION['roleAdmin']) == 'admin'){

@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 require_once("../database/koneksi.php");
 
 // Cek apakah admin yang login
@@ -32,7 +31,7 @@ if (isset($_SESSION['nipAdmin']) && ($_SESSION['roleAdmin'] == 'admin' || $_SESS
     // Lanjutkan eksekusi halaman siswa senior
 } else {
     // Jika tidak memenuhi syarat di atas, redirect ke halaman login
-    header("Location: ../index.php");
+    header("Location:../index.php");
     exit;
 }
 ?>

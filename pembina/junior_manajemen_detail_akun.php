@@ -6,95 +6,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PASDATA | Detail Junior</title>
     <style>
+        
         body {
-            text-align: center; /* Untuk mengatur text-align menjadi center */
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
 
-        .table {
+        header {
+            background-color: var(--red);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            color:black;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
             text-align: left;
-            margin: 0 auto; /* Untuk membuat margin tabel otomatis dan membuatnya berada di tengah */
         }
 
-        .p {
-            pointer-events: none;
+        th {
+            background-color: #333;
+            color: #fff;
         }
-        img{
-            width:100%;
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            background-color: #58AFEE;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #555;
         }
     </style>
 </head>
 
 <body>
-    <?php 
+<?php 
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Junior Milik Pembina</h1>
+    <header>
+    
+        <h1>Detail Junior</h1>
+    </header>
 
-    <div>
-        <img src="" alt="">
-    </div>
-    <br>
-    <div class="card-body-table-menu-manajemen-akun-senior">
-        <table class="table" border="1"> <!-- Menambahkan class "table" pada elemen tabel -->
-            <?php
-                $nisn = $_GET['nisn'];
+   
 
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
-
-                while ($a = mysqli_fetch_assoc($query)) { 
-                    $nisnSiswa = $a['nisn'];
-                    $namaSiswa = $a['nama'];
-                    $fotoSiswa = $a['foto'];
-                    $kelasSiswa = $a['kelas'];
-                    $alamatSiswa = $a['alamat'];
-                    $genderSiswa = $a['gender'];
-                    $noHpSiswa = $a['no_hp'];
-                    $emailSiswa = $a['email'];
-
-                    if($genderSiswa == 'L'){
-                        $genderSiswa = "Laki - Laki";
-                    }else{
-                        $genderSiswa = "Perempuan";
-                    }
-            ?>
-            <!-- Tambahkan foto -->
-            <center>
-                <img src="../assets/foto/<?=$fotoSiswa?>;">
-            </center>
+    <div class="profile-container">
+        <?php
+        $nisn = $_GET['nisn'];
+        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
+        
+        while ($a = mysqli_fetch_assoc($query)) { 
+            $nisnSiswa = $a['nisn'];
+            $namaSiswa = $a['nama'];
+            $fotoSiswa = $a['foto'];
+            $kelasSiswa = $a['kelas'];
+            $alamatSiswa = $a['alamat'];
+            $genderSiswa = ($a['gender'] == 'L') ? "Laki - Laki" : "Perempuan";
+            $noHpSiswa = $a['no_hp'];
+            $emailSiswa = $a['email'];
+        ?>
+        <img src="../assets/foto/<?=$fotoSiswa?>" alt="Profile Picture">
+        
+        <table>
             <tr>
-                <th><label>NISN :</label></th>
-                <td><p class="p"><?=$nisnSiswa?></p></td>
+                <th>NISN:</th>
+                <td><?=$nisnSiswa?></td>
             </tr>
             <tr>
-                <th><label>Nama Lengkap :</label></th>
-                <td><p class="p"><?=$namaSiswa?></p></td>
+                <th>Nama Lengkap:</th>
+                <td><?=$namaSiswa?></td>
             </tr>
             <tr>
-                <th><label>Kelas :</label></th>
-                <td><p class="p"><?=$kelasSiswa?></p></td>
+                <th>Kelas:</th>
+                <td><?=$kelasSiswa?></td>
             </tr>
             <tr>
-                <th><label>Alamat :</label></th>
-                <td><p class="p"><?=$alamatSiswa?></p></td>
+                <th>Alamat:</th>
+                <td><?=$alamatSiswa?></td>
             </tr>
             <tr>
-                <th><label>Jenis Kelamin :</label></th>
-                <td><p class="p"><?=$genderSiswa?></p></td>
-            </tr>      
-            <tr>
-                <th><label>Email :</label></th>
-                <td><p class="p"><?=$emailSiswa?></p></td>
-            </tr>      
-            <tr>
-                <th><label>Nomor Hp :</label></th>
-                <td><p class="p"><?=$noHpSiswa?></p></td>
-            </tr>      
-            <tr>
-                <th></th>
-                <td><button><a href="./junior_manajemen_akun.php">Kembali</a></button></td>
+                <th>Jenis Kelamin:</th>
+                <td><?=$genderSiswa?></td>
             </tr>
-            <?php } ?>
+            <tr>
+                <th>Email:</th>
+                <td><?=$emailSiswa?></td>
+            </tr>
+            <tr>
+                <th>Nomor Hp:</th>
+                <td><?=$noHpSiswa?></td>
+            </tr>
+            
+              
+           
         </table>
+        <form  action="./junior_manajemen_akun.php">
+         <button>Kembali</button>
+        </form>
+        
+        <?php } ?>
     </div>
 </body>
 </html>
