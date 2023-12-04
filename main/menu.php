@@ -94,12 +94,6 @@ function resizeImage($imageData, $newWidth, $newHeight) {
               </a>
             </li>
             <li>
-              <a href="./notifikasi.php" class="text">
-                <!-- <i class="bx bx-user icons"></i> -->
-              <span class="text">Notifikasi</span>
-              </a>
-            </li>
-            <li>
                 <a href="../main/signout.php" class="logout">
                 <!-- <i class='bx bxs-log-out-circle' ></i> -->
                 <span class="text">Logout</span>
@@ -163,12 +157,6 @@ function resizeImage($imageData, $newWidth, $newHeight) {
               <a href="./profil.php">
                 <!-- <i class="bx bx-user icons"></i> -->
               <span class="text">Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="./notifikasi.php" class="text">
-                <!-- <i class="bx bx-user icons"></i> -->
-              <span class="text">Notifikasi</span>
               </a>
             </li>
             <li>

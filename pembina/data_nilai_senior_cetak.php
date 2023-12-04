@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Halaman Cetak Nilai Junior</title>
+    <title>SIM PASDATA | Halaman Cetak Nilai Senior</title>
     <style>
         @media print {
             
@@ -42,7 +42,7 @@
         $tahunSekarang = date("Y");
 
         // Membuat judul H3
-        $judulH3 = "Data Nilai Junior Tahun Pelajaran $tahunSekarang-" . ($tahunSekarang + 1);
+        $judulH3 = "Data Nilai Senior Tahun Pelajaran $tahunSekarang-" . ($tahunSekarang + 1);
     ?>
     <center>
         <div class="noPrint">
@@ -84,8 +84,10 @@
             LEFT JOIN detail_nilai ON entered.id_enter = detail_nilai.enter_id
             LEFT JOIN nilai ON detail_nilai.nilai_id = nilai.id_nilai
             GROUP BY
-                siswa.nisn, siswa.nama, kelas.nama;
-            ");
+                siswa.nisn, siswa.nama, kelas.nama
+            ORDER BY
+                kelas
+            ASC;");
 
             while($a = mysqli_fetch_assoc($query)){
                 $nisnJunior = $a['nisn'];

@@ -11,7 +11,7 @@
 <?php
         include "../main/menu.php";
 
-        $nip = $_SESSION['nipAdmin'];
+        $nipAdmin = $_SESSION['nipAdmin'];
         $cekID2 = '';
         if(isset($_GET['action']) && $_GET['action'] == 'add'){
             $queryCekId1 = mysqli_query($db, "SELECT MAX(id_enter) AS id_enter FROM entered");
@@ -20,14 +20,14 @@
             }
 
             if($cekID2 == null){
-                mysqli_query($db, "INSERT INTO entered (nip) VALUES ('$nip')");
+                mysqli_query($db, "INSERT INTO entered (id_enter, penginput, nisn_s, nisn_j, sanksi, created_at) VALUES (null, '$nipAdmin', null, null, null, now())");
                 
             }else{
                 $queryCekId2 = mysqli_query($db, "SELECT MAX(id_enter) AS id_enter FROM entered");
                 while($cekID3 = mysqli_fetch_assoc($queryCekId2)){
                     $cekID4 = $cekID3['id_enter'];
                 }
-                mysqli_query($db, "UPDATE entered SET nip = '$nip' WHERE id_enter = '$cekID4'");
+                mysqli_query($db, "UPDATE entered SET penginput = '$nipAdmin', nisn_s = null, nisn_j = null, sanksi = null, created_at = now() WHERE id_enter = '$cekID4'");
                 
             }
 
@@ -73,12 +73,12 @@
                     
                     //update value terakhir entered
 
-                    $inputEntered = mysqli_query($db,"UPDATE entered SET nisn_s = '$nisnSenior', sanksi = '$pelanggaran', created_at = NOW() WHERE id_enter = '$idEnter'");
+                    $inputEntered = mysqli_query($db, "UPDATE entered SET penginput = '$nipAdmin', nisn_s = '$nisnSenior', nisn_j = null, sanksi = '$pelanggaran', created_at = NOW() WHERE id_enter = '$idEnter'");
 
                     //membuat value baru di entered untuk data nilai selanjutnya
 
                     if($inputEntered){
-                        $queryInputNewId = mysqli_query($db, "INSERT INTO entered (nip) VALUES ('$nip')");
+                        $queryInputNewId = mysqli_query($db, "INSERT INTO entered (id_enter, penginput, nisn_s, nisn_j, sanksi, created_at) VALUES (null, '$nipAdmin', null, null, null, now())");
 
                         //mengembalikan ke halaman input_junior.php ketika berhasil membuat id baru untuk nilai selanjutnya
                         
@@ -152,15 +152,15 @@ while ($row = mysqli_fetch_assoc($selectNamaSiswa)) {
       </div>
       <div class="data">
         <label class="isitext" for="">Nilai Sikap</label>
-        <input class="isitext nilai-panah" type="number" name="nilaiSikap" id="nilaiSikap" max="10" min="5">
+        <input class="isitext nilai-panah" type="number" name="nilaiSikap" id="nilaiSikap" max="10" min="5" onkeydown="return false;">
       </div>
       <div class="data">
         <label class="isitext" for="">Nilai Pola Pikir</label>
-        <input class="isitext nilai-panah" type="number" name="nilaiPolaPikir" id="nilaiPolaPikir" max="10" min="5">
+        <input class="isitext nilai-panah" type="number" name="nilaiPolaPikir" id="nilaiPolaPikir" max="10" min="5" onkeydown="return false;">
       </div>
       <div class="data">
         <label class="isitext" for="">Nilai Keaktifan</label>
-        <input class="isitext nilai-panah" type="number" name="nilaiKeaktifan" id="nilaiKeaktifan" max="10" min="5">
+        <input class="isitext nilai-panah" type="number" name="nilaiKeaktifan" id="nilaiKeaktifan" max="10" min="5" onkeydown="return false;">
       </div>
       <div class="data">
         <label class="isitext" for="">Pelanggaran</label>

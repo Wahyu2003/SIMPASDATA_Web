@@ -14,13 +14,13 @@
     $fotoAdmin = $_SESSION['fotoAdmin'];
     $namaAdmin = $_SESSION['namaAdmin'];
     $alamatAdmin = $_SESSION['alamatAdmin'];
-    $genderAdmin = $_SESSION['genderAdmin'];
+    $genderAdmin = ($_SESSION['genderAdmin'] == 'L') ? "Laki-laki" : "Perempuan";
     $emailAdmin = $_SESSION['emailAdmin'];
     $noHpAdmin = $_SESSION['noHpAdmin'];
     $passwordAdmin = $_SESSION['passwordAdmin'];
     $role = $_SESSION['roleAdmin'];
     ?>
-    <h1>Halaman Profile</h1>
+    <h1>Halaman Profil</h1>
     <div class="container">
         
         <div class="foto">
@@ -39,27 +39,25 @@
             <div class="isidata">
                 
                 <label>NIP</label>
-                <input type="text" value="<?=$nipAdmin?>" class="volume">
+                <input type="text" value="<?=$nipAdmin?>" class="volume" readonly>
                 <label>Nama Lengkap</label>
-                <input type="text" value="<?=$namaAdmin?>" class="volume">
+                <input type="text" value="<?=$namaAdmin?>" class="volume" readonly>
                 <label>Alamat</label>
-                <input type="text"value="<?=$alamatAdmin?>" class="volume">
+                <input type="text"value="<?=$alamatAdmin?>" class="volume" readonly>
                 <label>Jenis Kelamin</label>
-                <input type="text" value="<?=$genderAdmin?>" class="volume">
+                <input type="text" value="<?=$genderAdmin?>" class="volume" readonly>
                 <label>Email</label>
-                <input type="text" value="<?=$emailAdmin?>" class="volume">
+                <input type="text" value="<?=$emailAdmin?>" class="volume" readonly>
                 <label>No. Hp</label>
-                <input type="text" value="<?=$noHpAdmin?>" class="volume">
+                <input type="text" value="<?=$noHpAdmin?>" class="volume" readonly>
                 <label>Role</label>
-                <input type="text" value="<?=$role?>" class="volume">
-                <button type="button">edit</button>
-                <button type="button">simpan</button>
+                <input type="text" value="<?=$role?>" class="volume" readonly>
+                <button type="button">Kembali</button>
+                <button type="button">Edit Profil</button>
                 
             </div>
         </form>
         </div>
-    
     </div>
-    
 </body>
 </html>

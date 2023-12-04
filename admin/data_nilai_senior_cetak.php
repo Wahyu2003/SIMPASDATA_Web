@@ -84,7 +84,10 @@
             LEFT JOIN detail_nilai ON entered.id_enter = detail_nilai.enter_id
             LEFT JOIN nilai ON detail_nilai.nilai_id = nilai.id_nilai
             GROUP BY
-                siswa.nisn, siswa.nama, kelas.nama;
+                siswa.nisn, siswa.nama, kelas.nama
+            ORDER BY
+                kelas
+            ASC;
             ");
 
             while($a = mysqli_fetch_assoc($query)){
