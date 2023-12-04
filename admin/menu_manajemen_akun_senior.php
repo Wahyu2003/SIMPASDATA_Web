@@ -125,9 +125,9 @@ if (isset($_GET['delete'])) {
     $tanggal = date("d-m-Y");
 
     $delete = mysqli_query($db, "UPDATE siswa SET status = 'tidak' WHERE siswa.nisn = '$nisn'");
-    $insert = mysqli_query($db, "INSERT INTO deleted_data ('id_deleted','nip_a','nip_p','nisn_s','nisn_j','waktu_penghapusan') VALUES ('$nip_p',null,'$nip_p','$nisn',null,'$tanggal')");
+    
 
-    if ($delete AND $insert) {
+    if ($delete) {
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=./menu_manajemen_akun_senior.php">';
         exit;
     } else {

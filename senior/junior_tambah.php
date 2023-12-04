@@ -11,7 +11,7 @@ if (isset($_POST['btn_input_junior'])) {
     $no_hp = $_POST['no_hp'];
     $password = $nisn;
     //proses foto
-    $tmpName = $_FILES['foto']['tmp_name'];
+    
 
 
     $cek = mysqli_num_rows(mysqli_query($db, "SELECT * FROM siswa WHERE nisn = '$nisn'"));

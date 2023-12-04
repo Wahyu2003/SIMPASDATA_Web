@@ -87,7 +87,7 @@
     ?>
     <header>
     
-        <h1>SIM PASDATA | Detail Junior</h1>
+        <h1>Detail Junior</h1>
     </header>
 
    

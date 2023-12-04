@@ -16,9 +16,7 @@
 		$totalSiswaJ = $jumlahsiswa_dataj['total'];
     ?>
     <div class="ucapan">
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 1s;">Selamat</h1>
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 2s;">	Datang</h1>
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 3s;">	<?php $namaSiswa = $_SESSION['namaSiswa'];echo $namaSiswa;
+		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 3s;">Selamat Datang <?php $namaSiswa = $_SESSION['namaSiswa'];echo $namaSiswa;
 	?></h1>
     </div>
 <div class="bodi">

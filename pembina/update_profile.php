@@ -29,7 +29,7 @@ if (isset($_POST['btn_simpan_profil'])) {
             if ($sql) {
                 // Pembaruan berhasil
                 echo "Pembaruan berhasil!";
-                header("Location: ./profile.php");
+                header("Location: ./profil.php");
                 exit;
             } else {
                 // Pembaruan gagal
@@ -43,11 +43,10 @@ if (isset($_POST['btn_simpan_profil'])) {
         
         $sql = mysqli_query($db, "UPDATE admin SET alamat = '$editedAlamat', email = '$editedEmail', no_hp = '$editedNoHp', password = '$editedPassword' WHERE nip = $editedNIP");
         
-        
         if ($sql) {
             // Pembaruan berhasil
             echo "Pembaruan berhasil!";
-            header("Location: ./profile.php");
+            header("Location: ./profil.php");
             exit;
         } else {
             // Pembaruan gagal

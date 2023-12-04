@@ -92,6 +92,7 @@ if (!$query) {
                             <td>
                                 <div class="opsi sembunyi">
                                 <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin web?')">Jadikan Admin Web</a>
+                                <a href="./menu_manajemen_detail_pembina.php?nip=<?= $nipPembina ?>" class='detail'>Detail</a>
                                         <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
                                 </div>
                             </td>
@@ -99,7 +100,8 @@ if (!$query) {
                             <td>
                                 <div class="opsi">
                                 <a href="?update1&nip=<?= $nipPembina ?>"class="jadikanadmin" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut menjadi admin web?')">Jadikan Admin Web</a>
-                                        <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
+                                <a href="./menu_manajemen_detail_pembina.php?nip=<?= $nipPembina ?>" class='detail'>Detail</a>        
+                                <a href="?delete&nip=<?= $nipPembina ?>"class="hapus" onclick="return confirm('Apakah kamu yakin ingin menonaktifkan data tersebut ?')">Nonaktifkan</a>
                                 </div>
                             </td>
                         <?php

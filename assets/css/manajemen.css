@@ -57,16 +57,10 @@
 }
 
 .kembali :hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
 .jadikansenior:hover{
-    font-size: 14px;
-    border-radius: 3px;
-    padding: 10px;
     color: white;
     background-color: #3c83b6;
 }
@@ -191,7 +185,6 @@
     background-color: #3c83b6;
 }
 .jadikanpurna:hover{
-    font-size: 14px;
     color: white;
     background-color: rgb(42, 153, 47);
 }

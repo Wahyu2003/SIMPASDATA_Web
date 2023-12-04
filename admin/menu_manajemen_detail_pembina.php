@@ -28,70 +28,66 @@
     <?php 
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Junior Milik Admin</h1>
+    <h1>Detail Pembina</h1>
 
     <div>
-        <img src="" alt="">
+    <center>
+            <?php 
+            if (!empty($fotoAdmin)) {
+                $fotoAdmin = resizeImage($fotoAdmin, 100, 100);
+                echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar' style='width: 15%; height: auto;'>";
+            } else {
+              echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 15%; height: auto;'>";
+          }
+            ?>
+            </center>
     </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">
         <table class="table" border="1"> <!-- Menambahkan class "table" pada elemen tabel -->
             <?php
-                $nisn = $_GET['nisn'];
+                $nip = $_GET['nip'];
 
-                $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
+                $query = mysqli_query($db, "SELECT nip, nama, email, no_hp, alamat, gender, foto FROM admin WHERE nip = '$nip'");
 
                 while ($a = mysqli_fetch_assoc($query)) { 
-                    $nisnSiswa  = $a['nisn'];
-                    $namaSiswa  = $a['nama'];
-                    $fotoSiswa  = $a['foto'];
-                    $kelasSiswa = $a['kelas'];
-                    $alamatSiswa = $a['alamat'];
-                    $genderSiswa = $a['gender'];
-                    $noHpSiswa = $a['no_hp'];
-                    $emailSiswa = $a['email'];
-
-                    if($genderSiswa == 'L'){
-                        $genderSiswa = "Laki - Laki";
-                    }else{
-                        $genderSiswa = "Perempuan";
-                    }
+                    $nipAdmin  = $a['nip'];
+                    $namaAdmin  = $a['nama'];
+                    $fotoAdmin  = $a['foto'];
+                    $alamatAdmin = $a['alamat'];
+                    $genderAdmin = ($a['gender'] == 'L') ? "Laki-laki" : "Perempuan";
+                    $noHpAdmin = $a['no_hp'];
+                    $emailAdmin = $a['email'];
             ?>
             <!-- Tambahkan foto -->
-            <center>
-                <img src="../assets/foto/<?=$fotoSiswa?>;">
-            </center>
+            
             <tr>
-                <th><label>NISN :</label></th>
-                <td><p class="p"><?=$nisnSiswa?></p></td>
+                <th><label>NIP :</label></th>
+                <td><p class="p"><?=$nipAdmin?></p></td>
             </tr>
             <tr>
                 <th><label>Nama Lengkap :</label></th>
-                <td><p class="p"><?=$namaSiswa?></p></td>
-            </tr>
-            <tr>
-                <th><label>Kelas :</label></th>
-                <td><p class="p"><?=$kelasSiswa?></p></td>
+                <td><p class="p"><?=$namaAdmin?></p></td>
             </tr>
             <tr>
                 <th><label>Alamat :</label></th>
-                <td><p class="p"><?=$alamatSiswa?></p></td>
+                <td><p class="p"><?=$alamatAdmin?></p></td>
             </tr>
             <tr>
                 <th><label>Jenis Kelamin :</label></th>
-                <td><p class="p"><?=$genderSiswa?></p></td>
+                <td><p class="p"><?=$genderAdmin?></p></td>
             </tr>      
             <tr>
                 <th><label>Email :</label></th>
-                <td><p class="p"><?=$emailSiswa?></p></td>
+                <td><p class="p"><?=$emailAdmin?></p></td>
             </tr>      
             <tr>
                 <th><label>Nomor Hp :</label></th>
-                <td><p class="p"><?=$noHpSiswa?></p></td>
+                <td><p class="p"><?=$noHpAdmin?></p></td>
             </tr>      
             <tr>
                 <th></th>
-                <td><button><a href="./junior_manajemen_akun.php">Kembali</a></button></td>
+                <td><button><a href="./menu_manajemen_akun_pembina.php">Kembali</a></button></td>
             </tr>
             <?php } ?>
         </table>

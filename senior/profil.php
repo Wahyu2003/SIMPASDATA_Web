@@ -11,14 +11,20 @@
     include "../main/menu.php";
 
     $nisnSiswa = $_SESSION['nisnSiswa'];
-    $fotoSiswa = $_SESSION['fotoSiswa'];
-    $namaSiswa = $_SESSION['namaSiswa'];
-    $alamatSiswa = $_SESSION['alamatSiswa'];
-    $genderSiswa = ($_SESSION['genderSiswa'] == 'L') ? "Laki-laki" : "Perempuan"; 
-    $emailSiswa = $_SESSION['emailSiswa'];
-    $noHpSiswa = $_SESSION['noHpSiswa'];
-    $passwordSiswa = $_SESSION['passwordSiswa'];
-    $role = $_SESSION['roleSiswa'];
+
+    $sql = mysqli_query($db, "SELECT siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.email, siswa.no_hp, siswa.password, siswa.role FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id_kelas where siswa.nisn = $nisnSiswa");
+    while($row = mysqli_fetch_assoc($sql)){
+        $fotoSiswa = $row['foto'];
+        $namaSiswa = $row['nama'];
+        $kelasSiswa = $row['kelas'];
+        $alamatSiswa = $row['alamat'];
+        $genderSiswa = ($row['gender'] == 'L') ? "Laki-laki" : "Perempuan";
+        $emailSiswa = $row['email'];
+        $noHpSiswa = $row['no_hp'];
+        $passwordSiswa = $row['password'];
+        $roleSiswa = $row['role'];
+
+    }
     ?>
     <h1>Halaman Profil</h1>
     <div class="container">
@@ -42,6 +48,8 @@
                 <input type="text" value="<?=$nisnSiswa?>" class="volume" readonly>
                 <label>Nama Lengkap</label>
                 <input type="text" value="<?=$namaSiswa?>" class="volume" readonly>
+                <label>Kelas</label>
+                <input type="text" value="<?=$kelasSiswa?>" class="volume" readonly>
                 <label>Alamat</label>
                 <input type="text"value="<?=$alamatSiswa?>" class="volume" readonly>
                 <label>Jenis Kelamin</label>
@@ -51,9 +59,9 @@
                 <label>No. Hp</label>
                 <input type="text" value="<?=$noHpSiswa?>" class="volume" readonly>
                 <label>Role</label>
-                <input type="text" value="<?=$role?>" class="volume" readonly>
-                <button type="button">Kembali</button>
-                <button type="button">Edit Profil</button>
+                <input type="text" value="<?=$roleSiswa?>" class="volume" readonly>
+                <a href="./home.php">Kembali</a>
+                <a href="./editprofile.php">Edit Profil</a>
                 
             </div>
         </form>

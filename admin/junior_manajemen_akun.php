@@ -90,7 +90,7 @@ if (!$query) {
                                 <td>
                                     <div class="opsi">
                                     <a href="?update&nisn=<?= $nisnSiswa ?>"  class="jadikansenior" onclick="return confirm('Apakah kamu yakin ingin menjadikan data tersebut sebagai senior?')">Jadikan Senior</a>
-                                    <a href="./menu_manajemen_detail_senior.php?nisn=<?= $nisnSiswa ?>"class="detail">Detail</a>
+                                    <a href="./junior_manajemen_detail_akun.php?nisn=<?= $nisnSiswa ?>"class="detail">Detail</a>
                                     <a href="?delete&nisn=<?= $nisnSiswa ?>" class="hapus"onclick="return confirm('Apakah kamu yakin ingin menhapus data tersebut?')">Hapus</a>
                                     </div>
                                 </td>

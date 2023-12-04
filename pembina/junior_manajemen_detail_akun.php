@@ -78,7 +78,7 @@
             </tr>      
             <tr>
                 <th></th>
-                <td><button><a href="./menu_manajemen_akun_senior.php">Kembali</a></button></td>
+                <td><button><a href="./junior_manajemen_akun.php">Kembali</a></button></td>
             </tr>
             <?php } ?>
         </table>

@@ -11,14 +11,18 @@
     include "../main/menu.php";
 
     $nipAdmin = $_SESSION['nipAdmin'];
-    $fotoAdmin = $_SESSION['fotoAdmin'];
-    $namaAdmin = $_SESSION['namaAdmin'];
-    $alamatAdmin = $_SESSION['alamatAdmin'];
-    $genderAdmin = ($_SESSION['genderAdmin'] == 'L') ? "Laki-laki" : "Perempuan";
-    $emailAdmin = $_SESSION['emailAdmin'];
-    $noHpAdmin = $_SESSION['noHpAdmin'];
-    $passwordAdmin = $_SESSION['passwordAdmin'];
-    $role = $_SESSION['roleAdmin'];
+    $sql = mysqli_query($db, "SELECT * FROM admin where nip = $nipAdmin");
+    while($row = mysqli_fetch_assoc($sql)){
+        $fotoAdmin = $row['foto'];
+        $nipAdmin = $row['nip'];
+        $namaAdmin = $row['nama'];
+        $alamatAdmin = $row['alamat'];
+        $genderAdmin = ($row['gender'] == 'L') ? "Laki-laki" : "Perempuan";
+        $emailAdmin = $row['email'];
+        $noHpAdmin = $row['no_hp'];
+        $roleAdmin = $row['role'];
+
+    }
     ?>
     <h1>Halaman Profil</h1>
     <div class="container">

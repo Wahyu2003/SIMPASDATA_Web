@@ -25,10 +25,17 @@
     <?php
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Senior Milik Pembina</h1>
+    <h1>Detail Senior</h1>
 
     <div>
-        <img src="" alt="">
+    <?php 
+        if (!empty($fotoAdmin)) {
+            $fotoAdmin = resizeImage($fotoAdmin, 100, 100);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar' style='width: 15%; height: auto;'>";
+        } else {
+            echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 15%; height: auto;'>";
+        }
+        ?>
     </div>
     <br>
     <div class="card-body-table-menu-manajemen-akun-senior">

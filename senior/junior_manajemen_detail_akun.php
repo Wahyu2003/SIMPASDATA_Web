@@ -109,7 +109,14 @@
             $noHpSiswa = $a['no_hp'];
             $emailSiswa = $a['email'];
         ?>
-        <img src="../assets/foto/<?=$fotoSiswa?>" alt="Profile Picture">
+        <?php 
+            if (!empty($fotoSiswa)) {
+                $fotoSiswa = resizeImage($fotoSiswa, 100, 100);
+                echo "<img src='data:image/*;base64," . base64_encode($fotoSiswa) . "' alt='Gambar' style='width: 25%; height: auto;'>";
+            } else {
+              echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 25%; height: auto;'>";
+          }
+            ?>
         
         <table>
             <tr>
