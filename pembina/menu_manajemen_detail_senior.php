@@ -25,7 +25,7 @@
     <?php
     include "../main/menu.php"
     ?>
-    <h1>Halaman Detail Senior Milik Pembina</h1>
+    <h1>Detail Senior</h1>
 
     <div>
         <img src="" alt="">

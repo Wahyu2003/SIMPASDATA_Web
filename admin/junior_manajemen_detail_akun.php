@@ -94,8 +94,8 @@
 
     <div class="profile-container">
         <?php
-        $nisn = $_GET['nisn'];
-        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisn'");
+        $nisnSiswa = $_GET['nisn'];
+        $query = mysqli_query($db, "SELECT siswa.nisn, siswa.nama, siswa.foto, kelas.nama AS kelas, siswa.alamat, siswa.gender, siswa.no_hp, siswa.email FROM siswa join kelas on siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nisnSiswa'");
         
         while ($a = mysqli_fetch_assoc($query)) { 
             $nisnSiswa = $a['nisn'];
