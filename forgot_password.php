@@ -36,11 +36,7 @@ if (isset($_POST["updatePassword"])) {
 
             $mail->isHTML(true);
             $mail->Subject = "Your verify code";
-            $mail->Body = "<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
-                <br><br>
-                <p>With regards,</p>
-                <b>Programming with Lam</b>
-                https://www.youtube.com/channel/UCKRZp3mkvL1CBYKFIlxjDdg";
+            $mail->Body = "<p>Dear user, </p> <h3>Kode Verifikasi Anda Adalah $otp <br></h3>";
 
             if (!$mail->send()) {
                 ?>
@@ -97,7 +93,7 @@ if (isset($_POST["updatePassword"])) {
                 <input type="text" name="email" id="email" placeholder="Masukan Email Yang Sudah Terdaftar">
             </div>
                 <div class="form-group">
-                    <input type="password" name="newPassword" id="newPassword" placeholder="Masukan Kata Sandi Baru ">
+                    <input type="password" name="newPassword" id="newPassword" placeholder="Masukan Kata Sandi Baru " required>
             </div>
             
             <div class="button-sign-in">
