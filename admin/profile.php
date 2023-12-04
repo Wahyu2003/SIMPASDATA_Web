@@ -52,8 +52,9 @@
                 <input type="text" value="<?=$noHpAdmin?>" class="volume" readonly>
                 <label>Role</label>
                 <input type="text" value="<?=$role?>" class="volume" readonly>
-                <button type="button">Kembali</button>
-                <button type="button">Edit Profil</button>
+                <a href="./home.php">Kembali</a>
+                <a href="./editprofile.php">Edit Profil</a>
+                
                 
             </div>
         </form>

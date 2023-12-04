@@ -31,10 +31,7 @@
 		$jumlahsiswa_dataj = mysqli_fetch_assoc($jumlahsiswaj);
 		$totalSiswaJ = $jumlahsiswa_dataj['total'];
     ?><div class="ucapan">
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 1s;">Selamat</h1>
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 2s;">	Datang</h1>
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 3s;">	<?php $namaAdmin = $_SESSION['namaAdmin'];echo $namaAdmin;
-	?></h1>
+		<h1 >Selamat Datang <?php $namaAdmin = $_SESSION['namaAdmin'];echo $namaAdmin;?></h1>
     </div>
 
 	<div class="data">
