@@ -8,7 +8,7 @@ include 'koneksi.php';
 $nipnisn = $_POST['nipnisn'];
 
 // Lakukan kueri ke database untuk mendapatkan data siswa termasuk foto (tipe blob)
-$querySiswa = "SELECT siswa.nama, siswa.nisn, siswa.email, siswa.no_hp, siswa.alamat, siswa.role, siswa.kelas_id, siswa.foto, kelas.nama_kelas
+$querySiswa = "SELECT siswa.nama, siswa.nisn, siswa.email, siswa.no_hp, siswa.alamat, siswa.role, siswa.kelas_id, siswa.foto, kelas.nama as kelas
                FROM siswa JOIN kelas ON siswa.kelas_id = kelas.id_kelas WHERE siswa.nisn = '$nipnisn'";
 
 $resultSiswa = mysqli_query($db, $querySiswa);

@@ -8,7 +8,7 @@ $password = $_POST["post_password"];
 
 
 //cek apakah sesuai db
-$query = "SELECT nisn,password_siswa
+$query = "SELECT nisn,password
           FROM siswa
           WHERE nisn = '$nipnisn' AND password = '$password'";
          
