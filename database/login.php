@@ -10,7 +10,7 @@ $password = $_POST["post_password"];
 //cek apakah sesuai db
 $query = "SELECT nisn,password_siswa
           FROM siswa
-          WHERE nisn = '$nipnisn' AND password_siswa = '$password'";
+          WHERE nisn = '$nipnisn' AND password = '$password'";
          
 $obj_query = mysqli_query($db, $query);
 $data = mysqli_fetch_assoc($obj_query);
@@ -24,7 +24,7 @@ if ($data){
             "nisn"=>$data["nisn"],
             
             
-            "password_siswa"=>$data["password_siswa"]
+            "password"=>$data["password"]
 
         )
     )
