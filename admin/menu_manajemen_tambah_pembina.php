@@ -3,57 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Tambah Akun Junior</title>
-    <link rel="stylesheet" href="../assets/css/tambah.css">
+    <title>Tambah Akun Pembina</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color:black;
+        }
+        header {
+            background-color: var(--red);
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 100px;
+        }
+
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        .radio-group label input {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-    <?php 
-        include "../main/menu.php";
-    ?>
-    <div class="kontener">
-        <div class="header">
-            <h1>Manajemen Akun Pembina</h1>
-        </div>
-    <div class="volume">
-        <form action="pembina_tambah.php" method="POST" enctype="multipart/form-data"onsubmit="return showSuccessPopup()">
-            <div class="form">
-                    <div class="kanan">
-                        <label class="imput" for="nisn">NIP</label required>
-                        
-                        <input class="imput" type="text" name="nisn" id="nisn" pattern="[0-9]{4,5,18,21}" required>
-                    
-                    
-                        <label class="imput" for="nama">Nama Lengkap</label>
-                        <input class="imput" type="text" name="nama" id="nama" oninput="formatNama('nama')" required>
-                    
-                    
-                        <label class="imput" for="alamat">Alamat</label>
-                        <input class="imput" type="text" name="alamat" oninput="formatNama('alamat')" required>
-                    </div>
-                    <div class="kiri">
-                        <label class="imput" for="jenis_kelamin">Jenis Kelamin</label>
-                        <div class="sex">
-                            <input class="impuut" type="radio" name="jenis_kelamin" value="L" required> Laki-laki
-                            <input class="impuut" type="radio" name="jenis_kelamin" value="P" required> Perempuan
-                        </div>
-                        
-                        <label class="imput" for="email">Email</label>
-                        <input class="imput" type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                    
-                        <label class="imput" for="no_hp">No HP</label>
-                        <input class="imput" type="tel" name="no_hp" pattern="[0-9]{12,13}" required>
-                    </div>
-                    
-                    
+    <?php include "../main/menu.php" ?>
+    <header>
+        <h1>Tambah Akun Pembina</h1>
+    </header>
 
-                        
-                </div>
-                <button class="button"type="submit" name="btn_input_junior">Simpan</button>
-            </div>
+    <div class="container">
+        <form action="pembina_tambah.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <label for="nip">NIP</label>
+            <input type="text" name="nip" id="nip" pattern="[0-9]{4,21}" required>
+
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" name="nama" id="nama" oninput="formatNama('nama')" required>
+
             
-        </form>
-        </div>
+            <label>Jenis Kelamin</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="jenis_kelamin" value="L" required>
+                    Laki-Laki
+                </label>
+                <label>
+                    <input type="radio" name="jenis_kelamin" value="P" required>
+                    Perempuan
+                </label>
+            </div>
 
+            <label for="alamat">Alamat</label>
+            <input type="text" name="alamat" oninput="formatNama('alamat')" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
+            <label for="no_hp">Nomor HP</label>
+            <input type="tel" name="no_hp" pattern="[0-9]{12,13}" required>
+
+            <button type="submit" name="btn_input_pembina" id="btn_input_pembina">Simpan</button>
+        </form>
     </div>
 
     <script>
@@ -61,22 +143,16 @@
             var inputElement = document.getElementById(inputId);
             var inputValue = inputElement.value;
 
-            // Mengonversi nama menjadi format huruf besar di awal
             var formattedValue = inputValue.replace(/\b\w/g, function (match) {
                 return match.toUpperCase();
             });
 
-            // Menetapkan nilai yang telah diformat kembali ke input
             inputElement.value = formattedValue;
         }
-        document.addEventListener("DOMContentLoaded", function () {
-            var status = "<?php echo $status; ?>";
-            if (status === "success") {
-                alert("Data berhasil ditambahkan!");
-            } else if (status === "failed") {
-                alert("Gagal menambahkan data. Silakan coba lagi.");
-            }
-        });
+
+       
+
+       
     </script>
 </body>
 </html>
