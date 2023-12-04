@@ -11,8 +11,7 @@
 <?php
         include "../main/menu.php";
         ?><div class="ucapan">
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 1s;">Data</h1>
-		<h1 class="animate__animated animate__fadeIn" style="--animate-duration: 2s;">	Nilai</h1>
+		<h1>Data Nilai</h1>
     </div>
 
 	<div class="data">

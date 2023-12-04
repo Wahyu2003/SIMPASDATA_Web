@@ -1,6 +1,6 @@
-<?php session_start();
+<?php
+session_start();
 require_once("../database/koneksi.php");
-
 // Cek apakah admin yang login
 if (isset($_SESSION['nipAdmin']) && ($_SESSION['roleAdmin'] == 'admin' || $_SESSION['roleAdmin'] == 'pembina')) {
     $nipAdmin = $_SESSION['nipAdmin'];

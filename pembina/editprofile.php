@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simpasdata | edit profil</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body>
@@ -58,8 +58,8 @@
                 <label>Ubah Foto Profil</label>
                 <input name="foto" type="file" accept="image/*" id="foto" class="volume">
 
-                <button type="button"><a href="./profil.php">Kembali</a></button>
-                <button type="submit" name="btn_simpan_profil">Simpan</button>
+                <a class="kembali" href="./profil.php">Kembali</a>
+                <button class="tekan" type="submit" name="btn_simpan_profil">Simpan</button>
             </div>
         </form>
         </div>

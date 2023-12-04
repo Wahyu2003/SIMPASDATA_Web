@@ -58,8 +58,8 @@
                 <label>Ubah Foto Profil</label>
                 <input name="foto" type="file" accept="image/*" id="foto" class="volume">
 
-                <button type="button"><a href="./profile.php">Kembali</a></button>
-                <button type="submit" name="btn_simpan_profil">Simpan</button>
+                <a class="kembali" href="./profile.php">Kembali</a>
+                <button class="tekan" type="submit" name="btn_simpan_profil">Simpan</button>
             </div>
         </form>
         </div>

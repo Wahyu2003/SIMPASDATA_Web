@@ -59,8 +59,8 @@
                 <input name="editedPassword" type="text" value="<?=$passwordSiswa?>" class="volume">
                 <label>Ubah Foto Profil</label>
                 <input name="editedPhoto" type="file" class="volume">
-                <button type="button"><a href="./profil.php">Kembali</a></button>
-                <button type="submit" name="btn_simpan_profil">Simpan</button>
+                <a class="kembali" href="./profil.php">Kembali</a>
+                <button class="tekan" type="submit" name="btn_simpan_profil">Simpan</button>
                 
             </div>
         </form>

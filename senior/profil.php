@@ -60,8 +60,8 @@
                 <input type="text" value="<?=$noHpSiswa?>" class="volume" readonly>
                 <label>Role</label>
                 <input type="text" value="<?=$roleSiswa?>" class="volume" readonly>
-                <a href="./home.php">Kembali</a>
-                <a href="./editprofile.php">Edit Profil</a>
+                <a class="kembali" href="./home.php">Kembali</a>
+                <a class="tekan" href="./editprofile.php">Edit Profil</a>
                 
             </div>
         </form>

@@ -1,5 +1,4 @@
-<?php  
-include "../main/auth.php"; 
+<?php  include "../main/auth.php"; 
 function resizeImage($imageData, $newWidth, $newHeight) {
   $img = imagecreatefromstring($imageData);
 
@@ -78,13 +77,9 @@ function resizeImage($imageData, $newWidth, $newHeight) {
           <span class="text">
             <?php echo $namaAdmin;?></span>
           <?php
-          $query = mysqli_query($db, "SELECT foto FROM admin WHERE nip = $nipAdmin");
-          while($row = mysqli_fetch_assoc($query)){
-              $foto = $row['foto'];
-          }
-          if (!empty($foto)) {
-            $foto = resizeImage($foto, 40, 40);
-            echo "<img src='data:image/*;base64," . base64_encode($foto) . "' alt='Gambar'>";
+          if (!empty($fotoAdmin)) {
+            $fotoAdmin = resizeImage($fotoAdmin, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar'>";
         } else {
           echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
       }      
@@ -149,13 +144,9 @@ function resizeImage($imageData, $newWidth, $newHeight) {
           <span class="text">
             <?php echo $namaAdmin;?></span>
           <?php
-          $query = mysqli_query($db, "SELECT foto FROM admin WHERE nip = $nipAdmin");
-          while($row = mysqli_fetch_assoc($query)){
-              $foto = $row['foto'];
-          }
-          if (!empty($foto)) {
-            $foto = resizeImage($foto, 40, 40);
-            echo "<img src='data:image/*;base64," . base64_encode($foto) . "' alt='Gambar'>";
+          if (!empty($fotoAdmin)) {
+            $fotoAdmin = resizeImage($fotoAdmin, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoAdmin) . "' alt='Gambar'>";
         } else {
           echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
       }      
@@ -208,13 +199,9 @@ function resizeImage($imageData, $newWidth, $newHeight) {
           <span class="text">
             <?php echo $namaSiswa;?></span>
           <?php
-          $query = mysqli_query($db, "SELECT foto FROM siswa WHERE nisn = $nisnSiswa");
-          while($row = mysqli_fetch_assoc($query)){
-              $foto = $row['foto'];
-          }
-          if (!empty($foto)) {
-            $foto = resizeImage($foto, 40, 40);
-            echo "<img src='data:image/*;base64," . base64_encode($foto) . "' alt='Gambar'>";
+          if (!empty($fotoSiswa)) {
+            $fotoSiswa = resizeImage($fotoSiswa, 40, 40);
+            echo "<img src='data:image/*;base64," . base64_encode($fotoSiswa) . "' alt='Gambar'>";
         } else {
           echo "<img src='../assets/foto/user-solid-240.png' alt='' style='width: 40px; height: 40px;'>";
       }      

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simpasdata | Profil Pembina</title>
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body>
@@ -56,8 +56,8 @@
                 <input type="text" value="<?=$noHpAdmin?>" class="volume" readonly>
                 <label>Role</label>
                 <input type="text" value="<?=$role?>" class="volume" readonly>
-                <a href="./home.php">Kembali</a>
-                <a href="./editprofile.php">Edit Profil</a>
+                <a class="kembali" href="./home.php">Kembali</a>
+                <a class="tekan"href="./editprofile.php">Edit Profil</a>
                 
             </div>
         </form>
