@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Akun Junior</title>
     <style>
-         
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -116,7 +116,7 @@
             <select name="kelas" id="selectKelas" onchange="checkSelect()" required>
                 <option value="">Pilih Kelas</option>
                 <?php
-                $query_kelas = "SELECT * FROM kelas WHERE";
+                $query_kelas = "SELECT * FROM kelas";
                 $result_kelas = mysqli_query($db, $query_kelas);
                 while ($row_kelas = mysqli_fetch_assoc($result_kelas)) {
                     echo "<option value='" . $row_kelas['id_kelas'] . "'>" . $row_kelas['nama'] . "</option>";
@@ -145,7 +145,6 @@
 
             <label for="no_hp">Nomor HP</label>
             <input type="tel" name="no_hp" pattern="[0-9]{12,13}">
-
 
             <button type="submit" name="btn_input_junior" id="btn_input_junior" disabled>Simpan</button>
         </form>
