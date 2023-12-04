@@ -1,3 +1,14 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM PASDATA | Manajemen Akun senior</title>
+    <link rel="stylesheet" href="../assets/css/manajemen.css">
+</head>
 <?php
 include "../main/menu.php";
 
@@ -15,17 +26,6 @@ if (!$query) {
     die('Error executing query: ' . mysqli_error($db));
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM PASDATA | Manajemen Akun senior</title>
-    <link rel="stylesheet" href="../assets/css/manajemen.css">
-</head>
-
 <body>
 
     <div class="container">
