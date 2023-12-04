@@ -22,20 +22,22 @@ if (isset($_POST["updatePassword"])) {
             $_SESSION['email'] = $email;
 
             $mail = require __DIR__ . "/mailer.php";
-
+            $namapengirim='Admin SIMPASDATA';
+            $emailpengirim= 'rizalmahendra1008@gmail.com';
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = 587;
             $mail->SMTPAuth = true;
             $mail->SMTPSecure = 'tls';
 
-            $mail->Username = 'rizalmahendra1008@gmail.com';
-            $mail->Password = 'aypqpqsifwcyrgea';
+            $mail->Username = $emailpengirim;
 
+            $mail->Password = 'aypqpqsifwcyrgea';
+            $mail->setFrom($emailpengirim,$namapengirim);
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = "Your verify code";
+            $mail->Subject = "Kode Verifikasi Akun Anda ";
             $mail->Body = "<p>Dear user, </p> <h3>Kode Verifikasi Anda Adalah $otp <br></h3>";
 
             if (!$mail->send()) {
